@@ -1,0 +1,10 @@
+{
+    "ctm": {
+        "ctm_version": 1,
+        "type": "pillar",
+        "layer": "TRANSLUCENT",
+        "textures": [
+            "chiseldecor:blocks/default/icepillar/convexplain-ctmv"
+        ]
+    }
+}

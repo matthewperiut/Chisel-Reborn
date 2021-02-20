@@ -1,0 +1,9 @@
+{
+    "ctm": {
+        "ctm_version": 1,
+        "type": "ctm",
+        "textures": [
+            "chiseldecor:blocks/default/stone/tiles-large-ctm"
+        ]
+    }
+}

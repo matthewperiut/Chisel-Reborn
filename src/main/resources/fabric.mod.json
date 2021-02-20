@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "chiseldecor",
+  "version": "1.0.0",
+
+  "name": "Chisel Decor",
+  "description": "Adds loads of new decorative blocks and items with connected texture compatability and the ability to add your own block packs!",
+  "authors": [
+    "KnowYourKnot",
+    "Original Creator: AUTOMATIC_MAIDEN"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/fabric-chisel-decor",
+    "sources": "https://github.com/KnowYourKnot/ChiselDecor"
+  },
+
+  "license": "GPLv2, CC BY-NC-SA 4.0",
+  "icon": "assets/chiseldecor/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.knowyourknot.chiseldecor.ChiselDecorEntryPoint"
+    ],
+    "client": [
+      "com.knowyourknot.chiseldecor.ChiselDecorEntryPointClient"
+    ],
+    "modmenu": [
+      "com.knowyourknot.chiseldecor.ChiselDecorEntryPointModMenu"
+    ],
+    "rei_plugins": [
+      "com.knowyourknot.chiseldecor.ChiselDecorEntryPointREI"
+    ]
+  },
+  "mixins": [],
+  
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "ctm": {
+        "ctm_version": 1,
+        "type": "ctm",
+        "textures": [
+            "chiseldecor:blocks/default/metals/tin/badgreggy-ctm"
+        ]
+    }
+}
