@@ -1,5 +1,6 @@
 remappedSrc/
 
+src/main/java/com/knowyourknot/chiseldecor/config/DefaultBlockPack.java
 # gradle
 
 .gradle/

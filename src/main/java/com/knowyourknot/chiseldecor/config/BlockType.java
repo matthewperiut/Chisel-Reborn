@@ -58,7 +58,8 @@ public class BlockType {
         for (int i = 0; i < variants.size(); i++) {
             BlockVariant variant = variants.get(i);
             variant.registerDrop(resourcePack);
-            variant.registerDefaultTexture(resourcePack);
+            // variant.registerTexture(resourcePack);
+            // variant.registerMcMeta(resourcePack);
             variant.registerBlockModel(resourcePack);
             variant.registerItemModel(resourcePack);
             variant.registerBlockState(resourcePack);

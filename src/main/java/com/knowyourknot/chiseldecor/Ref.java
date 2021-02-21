@@ -200,7 +200,7 @@ public class Ref {
             variants.add(new BlockVariant(packDir, typeName, VARIANTS_PLANKS_STANDARD[i], settings, "block/cube_all", false));
         }
         for (int i = 0; i < VARIANTS_PLANKS_PILLAR.length; i++) {
-            variants.add(new BlockVariant(packDir, typeName, VARIANTS_PLANKS_PILLAR[i], settings, "block/cube_bottom_top", false));
+            variants.add(new BlockVariant(packDir, typeName, VARIANTS_PLANKS_PILLAR[i], settings, "block/cube_column", false));
         }
         return variants;
     }

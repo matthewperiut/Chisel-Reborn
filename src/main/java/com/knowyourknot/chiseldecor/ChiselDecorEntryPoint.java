@@ -1,11 +1,12 @@
 package com.knowyourknot.chiseldecor;
 
+import javax.swing.filechooser.FileSystemView;
+
 import com.knowyourknot.chiseldecor.config.BlockPack;
 import com.knowyourknot.chiseldecor.config.ChiselDecorConfig;
 import com.knowyourknot.chiseldecor.data.Recipes;
 import com.knowyourknot.chiseldecor.item.ItemChisel;
 import com.knowyourknot.chiseldecor.tags.ChiselRuntimeResourcePackImpl;
-import com.knowyourknot.chiseldecor.world.WorldGen;
 import com.oroarmor.config.command.ConfigCommand;
 
 import org.apache.logging.log4j.LogManager;
@@ -43,10 +44,8 @@ public class ChiselDecorEntryPoint implements ModInitializer {
 			new BlockPack(blockPackDirs[i]).register(RESOURCE_PACK);
 		}
 
-		// Registry.register(Registry.ITEM, new Identifier(Ref.MOD_ID, "debug"), new ItemDebug(new FabricItemSettings()));
 		Registry.register(Registry.ITEM, new Identifier(Ref.MOD_ID, "chisel"), ITEM_CHISEL);
-		WorldGen.addDefaultWorldGen();
-		Recipes.addDefaultRecipes(RESOURCE_PACK);
+		Recipes.addChiselRecipe(RESOURCE_PACK);
 
 		// RESOURCE_PACK.dump(FileSystemView.getFileSystemView().getHomeDirectory()); // for checking errors
 		RRPCallback.EVENT.register(a -> a.add(RESOURCE_PACK));

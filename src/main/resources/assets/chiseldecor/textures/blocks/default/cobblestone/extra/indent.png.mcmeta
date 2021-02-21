@@ -1,9 +1,0 @@
-{
-    "ctm": {
-        "ctm_version": 1,
-        "type": "ctm",
-        "textures": [
-            "chiseldecor:blocks/default/cobblestone/extra/indent-ctm"
-        ]
-    }
-}

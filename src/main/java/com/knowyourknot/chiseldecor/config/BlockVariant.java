@@ -1,7 +1,5 @@
 package com.knowyourknot.chiseldecor.config;
 
-import java.awt.image.BufferedImage;
-
 import com.knowyourknot.chiseldecor.Ref;
 import com.knowyourknot.chiseldecor.block.ChiselBlockCarpet;
 import com.knowyourknot.chiseldecor.item.ChiselBlockItem;
@@ -67,31 +65,6 @@ public class BlockVariant {
     public void registerDrop(RuntimeResourcePack resourcePack) {
         JLootTable table = JLootTable.loot("minecraft:block").pool(JLootTable.pool().rolls(1).entry(JLootTable.entry().type("minecraft:item").name(identifier().toString())).condition(JLootTable.predicate("minecraft:survives_explosion")));
         resourcePack.addLootTable(new Identifier(Ref.MOD_ID, "blocks/" + packDir + "/" + typeName + "/" + variantName), table);
-    }
-
-    public void registerDefaultTexture(RuntimeResourcePack resourcePack) {
-        String texturePath = "blocks/" + getName();
-        BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-        if (model.equals("block/cube_column")) {
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-side"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-end"), image);
-        } else if (model.equals("block/cube_bottom_top")) {
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-side"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-bottom"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-top"), image);
-        } else if (model.equals("two_layer_topshaded")) {
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-top"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-bot"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-particle"), image);
-        } else if (model.equals("three_layer_topshaded")) {
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-top"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-mid"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-bot"), image);
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath + "-particle"), image);
-        } else {
-            resourcePack.addTexture(new Identifier(Ref.MOD_ID, texturePath), image);
-        }
-        
     }
 
     public void registerBlockModel(RuntimeResourcePack resourcePack) {

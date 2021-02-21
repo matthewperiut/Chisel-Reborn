@@ -1,9 +1,0 @@
-{
-    "ctm": {
-        "ctm_version": 1,
-        "type": "pillar",
-        "textures": [
-            "chiseldecor:blocks/default/marblepillar/greekdecor-ctmv"
-        ]
-    }
-}

@@ -5,7 +5,6 @@ import com.knowyourknot.chiseldecor.Ref;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -20,18 +19,8 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 public class WorldGen {
     private WorldGen() {}
 
-    public static void addDefaultWorldGen() {
-        Block marble = Registry.BLOCK.get(new Identifier(Ref.MOD_ID, "default/marble/raw"));
-        if (!marble.is(Blocks.AIR)) {
-            addStoneWorldGen("marble", marble);
-        }
-        Block limestone = Registry.BLOCK.get(new Identifier(Ref.MOD_ID, "default/limestone/raw"));
-        if (!limestone.is(Blocks.AIR)) {
-            addStoneWorldGen("limestone", limestone);
-        }
-    }
-
-    public static void addStoneWorldGen(String blockName, Block stoneBlock) {
+    public static void addStoneWorldGen(Block stoneBlock) {
+        String blockName = Registry.BLOCK.getId(stoneBlock).getPath();
         ConfiguredFeature<?, ?> featureOreOverworld = Feature.ORE
             .configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, stoneBlock.getDefaultState(), 15))
             .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 64)))

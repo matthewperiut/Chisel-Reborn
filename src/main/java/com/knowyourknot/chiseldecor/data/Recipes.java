@@ -1,5 +1,7 @@
 package com.knowyourknot.chiseldecor.data;
 
+import java.util.List;
+
 import com.knowyourknot.chiseldecor.Ref;
 
 import net.devtech.arrp.api.RuntimeResourcePack;
@@ -8,36 +10,10 @@ import net.devtech.arrp.json.recipe.JKeys;
 import net.devtech.arrp.json.recipe.JPattern;
 import net.devtech.arrp.json.recipe.JRecipe;
 import net.devtech.arrp.json.recipe.JResult;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class Recipes {
     private Recipes() {}
-
-    public static void addDefaultRecipes(RuntimeResourcePack resourcePack) {
-        addChiselRecipe(resourcePack);
-        Item factory = Registry.ITEM.get(new Identifier(Ref.MOD_ID, "default/factory/rust2"));
-        if (!factory.equals(Items.AIR)) {
-            addFactoryRecipe(resourcePack);
-        }
-
-        Item futura = Registry.ITEM.get(new Identifier(Ref.MOD_ID, "default/futura/controller"));
-        if (!futura.equals(Items.AIR)) {
-            addFuturaRecipe(resourcePack);
-        }
-
-        Item laboratory = Registry.ITEM.get(new Identifier(Ref.MOD_ID, "default/laboratory/largewall"));
-        if (!laboratory.equals(Items.AIR)) {
-            addLaboratoryRecipe(resourcePack);
-        }
-
-        Item tyrian = Registry.ITEM.get(new Identifier(Ref.MOD_ID, "default/tyrian/shining"));
-        if (!tyrian.equals(Items.AIR)) {
-            addTyrianRecipe(resourcePack);
-        }
-    }
 
     public static void addChiselRecipe(RuntimeResourcePack resourcePack) {
         JPattern pattern = JPattern.pattern("I ", " S");
@@ -50,49 +26,33 @@ public class Recipes {
         resourcePack.addRecipe(new Identifier(Ref.MOD_ID, "chisel_alt"), JRecipe.shaped(patternAlt, keys, result));
     }
 
-    public static void addFactoryRecipe(RuntimeResourcePack resourcePack) {
-        JPattern pattern = JPattern.pattern("ISI", "S S", "ISI");
-        JIngredient stone = JIngredient.ingredient().item("minecraft:stone");
-        JIngredient iron = JIngredient.ingredient().item("minecraft:iron_ingot");
-        JKeys keys = JKeys.keys().key("S", stone).key("I", iron);
-        JResult result = JResult.stackedResult("chiseldecor:default/factory/rust2", 32);
-        resourcePack.addRecipe(new Identifier(Ref.MOD_ID, "default/factory"), JRecipe.shaped(pattern, keys, result));
+    public static void addRecipe(List<String> pattern, List<RecipeKey> keys, String output, int count, RuntimeResourcePack resourcePack) {
+        JPattern jPattern;
+        if (pattern.size() == 1) {
+            jPattern = JPattern.pattern(pattern.get(0));
+        } else if (pattern.size() == 2) {
+            jPattern = JPattern.pattern(pattern.get(0), pattern.get(1));
+        } else if (pattern.size() == 3){
+            jPattern = JPattern.pattern(pattern.get(0), pattern.get(1), pattern.get(2));
+        } else {
+            return;
+        }
+        JKeys jKeys = JKeys.keys();
+        for (int i = 0; i < keys.size(); i++) {
+            JIngredient key = JIngredient.ingredient().item(keys.get(i).value);
+            jKeys.key(keys.get(i).key, key);
+        }
+        JResult jResult = JResult.stackedResult(output, count);
+        resourcePack.addRecipe(new Identifier(Ref.MOD_ID, Identifier.splitOn(output, ':').getPath()), JRecipe.shaped(jPattern, jKeys, jResult));
     }
 
-    public static void addFuturaRecipe(RuntimeResourcePack resourcePack) {
-        JPattern pattern = JPattern.pattern("SSS", "SRS", "SSS");
-        JIngredient stone = JIngredient.ingredient().item("minecraft:stone_bricks");
-        JIngredient redstone = JIngredient.ingredient().item("minecraft:redstone");
-        JKeys keys = JKeys.keys().key("S", stone).key("R", redstone);
-        JResult result = JResult.stackedResult("chiseldecor:default/futura/controller", 8);
-        resourcePack.addRecipe(new Identifier(Ref.MOD_ID, "default/futura"), JRecipe.shaped(pattern, keys, result));
-    }
+    public static class RecipeKey {
+        public final String key;
+        public final String value;
 
-    public static void addVoidstoneRecipe(RuntimeResourcePack resourcePack) {
-        JPattern pattern = JPattern.pattern("OSO", "SES", "OSO");
-        JIngredient stone = JIngredient.ingredient().item("minecraft:stone");
-        JIngredient obsidian = JIngredient.ingredient().item("minecraft:obsidian");
-        JIngredient enderPearl = JIngredient.ingredient().item("minecraft:ender_pearl");
-        JKeys keys = JKeys.keys().key("S", stone).key("O", obsidian).key("E", enderPearl);
-        JResult result = JResult.stackedResult("chiseldecor:default/voidstone/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 8);
-        resourcePack.addRecipe(new Identifier(Ref.MOD_ID, "default/voidstone"), JRecipe.shaped(pattern, keys, result));
-    }
-
-    public static void addLaboratoryRecipe(RuntimeResourcePack resourcePack) {
-        JPattern pattern = JPattern.pattern("QSQ", "S S", "QSQ");
-        JIngredient stone = JIngredient.ingredient().item("minecraft:stone");
-        JIngredient quartz = JIngredient.ingredient().item("minecraft:quartz");
-        JKeys keys = JKeys.keys().key("S", stone).key("Q", quartz);
-        JResult result = JResult.stackedResult("chiseldecor:default/laboratory/largewall", 32);
-        resourcePack.addRecipe(new Identifier(Ref.MOD_ID, "default/laboratory"), JRecipe.shaped(pattern, keys, result));
-    }
-
-    public static void addTyrianRecipe(RuntimeResourcePack resourcePack) {
-        JPattern pattern = JPattern.pattern("SSS", "SIS", "SSS");
-        JIngredient stone = JIngredient.ingredient().item("minecraft:stone");
-        JIngredient iron = JIngredient.ingredient().item("minecraft:iron_ingot");
-        JKeys keys = JKeys.keys().key("S", stone).key("I", iron);
-        JResult result = JResult.stackedResult("chiseldecor:default/tyrian/shining", 8);
-        resourcePack.addRecipe(new Identifier(Ref.MOD_ID, "default/tyrian"), JRecipe.shaped(pattern, keys, result));
+        public RecipeKey(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }
