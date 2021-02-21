@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "id": "chiseldecor",
-  "version": "1.0.0",
+  "version": "1.1.0",
 
   "name": "Chisel Decor",
-  "description": "Adds loads of new decorative blocks and items with connected texture compatability and the ability to add your own block packs!",
+  "description": "Allows you to load your own custom decorative block packs!",
   "authors": [
     "KnowYourKnot",
     "Original Creator: AUTOMATIC_MAIDEN"
@@ -14,7 +14,7 @@
     "sources": "https://github.com/KnowYourKnot/ChiselDecor"
   },
 
-  "license": "GPLv2, CC BY-NC-SA 4.0",
+  "license": "GPLv2",
   "icon": "assets/chiseldecor/icon.png",
 
   "environment": "*",

@@ -1,7 +1,5 @@
 package com.knowyourknot.chiseldecor;
 
-import javax.swing.filechooser.FileSystemView;
-
 import com.knowyourknot.chiseldecor.config.BlockPack;
 import com.knowyourknot.chiseldecor.config.ChiselDecorConfig;
 import com.knowyourknot.chiseldecor.data.Recipes;
@@ -30,11 +28,6 @@ public class ChiselDecorEntryPoint implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		CommandRegistrationCallback.EVENT.register(new ConfigCommand(CONFIG)::register);
-		// refresh default block pack
-		Object shouldRefreshDefault = CONFIG.getConfigs().get(0).getConfigs().get(1).getValue();
-		if (shouldRefreshDefault instanceof Boolean && ((Boolean)shouldRefreshDefault).booleanValue()) {
-			CONFIG.refreshDefaultBlockPack();
-		}
 
 		String[] blockPackDirs = CONFIG.getBlockPackDirs();
 		for (int i = 0; i < blockPackDirs.length; i++) {
