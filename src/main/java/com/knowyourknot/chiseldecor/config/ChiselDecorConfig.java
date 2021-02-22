@@ -39,7 +39,8 @@ public class ChiselDecorConfig extends Config {
         }
         String dirString = (String) result;
         String[] blockPackDirs = dirString.replaceAll("\\s+","").split(",");
-        ChiselDecorEntryPoint.LOGGER.info("Found " + blockPackDirs.length + " blockpack(s): " + Arrays.toString(blockPackDirs));
+        String msg = String.format("Found %d blockpack(s): %s.", blockPackDirs.length, Arrays.toString(blockPackDirs));
+        ChiselDecorEntryPoint.LOGGER.info(msg);
         return blockPackDirs;
     }
 }

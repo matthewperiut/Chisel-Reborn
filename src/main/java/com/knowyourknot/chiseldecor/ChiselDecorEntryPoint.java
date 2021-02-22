@@ -4,13 +4,13 @@ import com.knowyourknot.chiseldecor.config.BlockPack;
 import com.knowyourknot.chiseldecor.config.ChiselDecorConfig;
 import com.knowyourknot.chiseldecor.data.Recipes;
 import com.knowyourknot.chiseldecor.item.ItemChisel;
-import com.knowyourknot.chiseldecor.tags.ChiselRuntimeResourcePackImpl;
 import com.oroarmor.config.command.ConfigCommand;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.devtech.arrp.api.RRPCallback;
+import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -22,7 +22,7 @@ import net.minecraft.util.registry.Registry;
 public class ChiselDecorEntryPoint implements ModInitializer {
 	public static final Logger LOGGER = LogManager.getFormatterLogger("Chisel Decor");
 	public static final ChiselDecorConfig CONFIG = new ChiselDecorConfig();
-	public static final ChiselRuntimeResourcePackImpl RESOURCE_PACK = new ChiselRuntimeResourcePackImpl(new Identifier(Ref.MOD_ID, "blocks"));
+	public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(Ref.MOD_ID + ":blocks");
 	public static final Item ITEM_CHISEL = new ItemChisel(new FabricItemSettings().group(ItemGroup.TOOLS).maxCount(1));
 	
 	@Override

@@ -15,9 +15,9 @@ import com.knowyourknot.chiseldecor.ChiselDecorEntryPoint;
 import com.knowyourknot.chiseldecor.Ref;
 import com.knowyourknot.chiseldecor.data.Recipes;
 import com.knowyourknot.chiseldecor.data.Recipes.RecipeKey;
-import com.knowyourknot.chiseldecor.tags.ChiselRuntimeResourcePackImpl;
 import com.knowyourknot.chiseldecor.world.WorldGen;
 
+import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -30,9 +30,20 @@ public class BlockPack {
 
     public BlockPack(String packDir) {
         this.packDir = packDir;
+        this.blockPackFolder = new File(FabricLoader.getInstance().getConfigDir().toFile(), "chiseldecor/" + packDir);
+        if (!blockPackFolder.exists()) {
+            File blockPackZip = new File(FabricLoader.getInstance().getConfigDir().toFile(), "chiseldecor/" + packDir + ".zip");
+            if (blockPackZip.exists()) {
+                String msg = String.format("Blockpack %s needs to be removed from zip file. The blockpack will not load!", packDir);
+                ChiselDecorEntryPoint.LOGGER.warn(msg);
+            } else {
+                String msg = String.format("Blockpack folder not found for blockpack %s. The blockpack will not load!", packDir);
+                ChiselDecorEntryPoint.LOGGER.warn(msg);
+            }
+        }
     }
 
-    public void register(ChiselRuntimeResourcePackImpl resourcePack) {
+    public void register(RuntimeResourcePack resourcePack) {
         List<BlockType> types = getTypes();
         for (int i = 0; i < types.size(); i++) {
             types.get(i).register(resourcePack);
@@ -43,10 +54,12 @@ public class BlockPack {
         registerWorldGen();
     }
 
-    public void registerTextures(ChiselRuntimeResourcePackImpl resourcePack) {
+    public void registerTextures(RuntimeResourcePack resourcePack) {
         File textureFolder = new File(blockPackFolder, "textures");
         if (!textureFolder.exists()) {
-            ChiselDecorEntryPoint.LOGGER.info("No textures folder found for blockpack " + packDir);
+            String msg = String.format("No textures folder found for blockpack %s.", packDir);
+            ChiselDecorEntryPoint.LOGGER.info(msg);
+            return;
         }
         List<File> textureFiles = getFilesFromDir(textureFolder);
         for (int i = 0; i < textureFiles.size(); i++) {
@@ -57,10 +70,12 @@ public class BlockPack {
         }
     }
 
-    public void registerLang(ChiselRuntimeResourcePackImpl resourcePack) {
+    public void registerLang(RuntimeResourcePack resourcePack) {
         File langFolder = new File(blockPackFolder, "lang");
         if (!langFolder.exists()) {
-            ChiselDecorEntryPoint.LOGGER.info("No lang folder found for blockpack " + packDir);
+            String msg = String.format("No lang folder found for blockpack %s.", packDir);
+            ChiselDecorEntryPoint.LOGGER.info(msg);
+            return;
         }
         List<File> langFiles = getFilesFromDir(langFolder);
         for (int i = 0; i < langFiles.size(); i++) {
@@ -92,7 +107,7 @@ public class BlockPack {
         }
     }
 
-    public void registerRecipes(ChiselRuntimeResourcePackImpl resourcePack) {
+    public void registerRecipes(RuntimeResourcePack resourcePack) {
         File recipes = new File(blockPackFolder, "recipes.json");
         if (!recipes.exists()) {
             return;
@@ -144,10 +159,10 @@ public class BlockPack {
 
     // gets all block types as defined by the json files in the block pack folder
     public List<BlockType> getTypes() {
-        this.blockPackFolder = new File(FabricLoader.getInstance().getConfigDir().toFile(), "chiseldecor/" + packDir);
         File typesFolder = new File(blockPackFolder, "types");
         if (!blockPackFolder.exists()) {
-            ChiselDecorEntryPoint.LOGGER.info("Couldn't find types folder for blockpack " + packDir);
+            String msg = String.format("No types folder found for blockpack %s.", packDir);
+            ChiselDecorEntryPoint.LOGGER.info(msg);
             return new ArrayList<>();
         }
         List<File> typeFiles = getFilesFromDir(typesFolder);
@@ -162,6 +177,9 @@ public class BlockPack {
     }
 
     public List<File> getFilesFromDir(File dir) {
+        if (!dir.exists()) {
+            return new ArrayList<>();
+        }
         List<File> dirFiles = new ArrayList<>();
         File[] dirFilesArr = dir.listFiles();
         for (int i = 0; i < dirFilesArr.length; i++) {

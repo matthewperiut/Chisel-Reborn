@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "chiseldecor",
-  "version": "1.1.0",
+  "version": "1.1.1",
 
   "name": "Chisel Decor",
   "description": "Allows you to load your own custom decorative block packs!",

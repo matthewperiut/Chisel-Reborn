@@ -6,9 +6,9 @@ import java.util.List;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.knowyourknot.chiseldecor.ChiselDecorEntryPoint;
 import com.knowyourknot.chiseldecor.Ref;
 import com.knowyourknot.chiseldecor.block.ChiselGroupLookup;
-import com.knowyourknot.chiseldecor.tags.ChiselRuntimeResourcePackImpl;
 
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -40,7 +40,7 @@ public class BlockType {
         this.itemsToInclude = getItemsToInclude(typeJson);
     }
 
-    public void register(ChiselRuntimeResourcePackImpl resourcePack) {
+    public void register(RuntimeResourcePack resourcePack) {
         registerChiselGroup();
         registerBlocks();
         registerResources(resourcePack);
@@ -81,7 +81,8 @@ public class BlockType {
         try {
             return nameElement.getAsString();
         } catch (ClassCastException e) {
-            System.out.println("Blocktype from blockpack " + packDir + " has no name!");
+            String msg = String.format("Blocktype from blockpack %s has no name!", packDir);
+            ChiselDecorEntryPoint.LOGGER.info(msg);
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +98,8 @@ public class BlockType {
         try {
             return chiselGroupNameElement.getAsString();
         } catch (ClassCastException e) {
-            System.out.println("Blocktype from blockpack " + packDir + " has an invalid chisel group! Setting to default.");
+            String msg = String.format("Blocktype %s from blockpack %s has an invalid chisel group! Setting to default", typeName, packDir);
+            ChiselDecorEntryPoint.LOGGER.info(msg);
         }
         return packDir + "/" + typeName;
     }
@@ -230,8 +232,8 @@ public class BlockType {
     }
 
     public FabricBlockSettings blockTypeSettingsErrorMessage() {
-        System.out.println("Blockpack " + packDir + " contains invalid settings for type " + typeName
-                + ". Inheriting settings from stone.");
+        String msg = String.format("Blockpack %s contains invalid settings for type %s. Inheriting settings from minecraft:stone", packDir, typeName);
+        ChiselDecorEntryPoint.LOGGER.info(msg);
         return FabricBlockSettings.copyOf(Blocks.STONE);
     }
 
