@@ -1,5 +1,6 @@
 package com.knowyourknot.chiseldecor.config;
 
+import com.knowyourknot.chiseldecor.ChiselDecorEntryPoint;
 import com.knowyourknot.chiseldecor.Ref;
 import com.knowyourknot.chiseldecor.block.ChiselBlockCarpet;
 import com.knowyourknot.chiseldecor.item.ChiselBlockItem;
@@ -51,7 +52,9 @@ public class BlockVariant {
             return new ChiselBlockCarpet(tempSettings);
         }
         if (transparent) {
-            return new GlassBlock(tempSettings);
+            Block tempBlock = new GlassBlock(tempSettings);
+            ChiselDecorEntryPoint.TRANSPARENT_BLOCKS.add(tempBlock);
+            return tempBlock;
         }
         return new Block(tempSettings);
     }
@@ -60,6 +63,7 @@ public class BlockVariant {
         Registry.register(Registry.BLOCK, identifier(), block);
         ChiselBlockItem item = new ChiselBlockItem(block, new FabricItemSettings().group(Ref.ITEM_GROUP), packDir, typeName, variantName);
         Registry.register(Registry.ITEM, identifier(), item);
+
     }
 
     public void registerDrop(RuntimeResourcePack resourcePack) {
