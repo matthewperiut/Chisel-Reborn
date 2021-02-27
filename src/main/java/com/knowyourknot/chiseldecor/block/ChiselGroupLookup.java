@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -97,6 +98,20 @@ public class ChiselGroupLookup {
         return groupItems;
     }
 
+    public static List<Identifier> getTagsFor(Item item, TagGroup<Item> tagGroup) {
+        List<Identifier> tags = new ArrayList<>();
+        Iterator<Entry<Identifier, Tag<Item>>> entries = tagGroup.getTags().entrySet().iterator();
+
+        while (entries.hasNext()) {
+            Entry<Identifier, Tag<Item>> entry = entries.next();
+            if ((entry.getValue()).contains(item)) {
+                tags.add(entry.getKey());
+            }
+        }
+
+        return tags;
+    }
+
     public static class ChiselGroup {
         private final List<Identifier> items;
         private final List<Identifier> tags;
@@ -124,7 +139,7 @@ public class ChiselGroupLookup {
 
         public boolean inTags(Identifier id, TagGroup<Item> itemTags) {
             Item item = Registry.ITEM.get(id);
-            Iterator<Identifier> tagsForItem = itemTags.getTagsFor(item).iterator();
+            Iterator<Identifier> tagsForItem = getTagsFor(item, itemTags).iterator();
             while (tagsForItem.hasNext()) {
                 if (tags.contains(tagsForItem.next())) {
                     return true;
@@ -160,4 +175,5 @@ public class ChiselGroupLookup {
             return itemsInGroupNoDupes;
         }
     }
+
 }

@@ -8,16 +8,18 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tag.ServerTagManagerHolder;
+import net.minecraft.tag.TagGroup;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public class ChiselInventory implements IInventory {
     private DefaultedList<ItemStack> inventory;
-    private World world;
+    // private World world;
 
     public ChiselInventory(World world) {
         this.inventory = DefaultedList.ofSize(61, ItemStack.EMPTY);
-        this.world = world;
+        // this.world = world;
     }
 
     @Override
@@ -54,7 +56,8 @@ public class ChiselInventory implements IInventory {
             clearInv();
             return;
         }
-        List<Item> chiselBlocks = ChiselGroupLookup.getBlocksInGroup(item, world.getTagManager().getItems());
+        TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getItems();    
+        List<Item> chiselBlocks = ChiselGroupLookup.getBlocksInGroup(item, itemTags);
         populate(chiselBlocks);
     }
 
