@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -18,16 +18,19 @@ repositories {
     // for more information about repositories.
 
 	maven {
-    	url = "https://dl.bintray.com/oroarmor/oroarmor"
-  	}
-
-	maven {
 		url = 'https://raw.githubusercontent.com/Devan-Kerman/Devan-Repo/master/'
 	}
 
 	maven {
 		url "https://maven.shedaniel.me/"
 	}
+	maven {
+		url "https://maven.terraformersmc.com/releases/"
+		content {
+			includeGroup "com.terraformersmc"
+		}
+	}
+	mavenCentral()
 }
 
 dependencies {
@@ -40,8 +43,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Config file API
-	modImplementation "com.oroarmor:oro-config:${project.oro_config_version}"
-  	include "com.oroarmor:oro-config:${project.oro_config_version}"
+	modImplementation "com.oroarmor:oro-config-fabric:${project.oro_config_version}"
+  	include "com.oroarmor:oro-config-fabric:${project.oro_config_version}"
 
 	// ARRP for generating resource & data packs at runtime
 	modImplementation group: 'net.devtech', name: 'arrp', version: "${project.arrp_version}"
@@ -50,6 +53,14 @@ dependencies {
 	// REI API for recipe plugin
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
     modRuntime "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
+
+	// Mod menu
+	modCompileOnly("com.terraformersmc:modmenu:${mod_menu_version}") {
+		transitive(false)
+	}
+	modRuntime("com.terraformersmc:modmenu:${mod_menu_version}") {
+		transitive(false)
+	}
 	
 }
 
