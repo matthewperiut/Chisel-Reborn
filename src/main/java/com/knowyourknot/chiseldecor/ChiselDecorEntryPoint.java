@@ -1,14 +1,27 @@
 package com.knowyourknot.chiseldecor;
 
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import com.knowyourknot.chiseldecor.config.BlockPack;
 import com.knowyourknot.chiseldecor.config.ChiselDecorConfig;
 import com.knowyourknot.chiseldecor.data.Recipes;
 import com.knowyourknot.chiseldecor.item.ItemChisel;
+import com.knowyourknot.chiseldecor.resource.DefaultResources;
 import com.oroarmor.config.command.ConfigCommand;
 
+import net.fabricmc.loader.api.FabricLoader;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,7 +45,9 @@ public class ChiselDecorEntryPoint implements ModInitializer {
 	public static final List<Block> TRANSPARENT_BLOCKS = new ArrayList<>();
 	
 	@Override
-	public void onInitialize() {
+	public void onInitialize()
+	{
+		DefaultResources.Download("https://github.com/3prm3-Org/Blockpacks/releases/download/v2.0.0.0/malg.zip");
 		CommandRegistrationCallback.EVENT.register(new ConfigCommand(CONFIG)::register);
 
 		String[] blockPackDirs = CONFIG.getBlockPackDirs();
