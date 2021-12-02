@@ -1,9 +1,0 @@
-{
-    "itemGroup.chiseldecor.chiselblocks": "Chisel Blocks",
-    "item.chiseldecor.chisel": "Chisel",
-
-    "config.chiseldecor.block_packs": "Comma separated list of blockpack IDs",
-
-    "gui.chiseldecor.chisel": "Chisel",
-    "rei.chiseldecor.category": "Chisel Recipes"
-}
