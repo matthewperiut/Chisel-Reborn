@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tag.ServerTagManagerHolder;
 import net.minecraft.tag.TagGroup;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class ChiselInventory implements IInventory {
@@ -56,7 +57,7 @@ public class ChiselInventory implements IInventory {
             clearInv();
             return;
         }
-        TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getItems();    
+        TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getOrCreateTagGroup(Registry.ITEM.getKey());
         List<Item> chiselBlocks = ChiselGroupLookup.getBlocksInGroup(item, itemTags);
         populate(chiselBlocks);
     }
@@ -73,5 +74,4 @@ public class ChiselInventory implements IInventory {
             this.setStack(i, ItemStack.EMPTY);
         }
     }
-
 }

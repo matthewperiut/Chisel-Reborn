@@ -47,12 +47,14 @@ public class ChiselDecorEntryPoint implements ModInitializer {
 	@Override
 	public void onInitialize()
 	{
-		DefaultResources.Download("https://github.com/3prm3-Org/Blockpacks/releases/download/v2.0.0.0/malg.zip");
+		DefaultResources.Download("https://github.com/matthewperiut/Chisels-Resource/raw/main/default.zip");
 		CommandRegistrationCallback.EVENT.register(new ConfigCommand(CONFIG)::register);
 
 		String[] blockPackDirs = CONFIG.getBlockPackDirs();
-		for (int i = 0; i < blockPackDirs.length; i++) {
-			if (blockPackDirs[i].equals("")) {
+		for (int i = 0; i < blockPackDirs.length; i++)
+		{
+			if (blockPackDirs[i].equals(""))
+			{
 				continue;
 			}
 			new BlockPack(blockPackDirs[i]).register(RESOURCE_PACK);
@@ -61,7 +63,6 @@ public class ChiselDecorEntryPoint implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(Ref.MOD_ID, "chisel"), ITEM_CHISEL);
 		Recipes.addChiselRecipe(RESOURCE_PACK);
 
-		// RESOURCE_PACK.dump(FileSystemView.getFileSystemView().getHomeDirectory()); // for checking errors
 		RRPCallback.EVENT.register(a -> a.add(RESOURCE_PACK));
 	}
 }

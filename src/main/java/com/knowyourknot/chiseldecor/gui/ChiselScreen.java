@@ -1,9 +1,13 @@
 package com.knowyourknot.chiseldecor.gui;
 
+import com.knowyourknot.chiseldecor.ChiselDecorEntryPoint;
 import com.knowyourknot.chiseldecor.Ref;
 import com.mojang.blaze3d.systems.RenderSystem;
 
+
+import net.fabricmc.fabric.api.renderer.v1.Renderer;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
@@ -23,9 +27,11 @@ public class ChiselScreen extends HandledScreen<ChiselScreenHandler> {
     }
 
     @Override
-    protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
-        RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f);
-        client.getTextureManager().bindTexture(TEXTURE);
+    protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY)
+    {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);

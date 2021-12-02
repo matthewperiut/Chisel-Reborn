@@ -18,7 +18,6 @@ public class ItemDebug extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        System.out.println(world.getTagManager().getBlocks().getTag(new Identifier(Ref.MOD_ID, "test/diamond")).values());
         return super.use(world, user, hand);
     }
 }

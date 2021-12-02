@@ -19,13 +19,13 @@ public class DefaultResources
 {
     static public void Download(String url_string)
     {
-        Path path = Paths.get(FabricLoader.getInstance().getConfigDir().toString() + "/" + Ref.MOD_ID + "/malg");
+        Path path = Paths.get(FabricLoader.getInstance().getConfigDir().toString() + "/" + Ref.MOD_ID + "/default");
         if(!Files.exists(path))
         {
             try {
                 Path Config = FabricLoader.getInstance().getConfigDir();
                 File ConfigFile = Config.toFile();
-                File file = new File(ConfigFile.getAbsolutePath()+"/" + Ref.MOD_ID + "/malg.zip");
+                File file = new File(ConfigFile.getAbsolutePath()+"/" + Ref.MOD_ID + "/default.zip");
                 URL website = new URL(url_string);
                 FileUtils.copyURLToFile(website, file);
 

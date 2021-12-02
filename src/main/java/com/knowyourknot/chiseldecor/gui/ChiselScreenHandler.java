@@ -94,19 +94,19 @@ public class ChiselScreenHandler extends ScreenHandler {
         if (!itemInSlot.isEmpty()) {
             IInventoryImpl inv = new IInventoryImpl();
             inv.setStack(0, itemInSlot);
-            this.dropInventory(player, player.getEntityWorld(), inv);
+            this.dropInventory(player, inv);
         }
     }
 
     @Override
-    public ItemStack onSlotClick(int i, int j, SlotActionType actionType, PlayerEntity playerEntity) {
+    public void onSlotClick(int i, int j, SlotActionType actionType, PlayerEntity playerEntity) {
         if (i >= 0 && i < this.slots.size()) {
             Slot slot = this.slots.get(i);
             if (slot != null && slot.getStack().getItem() instanceof ItemChisel) {
-                return slot.getStack();
+                return;
             }
         }
-        return super.onSlotClick(i, j, actionType, playerEntity);
+        super.onSlotClick(i, j, actionType, playerEntity);
     }
 
     private class SlotChiselOutput extends Slot {
@@ -115,9 +115,9 @@ public class ChiselScreenHandler extends ScreenHandler {
         }
 
         @Override
-        public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) {
+        public void onTakeItem(PlayerEntity player, ItemStack stack) {
             this.inventory.clear();
-            return super.onTakeItem(player, stack);
+            super.onTakeItem(player, stack);
         }
 
         @Override

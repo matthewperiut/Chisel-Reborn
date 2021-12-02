@@ -7,17 +7,18 @@ import java.util.List;
 import com.knowyourknot.chiseldecor.block.ChiselGroupLookup;
 
 import org.jetbrains.annotations.NotNull;
-
+/*
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.EntryStack;
+import me.shedaniel.rei.api.common;
 import me.shedaniel.rei.api.RecipeCategory;
 import me.shedaniel.rei.api.RecipeDisplay;
 import me.shedaniel.rei.api.RecipeHelper;
-import me.shedaniel.rei.api.plugins.REIPluginV0;
-import me.shedaniel.rei.api.widgets.Slot;
-import me.shedaniel.rei.api.widgets.Widgets;
-import me.shedaniel.rei.gui.widget.Widget;
+import me.shedaniel.rei.api.common.plugins.REIPlugin;
+import me.shedaniel.rei.api.client.gui.widgets.Slot;
+import me.shedaniel.rei.api.client.gui.widgets.Widgets;
+import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.resource.language.I18n;
@@ -27,7 +28,7 @@ import net.minecraft.tag.ServerTagManagerHolder;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class ChiselDecorEntryPointREI implements REIPluginV0 {
+public class ChiselDecorEntryPointREI implements REIPlugin {
 
     @Override
     public Identifier getPluginIdentifier() {
@@ -158,4 +159,4 @@ public class ChiselDecorEntryPointREI implements REIPluginV0 {
 
     }
 
-}
+}*/

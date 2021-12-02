@@ -15,14 +15,10 @@ import com.knowyourknot.chiseldecor.ChiselDecorEntryPoint;
 import com.knowyourknot.chiseldecor.Ref;
 import com.knowyourknot.chiseldecor.data.Recipes;
 import com.knowyourknot.chiseldecor.data.Recipes.RecipeKey;
-import com.knowyourknot.chiseldecor.world.WorldGen;
 
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class BlockPack {
     private final String packDir;
@@ -86,6 +82,7 @@ public class BlockPack {
     }
 
     public void registerWorldGen() {
+        /*
         File worldGen = new File(blockPackFolder, "worldgen.json");
         if (!worldGen.exists()) {
             return;
@@ -104,7 +101,7 @@ public class BlockPack {
             if (!worldGenBlock.equals(Blocks.AIR) && worldGenType.equals("ore")) {
                 WorldGen.addStoneWorldGen(worldGenBlock);
             }
-        }
+        }*/
     }
 
     public void registerRecipes(RuntimeResourcePack resourcePack) {
