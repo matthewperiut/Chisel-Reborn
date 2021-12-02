@@ -24,7 +24,7 @@ public class ChiselDecorConfig extends Config {
 	}
     
     public static class ConfigRoot extends ConfigItemGroup {
-        public static final ConfigItem<String> BLOCK_PACKS = new ConfigItem<>("block_packs", "malg", "config.chisel.block_packs");
+        public static final ConfigItem<String> BLOCK_PACKS = new ConfigItem<>("block_packs", "default", "config.chisel.block_packs");
 
         public ConfigRoot() {
             super(Arrays.asList(BLOCK_PACKS), "chisel_config");
