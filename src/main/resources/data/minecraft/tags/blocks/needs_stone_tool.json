@@ -28,6 +28,8 @@
     "chisel:mosaic/deepslate",
     "chisel:mosaic/quartz",
     "chisel:mosaic/end_stone",
-    "chisel:mosaic/purpur"
+    "chisel:mosaic/purpur",
+
+    "chisel:cut/sandstone"
   ]
 }

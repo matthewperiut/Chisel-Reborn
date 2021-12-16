@@ -31,6 +31,16 @@
     "block.chisel.mosaic.end_stone": "Mosaic End Stone",
     "block.chisel.mosaic.purpur": "Mosaic Purpur Block",
 
+    "block.chisel.cut.sandstone": "Cut Sandstone",
+    "block.chisel.cut.red_sandstone": "Cut Red Sandstone",
+    "block.chisel.cut.cobblestone": "Cut Cobblestone",
+    "block.chisel.cut.stone": "Cut Stone",
+    "block.chisel.cut.nether_brick": "Cut Nether Bricks",
+    "block.chisel.cut.deepslate": "Cut Deepslate",
+    "block.chisel.cut.quartz": "Cut Quartz Block",
+    "block.chisel.cut.end_stone": "Cut End Stone",
+    "block.chisel.cut.purpur": "Cut Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }
