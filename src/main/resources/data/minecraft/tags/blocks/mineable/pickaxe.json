@@ -8,6 +8,16 @@
     "chisel:pillar/nether_brick_pillar",
     "chisel:pillar/blackstone_pillar",
     "chisel:pillar/deepslate_pillar",
-    "chisel:pillar/end_stone_pillar"
+    "chisel:pillar/end_stone_pillar",
+
+    "chisel:slant/sandstone",
+    "chisel:slant/red_sandstone",
+    "chisel:slant/cobblestone",
+    "chisel:slant/stone",
+    "chisel:slant/nether_brick",
+    "chisel:slant/deepslate",
+    "chisel:slant/quartz",
+    "chisel:slant/end_stone",
+    "chisel:slant/purpur"
   ]
 }

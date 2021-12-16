@@ -1,11 +1,13 @@
 package com.matthewperiut.chisel.block.blocks;
 
+import com.matthewperiut.chisel.Chisel;
 import com.matthewperiut.chisel.block.ChiselGroupLookup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class VanillaChisel
 {
-    static private String vanilla[][] = new String[][]{
+    public static String vanilla[][] = new String[][]{
             {
                 "sandstone", "chiseled_sandstone", "cut_sandstone", "smooth_sandstone"
             },

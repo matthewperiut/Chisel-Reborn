@@ -1,9 +1,13 @@
 package com.matthewperiut.chisel.block.blocks.pillar;
 
+import com.matthewperiut.chisel.Chisel;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.collection.DefaultedList;
 
 import static com.matthewperiut.chisel.block.blocks.EzReg.Reg;
 
