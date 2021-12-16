@@ -27,7 +27,7 @@ public class SlantChisel
         Reg("nether_bricks", "slant/nether_brick", SLANTED_NETHER_BRICK);
         Reg("deepslate", "slant/deepslate", SLANTED_DEEPSLATE);
         Reg("quartz_block", "slant/quartz", SLANTED_QUARTZ);
-        Reg("quartz_block", "slant/end_stone", SLANTED_END_STONE);
-        Reg("quartz_block", "slant/purpur", SLANTED_PURPUR);
+        Reg("end_stone", "slant/end_stone", SLANTED_END_STONE);
+        Reg("purpur_block", "slant/purpur", SLANTED_PURPUR);
     }
 }

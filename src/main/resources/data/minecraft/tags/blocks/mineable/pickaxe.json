@@ -18,6 +18,16 @@
     "chisel:slant/deepslate",
     "chisel:slant/quartz",
     "chisel:slant/end_stone",
-    "chisel:slant/purpur"
+    "chisel:slant/purpur",
+
+    "chisel:mosaic/sandstone",
+    "chisel:mosaic/red_sandstone",
+    "chisel:mosaic/cobblestone",
+    "chisel:mosaic/stone",
+    "chisel:mosaic/nether_brick",
+    "chisel:mosaic/deepslate",
+    "chisel:mosaic/quartz",
+    "chisel:mosaic/end_stone",
+    "chisel:mosaic/purpur"
   ]
 }

@@ -21,6 +21,16 @@
     "block.chisel.slant.end_stone": "Slanted End Stone",
     "block.chisel.slant.purpur": "Slanted Purpur Block",
 
+    "block.chisel.mosaic.sandstone": "Mosaic Sandstone",
+    "block.chisel.mosaic.red_sandstone": "Mosaic Red Sandstone",
+    "block.chisel.mosaic.cobblestone": "Mosaic Cobblestone",
+    "block.chisel.mosaic.stone": "Mosaic Stone",
+    "block.chisel.mosaic.nether_brick": "Mosaic Nether Bricks",
+    "block.chisel.mosaic.deepslate": "Mosaic Deepslate",
+    "block.chisel.mosaic.quartz": "Mosaic Quartz Block",
+    "block.chisel.mosaic.end_stone": "Mosaic End Stone",
+    "block.chisel.mosaic.purpur": "Mosaic Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }
