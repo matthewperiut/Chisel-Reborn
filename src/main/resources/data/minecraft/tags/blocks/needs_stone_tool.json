@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
-    "chisel:pillar/sandstone_pillar",
-    "chisel:pillar/red_sandstone_pillar",
-    "chisel:pillar/cobblestone_pillar",
-    "chisel:pillar/stone_pillar",
-    "chisel:pillar/nether_brick_pillar",
-    "chisel:pillar/blackstone_pillar",
-    "chisel:pillar/deepslate_pillar",
-    "chisel:pillar/end_stone_pillar",
+    "chisel:pillar/sandstone",
+    "chisel:pillar/red_sandstone",
+    "chisel:pillar/cobblestone",
+    "chisel:pillar/stone",
+    "chisel:pillar/nether_brick",
+    "chisel:pillar/blackstone",
+    "chisel:pillar/deepslate",
+    "chisel:pillar/end_stone",
 
     "chisel:slant/sandstone",
     "chisel:slant/red_sandstone",

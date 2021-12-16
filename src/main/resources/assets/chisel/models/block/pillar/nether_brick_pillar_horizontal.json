@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "end": "chisel:block/pillar/nether_brick_pillar_top",
-    "side": "chisel:block/pillar/nether_brick_pillar"
-  }
-}

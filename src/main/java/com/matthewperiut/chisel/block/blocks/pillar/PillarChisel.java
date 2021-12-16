@@ -24,13 +24,13 @@ public class PillarChisel
 
     public static void Register()
     {
-        Reg("sandstone", "pillar/sandstone_pillar", SANDSTONE_PILLAR);
-        Reg("red_sandstone", "pillar/red_sandstone_pillar", RED_SANDSTONE_PILLAR);
-        Reg("cobblestone", "pillar/cobblestone_pillar", COBBLESTONE_PILLAR);
-        Reg("stone", "pillar/stone_pillar", STONE_PILLAR);
-        Reg("nether_bricks", "pillar/nether_brick_pillar", NETHER_BRICK_PILLAR);
-        Reg("blackstone", "pillar/blackstone_pillar", BLACKSTONE_PILLAR);
-        Reg("deepslate", "pillar/deepslate_pillar", DEEPSLATE_PILLAR);
-        Reg("end_stone", "pillar/end_stone_pillar", END_STONE_PILLAR);
+        Reg("sandstone", "pillar/sandstone", SANDSTONE_PILLAR);
+        Reg("red_sandstone", "pillar/red_sandstone", RED_SANDSTONE_PILLAR);
+        Reg("cobblestone", "pillar/cobblestone", COBBLESTONE_PILLAR);
+        Reg("stone", "pillar/stone", STONE_PILLAR);
+        Reg("nether_bricks", "pillar/nether_brick", NETHER_BRICK_PILLAR);
+        Reg("blackstone", "pillar/blackstone", BLACKSTONE_PILLAR);
+        Reg("deepslate", "pillar/deepslate", DEEPSLATE_PILLAR);
+        Reg("end_stone", "pillar/end_stone", END_STONE_PILLAR);
     }
 }
