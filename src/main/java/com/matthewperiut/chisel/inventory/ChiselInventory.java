@@ -3,7 +3,6 @@ package com.matthewperiut.chisel.inventory;
 import java.util.List;
 
 import com.matthewperiut.chisel.block.ChiselGroupLookup;
-
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -52,8 +51,10 @@ public class ChiselInventory implements IInventory {
         return result;
     }
 
-    public void refresh(Item item) {
-        if (!(item instanceof BlockItem)) {
+    public void refresh(Item item)
+    {
+        if (!(item instanceof BlockItem))
+        {
             clearInv();
             return;
         }
@@ -62,9 +63,11 @@ public class ChiselInventory implements IInventory {
         populate(chiselBlocks);
     }
 
-    public void populate(List<Item> chiselBlocks) {
+    public void populate(List<Item> chiselBlocks)
+    {
         clearInv();
-        for (int i = 0; i < 60 && i < chiselBlocks.size(); i++) {
+        for (int i = 0; i < 60 && i < chiselBlocks.size(); i++)
+        {
             this.setStack(i + 1, new ItemStack(chiselBlocks.get(i), 1));
         }
     }

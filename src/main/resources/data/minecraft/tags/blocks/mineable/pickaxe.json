@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "chisel:pillar/sandstone_pillar",
+    "chisel:pillar/red_sandstone_pillar",
+    "chisel:pillar/cobblestone_pillar",
+    "chisel:pillar/stone_pillar",
+    "chisel:pillar/nether_brick_pillar",
+    "chisel:pillar/blackstone_pillar",
+    "chisel:pillar/deepslate_pillar",
+    "chisel:pillar/end_stone_pillar"
+  ]
+}

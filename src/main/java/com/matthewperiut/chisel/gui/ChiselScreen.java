@@ -1,6 +1,6 @@
 package com.matthewperiut.chisel.gui;
 
-import com.matthewperiut.chisel.Ref;
+import com.matthewperiut.chisel.Chisel;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 
@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ChiselScreen extends HandledScreen<ChiselScreenHandler> {
-    public static final Identifier TEXTURE = new Identifier(Ref.MOD_ID, "textures/chisel2gui.png");
+    public static final Identifier TEXTURE = new Identifier(Chisel.MOD_ID, "textures/chisel2gui.png");
     public static final int TEXTURE_WIDTH = 248;
     public static final int TEXTURE_HEIGHT = 202;
 
@@ -34,7 +34,7 @@ public class ChiselScreen extends HandledScreen<ChiselScreenHandler> {
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
     }
-    
+
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         renderBackground(matrices);

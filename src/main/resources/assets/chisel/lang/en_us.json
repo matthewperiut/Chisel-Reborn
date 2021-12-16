@@ -2,7 +2,14 @@
     "itemGroup.chisel.chisel": "Chisel Blocks",
     "item.chisel.chisel": "Chisel",
 
-    "config.chisel.block_packs": "Comma separated list of blockpack IDs",
+    "block.chisel.pillar.sandstone_pillar": "Sandstone Pillar",
+    "block.chisel.pillar.red_sandstone_pillar": "Red Sandstone Pillar",
+    "block.chisel.pillar.cobblestone_pillar": "Cobblestone Pillar",
+    "block.chisel.pillar.stone_pillar": "Stone Pillar",
+    "block.chisel.pillar.nether_brick_pillar": "Nether Brick Pillar",
+    "block.chisel.pillar.blackstone_pillar": "Blackstone Pillar",
+    "block.chisel.pillar.deepslate_pillar": "Deepslate Pillar",
+    "block.chisel.pillar.end_stone_pillar": "End Stone Pillar",
 
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"

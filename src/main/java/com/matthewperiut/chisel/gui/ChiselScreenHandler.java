@@ -1,11 +1,11 @@
 package com.matthewperiut.chisel.gui;
 
 import com.matthewperiut.chisel.Chisel;
-import com.matthewperiut.chisel.Ref;
+import com.matthewperiut.chisel.ChiselClient;
 import com.matthewperiut.chisel.inventory.ChiselInventory;
 import com.matthewperiut.chisel.inventory.IInventoryImpl;
-import com.matthewperiut.chisel.item.ItemChisel;
 
+import com.matthewperiut.chisel.item.ChiselItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -18,7 +18,7 @@ public class ChiselScreenHandler extends ScreenHandler {
     private ChiselInventory inventory;
 
     public ChiselScreenHandler(int syncId, PlayerInventory playerInventory) {
-        super(Ref.CHISEL_SCREEN_HANDLER, syncId);
+        super(ChiselClient.CHISEL_SCREEN_HANDLER, syncId);
         inventory = new ChiselInventory(playerInventory.player.getEntityWorld());
 
         // input slot
@@ -42,7 +42,6 @@ public class ChiselScreenHandler extends ScreenHandler {
         for (int x = 0; x < 9; x++) {
             this.addSlot(new Slot(playerInventory, x, 71 + 18 * x, 178));
         }
-
     }
 
     @Override
@@ -102,7 +101,7 @@ public class ChiselScreenHandler extends ScreenHandler {
     public void onSlotClick(int i, int j, SlotActionType actionType, PlayerEntity playerEntity) {
         if (i >= 0 && i < this.slots.size()) {
             Slot slot = this.slots.get(i);
-            if (slot != null && slot.getStack().getItem() instanceof ItemChisel) {
+            if (slot != null && slot.getStack().getItem() instanceof ChiselItem) {
                 return;
             }
         }

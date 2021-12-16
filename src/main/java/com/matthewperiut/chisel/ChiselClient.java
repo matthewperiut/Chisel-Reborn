@@ -1,26 +1,20 @@
 package com.matthewperiut.chisel;
 
-import java.util.Iterator;
-
 import com.matthewperiut.chisel.gui.ChiselScreen;
-
+import com.matthewperiut.chisel.gui.ChiselScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.client.render.RenderLayer;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.Identifier;
 
-public class ChiselClient implements ClientModInitializer {
+public class ChiselClient implements ClientModInitializer
+{
+    public static final ScreenHandlerType<ChiselScreenHandler> CHISEL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Chisel.MOD_ID, "chisel_screen_handler"), ChiselScreenHandler::new);
 
     @Override
-    public void onInitializeClient() {
-        ScreenRegistry.register(Ref.CHISEL_SCREEN_HANDLER, ChiselScreen::new);
-
-        // make transparent/translucent blocks appear as such without CTM
-        Iterator<Block> transparentBlocks = Chisel.TRANSPARENT_BLOCKS.iterator();
-        while (transparentBlocks.hasNext()) {
-            BlockRenderLayerMap.INSTANCE.putBlock(transparentBlocks.next(), RenderLayer.getTranslucent());
-        }
+    public void onInitializeClient()
+    {
+        ScreenRegistry.register(CHISEL_SCREEN_HANDLER, ChiselScreen::new);
     }
-    
 }
