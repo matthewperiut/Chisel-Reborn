@@ -29,5 +29,6 @@ public class DentChisel
         Reg("quartz_block", "dent/quartz", DENT_QUARTZ);
         Reg("end_stone", "dent/end_stone", DENT_END_STONE);
         Reg("purpur_block", "dent/purpur", DENT_PURPUR);
+        StonesDentChisel.Register();
     }
 }

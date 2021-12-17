@@ -29,5 +29,6 @@ public class MosaicChisel
         Reg("quartz_block", "mosaic/quartz", MOSAIC_QUARTZ); //
         Reg("end_stone", "mosaic/end_stone", MOSAIC_END_STONE);
         Reg("purpur_block", "mosaic/purpur", MOSAIC_PURPUR);
+        StonesMosaicChisel.Register();
     }
 }

@@ -29,5 +29,6 @@ public class TilesLargeChisel
         Reg("quartz_block", "large_tile/quartz", LARGE_TILE_QUARTZ);
         Reg("end_stone", "large_tile/end_stone", LARGE_TILE_END_STONE);
         Reg("purpur_block", "large_tile/purpur", LARGE_TILE_PURPUR);
+        StonesTilesLargeChisel.Register();
     }
 }

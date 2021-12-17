@@ -29,5 +29,6 @@ public class ZagChisel
         Reg("quartz_block", "zag/quartz", ZAG_QUARTZ);
         Reg("end_stone", "zag/end_stone", ZAG_END_STONE);
         Reg("purpur_block", "zag/purpur", ZAG_PURPUR);
+        StonesZagChisel.Register();
     }
 }

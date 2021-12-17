@@ -29,5 +29,6 @@ public class SlantChisel
         Reg("quartz_block", "slant/quartz", SLANTED_QUARTZ);
         Reg("end_stone", "slant/end_stone", SLANTED_END_STONE);
         Reg("purpur_block", "slant/purpur", SLANTED_PURPUR);
+        StonesSlantChisel.Register();
     }
 }

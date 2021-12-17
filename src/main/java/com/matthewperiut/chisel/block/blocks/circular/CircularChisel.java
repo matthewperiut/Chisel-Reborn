@@ -29,5 +29,6 @@ public class CircularChisel
         Reg("quartz_block", "circular/quartz", CIRCULAR_QUARTZ);
         Reg("end_stone", "circular/end_stone", CIRCULAR_END_STONE);
         Reg("purpur_block", "circular/purpur", CIRCULAR_PURPUR);
+        StonesCircularChisel.Register();
     }
 }

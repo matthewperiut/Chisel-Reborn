@@ -29,5 +29,6 @@ public class CrackedChisel
         Reg("quartz_block", "cracked/quartz", CRACKED_QUARTZ);
         Reg("end_stone", "cracked/end_stone", CRACKED_END_STONE);
         Reg("purpur_block", "cracked/purpur", CRACKED_PURPUR);
+        StonesCrackedChisel.Register();
     }
 }

@@ -29,5 +29,6 @@ public class CutChisel
         Reg("quartz_block", "cut/quartz", CUT_QUARTZ);
         Reg("end_stone", "cut/end_stone", CUT_END_STONE);
         Reg("purpur_block", "cut/purpur", CUT_PURPUR);
+        StonesCutChisel.Register();
     }
 }

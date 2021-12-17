@@ -37,6 +37,9 @@ public class VanillaChisel
             },
             {
                 "purpur_block", "purpur_pillar"
+            },
+            {
+                "granite", "polished_granite"
             }
     };
 

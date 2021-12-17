@@ -29,5 +29,6 @@ public class ArrayChisel
         Reg("quartz_block", "array/quartz", ARRAY_QUARTZ);
         Reg("end_stone", "array/end_stone", ARRAY_END_STONE);
         Reg("purpur_block", "array/purpur", ARRAY_PURPUR);
+        StonesArrayChisel.Register();
     }
 }

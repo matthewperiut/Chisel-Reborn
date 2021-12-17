@@ -29,5 +29,6 @@ public class EncasedBricksChisel
         Reg("quartz_block", "encased_bricks/quartz", ENCASED_BRICKS_QUARTZ);
         Reg("end_stone", "encased_bricks/end_stone", ENCASED_BRICKS_END_STONE);
         Reg("purpur_block", "encased_bricks/purpur", ENCASED_BRICKS_PURPUR);
+        StonesEncasedBricksChisel.Register();
     }
 }

@@ -32,5 +32,6 @@ public class PillarChisel
         Reg("blackstone", "pillar/blackstone", BLACKSTONE_PILLAR);
         Reg("deepslate", "pillar/deepslate", DEEPSLATE_PILLAR);
         Reg("end_stone", "pillar/end_stone", END_STONE_PILLAR);
+        StonesPillarChisel.Register();
     }
 }

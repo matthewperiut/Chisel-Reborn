@@ -1,8 +1,4 @@
-cracked
-sandstone
-red_sandstone
-cobblestone
-stone
-quartz
-end_stone
-purpur
+slant
+granite
+andesite
+diorite
