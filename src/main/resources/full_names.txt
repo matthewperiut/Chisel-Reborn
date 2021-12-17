@@ -74,3 +74,10 @@ array/stone
 array/quartz
 array/end_stone
 array/purpur
+cracked/sandstone
+cracked/red_sandstone
+cracked/cobblestone
+cracked/stone
+cracked/quartz
+cracked/end_stone
+cracked/purpur

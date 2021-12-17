@@ -100,6 +100,16 @@
     "block.chisel.array.end_stone": "Array End Stone",
     "block.chisel.array.purpur": "Array Purpur Block",
 
+    "block.chisel.cracked.sandstone": "Cracked Sandstone",
+    "block.chisel.cracked.red_sandstone": "Cracked Red Sandstone",
+    "block.chisel.cracked.cobblestone": "Cracked Cobblestone",
+    "block.chisel.cracked.stone": "Cracked Stone",
+    "block.chisel.cracked.nether_brick": "Cracked Nether Bricks",
+    "block.chisel.cracked.deepslate": "Cracked Deepslate",
+    "block.chisel.cracked.quartz": "Cracked Quartz Block",
+    "block.chisel.cracked.end_stone": "Cracked End Stone",
+    "block.chisel.cracked.purpur": "Cracked Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }
