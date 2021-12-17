@@ -9,7 +9,6 @@
     "chisel:pillar/blackstone",
     "chisel:pillar/deepslate",
     "chisel:pillar/end_stone",
-
     "chisel:slant/sandstone",
     "chisel:slant/red_sandstone",
     "chisel:slant/cobblestone",
@@ -19,7 +18,6 @@
     "chisel:slant/quartz",
     "chisel:slant/end_stone",
     "chisel:slant/purpur",
-
     "chisel:mosaic/sandstone",
     "chisel:mosaic/red_sandstone",
     "chisel:mosaic/cobblestone",
@@ -29,7 +27,12 @@
     "chisel:mosaic/quartz",
     "chisel:mosaic/end_stone",
     "chisel:mosaic/purpur",
-
-    "chisel:cut/sandstone"
+    "chisel:cut/sandstone",
+    "chisel:cut/red_sandstone",
+    "chisel:cut/cobblestone",
+    "chisel:cut/stone",
+    "chisel:cut/quartz",
+    "chisel:cut/end_stone",
+    "chisel:cut/purpur"
   ]
 }
