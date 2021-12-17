@@ -147,6 +147,8 @@ for x in range(len(full_names)):
     if('\n' in full_names[x]):
         full_names[x] = full_names[x][0:-1]
 
+full_names.sort()
+
 #for x in full_names:
 #    write_blockstate(x)
 #    write_item_model(x)

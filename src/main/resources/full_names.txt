@@ -39,3 +39,10 @@ circular/stone
 circular/quartz
 circular/end_stone
 circular/purpur
+dent/sandstone
+dent/red_sandstone
+dent/cobblestone
+dent/stone
+dent/quartz
+dent/end_stone
+dent/purpur

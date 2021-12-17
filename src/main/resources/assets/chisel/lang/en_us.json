@@ -51,6 +51,16 @@
     "block.chisel.circular.end_stone": "Circular End Stone",
     "block.chisel.circular.purpur": "Circular Purpur Block",
 
+    "block.chisel.dent.sandstone": "Dent Sandstone",
+    "block.chisel.dent.red_sandstone": "Dent Red Sandstone",
+    "block.chisel.dent.cobblestone": "Dent Cobblestone",
+    "block.chisel.dent.stone": "Dent Stone",
+    "block.chisel.dent.nether_brick": "Dent Nether Bricks",
+    "block.chisel.dent.deepslate": "Dent Deepslate",
+    "block.chisel.dent.quartz": "Dent Quartz Block",
+    "block.chisel.dent.end_stone": "Dent End Stone",
+    "block.chisel.dent.purpur": "Dent Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }

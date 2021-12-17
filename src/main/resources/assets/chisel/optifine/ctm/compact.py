@@ -79,7 +79,7 @@ def make_compact_properties(file_path, file_name):
 
     f = open_file(file_path)
 
-    f.write("matchBlocks=chisel:" + file_name.replace('_','/') + "\n")
+    f.write("matchBlocks=chisel:" + file_name.replace('_','/',1) + "\n")
     f.write("method=ctm_compact\n")
     f.write("innerSeams=true\n")
     f.write("tiles=0-4")
