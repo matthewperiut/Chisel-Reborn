@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "chisel:circular/purpur_block"
+          "name": "chisel:large_tile/end_stone"
         }
       ],
       "conditions": [

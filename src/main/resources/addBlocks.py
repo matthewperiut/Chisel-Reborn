@@ -1,13 +1,16 @@
 import os
 import errno
 
+def create_dir(dirname):
+    if not os.path.exists(dirname):
+            try:
+                os.makedirs(dirname)
+            except OSError as exc: # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise
+
 def open_file(file_name):
-    if not os.path.exists(os.path.dirname(file_name)):
-        try:
-            os.makedirs(os.path.dirname(file_name))
-        except OSError as exc: # Guard against race condition
-            if exc.errno != errno.EEXIST:
-                raise
+    create_dir((os.path.dirname(file_name))
 
     f = open(file_name, "w")
     return f
@@ -125,6 +128,9 @@ def write_tags(file_path, full_names):
     f.write('  ]\n')
     f.write('}')
     f.close()
+
+def create_ctm_dir(block_type, block):
+    create_dir("assets/chisel/optifine/ctm/" + block_type + "/" + block)
 
 block_type = input("blocktype? ")
 block = input("block? ")

@@ -46,3 +46,10 @@ dent/stone
 dent/quartz
 dent/end_stone
 dent/purpur
+large_tile/sandstone
+large_tile/red_sandstone
+large_tile/cobblestone
+large_tile/stone
+large_tile/quartz
+large_tile/end_stone
+large_tile/purpur

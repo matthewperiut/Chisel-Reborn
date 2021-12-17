@@ -72,14 +72,15 @@ def image_manipulation(path, modifier):
     #save
     cv2.imwrite(path + "/2.png", r2)
 
-def make_compact_properties(file_path, file_name):
+def make_compact_properties(file_path, block_type, block):
+    file_name = block_type + "_" + block
     file_path = file_path + "/" + file_name + ".properties"
 
     print(file_path)
 
     f = open_file(file_path)
 
-    f.write("matchBlocks=chisel:" + file_name.replace('_','/',1) + "\n")
+    f.write("matchBlocks=chisel:" + block_type + "/" + block + "\n")
     f.write("method=ctm_compact\n")
     f.write("innerSeams=true\n")
     f.write("tiles=0-4")
@@ -98,5 +99,5 @@ block = input("block: ")
 
 file_path = block_type + "/" + block
 image_manipulation(file_path, block_type)
-make_compact_properties(file_path, block_type + "_" + block)
+make_compact_properties(file_path, block_type, block)
 get_zero(file_path)

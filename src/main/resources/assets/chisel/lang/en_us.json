@@ -61,6 +61,16 @@
     "block.chisel.dent.end_stone": "Dent End Stone",
     "block.chisel.dent.purpur": "Dent Purpur Block",
 
+    "block.chisel.large_tile.sandstone": "Large Tiled Sandstone",
+    "block.chisel.large_tile.red_sandstone": "Large Tiled Red Sandstone",
+    "block.chisel.large_tile.cobblestone": "Large Tiled Cobblestone",
+    "block.chisel.large_tile.stone": "Large Tiled Stone",
+    "block.chisel.large_tile.nether_brick": "Large Tiled Nether Bricks",
+    "block.chisel.large_tile.deepslate": "Large Tiled Deepslate",
+    "block.chisel.large_tile.quartz": "Large Tiled Quartz Block",
+    "block.chisel.large_tile.end_stone": "Large Tiled End Stone",
+    "block.chisel.large_tile.purpur": "Large Tiled Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }

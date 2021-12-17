@@ -7,6 +7,7 @@ import com.matthewperiut.chisel.block.blocks.dent.DentChisel;
 import com.matthewperiut.chisel.block.blocks.mosaic.MosaicChisel;
 import com.matthewperiut.chisel.block.blocks.pillar.PillarChisel;
 import com.matthewperiut.chisel.block.blocks.slant.SlantChisel;
+import com.matthewperiut.chisel.block.blocks.tiles_large.TilesLargeChisel;
 
 public class BlockRegister
 {
@@ -19,5 +20,6 @@ public class BlockRegister
         CutChisel.Register();
         CircularChisel.Register();
         DentChisel.Register();
+        TilesLargeChisel.Register();
     }
 }
