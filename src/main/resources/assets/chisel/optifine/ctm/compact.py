@@ -76,8 +76,6 @@ def make_compact_properties(file_path, block_type, block):
     file_name = block_type + "_" + block
     file_path = file_path + "/" + file_name + ".properties"
 
-    print(file_path)
-
     f = open_file(file_path)
 
     f.write("matchBlocks=chisel:" + block_type + "/" + block + "\n")
@@ -89,15 +87,27 @@ def make_compact_properties(file_path, block_type, block):
 
 def get_zero(file_path):
     path = Path(os.getcwd()).parent.parent.parent
-    print(path)
     new_path = str(path) + "/chisel/textures/block/" + file_path + ".png"
     copyfile(new_path, file_path+"/0.png")
 
 
-block_type = input("block type: ")
-block = input("block: ")
+def get_settings():
+    path = Path(os.getcwd()).parent.parent.parent.parent
+    new_path = str(path) + "/settings.txt"
+    return open(new_path)
 
-file_path = block_type + "/" + block
-image_manipulation(file_path, block_type)
-make_compact_properties(file_path, block_type, block)
-get_zero(file_path)
+
+
+#block_type = input("block type: ")
+#block = input("block: ")
+
+settings_f = get_settings()
+settings = settings_f.readlines()
+for i in range(len(settings)):
+    settings[i] = settings[i].replace("\n","")
+
+for i in range(1, len(settings)):
+    file_path = settings[0] + '/' + settings[i]
+    image_manipulation(file_path, settings[0])
+    make_compact_properties(file_path, settings[0], settings[i])
+    get_zero(file_path)

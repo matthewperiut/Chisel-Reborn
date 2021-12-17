@@ -10,7 +10,7 @@ def create_dir(dirname):
                     raise
 
 def open_file(file_name):
-    create_dir((os.path.dirname(file_name))
+    create_dir((os.path.dirname(file_name)))
 
     f = open(file_name, "w")
     return f
@@ -132,17 +132,23 @@ def write_tags(file_path, full_names):
 def create_ctm_dir(block_type, block):
     create_dir("assets/chisel/optifine/ctm/" + block_type + "/" + block)
 
-block_type = input("blocktype? ")
-block = input("block? ")
+#block_type = input("blocktype? ")
+#block = input("block? ")
 
-full_name = block_type + '/' + block
-write_blockstate(full_name)
-write_item_model(full_name)
-write_block_model(full_name)
-write_loot_table(full_name)
+settings_f = open("settings.txt", "r")
+settings = settings_f.readlines()
+for i in range(len(settings)):
+    settings[i] = settings[i].replace("\n","")
 
 f = open('full_names.txt', 'a')
-f.write('\n' + full_name)
+for i in range(1, len(settings)):
+    full_name = settings[0] + '/' + settings[i]
+    f.write('\n' + full_name)
+    create_ctm_dir(settings[0], settings[i])
+    write_blockstate(full_name)
+    write_item_model(full_name)
+    write_block_model(full_name)
+    write_loot_table(full_name)
 f.close()
 
 full_names = []

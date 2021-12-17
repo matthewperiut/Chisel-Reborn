@@ -71,6 +71,16 @@
     "block.chisel.large_tile.end_stone": "Large Tiled End Stone",
     "block.chisel.large_tile.purpur": "Large Tiled Purpur Block",
 
+    "block.chisel.encased_bricks.sandstone": "Encased Brick Sandstone",
+    "block.chisel.encased_bricks.red_sandstone": "Encased Brick Red Sandstone",
+    "block.chisel.encased_bricks.cobblestone": "Encased Brick Cobblestone",
+    "block.chisel.encased_bricks.stone": "Encased Brick Stone",
+    "block.chisel.encased_bricks.nether_brick": "Encased Brick Nether Bricks",
+    "block.chisel.encased_bricks.deepslate": "Encased Brick Deepslate",
+    "block.chisel.encased_bricks.quartz": "Encased Brick Quartz Block",
+    "block.chisel.encased_bricks.end_stone": "Encased Brick End Stone",
+    "block.chisel.encased_bricks.purpur": "Encased Brick Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }

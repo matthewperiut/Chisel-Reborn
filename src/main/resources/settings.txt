@@ -1,0 +1,8 @@
+encased_bricks
+sandstone
+red_sandstone
+cobblestone
+stone
+quartz
+end_stone
+purpur

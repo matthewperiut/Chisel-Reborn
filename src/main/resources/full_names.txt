@@ -53,3 +53,10 @@ large_tile/stone
 large_tile/quartz
 large_tile/end_stone
 large_tile/purpur
+encased_bricks/sandstone
+encased_bricks/red_sandstone
+encased_bricks/cobblestone
+encased_bricks/stone
+encased_bricks/quartz
+encased_bricks/end_stone
+encased_bricks/purpur
