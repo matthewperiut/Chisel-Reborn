@@ -13,7 +13,7 @@ def make_repeat_properties(file_path, block_type, block):
     f.write("width=2\n")
     f.write("height=2\n")
     f.write("tiles=1-4\n")
-    f.write("symmetry=opposite\n")
+    f.write("symmetry=none\n")
 
     f.close()
 

@@ -90,6 +90,16 @@
     "block.chisel.zag.deepslate": "Deepslate Zag",
     "block.chisel.zag.end_stone": "End Stone Zag",
 
+    "block.chisel.array.sandstone": "Array Sandstone",
+    "block.chisel.array.red_sandstone": "Array Red Sandstone",
+    "block.chisel.array.cobblestone": "Array Cobblestone",
+    "block.chisel.array.stone": "Array Stone",
+    "block.chisel.array.nether_brick": "Array Nether Bricks",
+    "block.chisel.array.deepslate": "Array Deepslate",
+    "block.chisel.array.quartz": "Array Quartz Block",
+    "block.chisel.array.end_stone": "Array End Stone",
+    "block.chisel.array.purpur": "Array Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }

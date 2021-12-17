@@ -1,6 +1,7 @@
 package com.matthewperiut.chisel.block;
 
 import com.matthewperiut.chisel.block.blocks.VanillaChisel;
+import com.matthewperiut.chisel.block.blocks.array.ArrayChisel;
 import com.matthewperiut.chisel.block.blocks.circular.CircularChisel;
 import com.matthewperiut.chisel.block.blocks.cut.CutChisel;
 import com.matthewperiut.chisel.block.blocks.dent.DentChisel;
@@ -25,5 +26,6 @@ public class BlockRegister
         TilesLargeChisel.Register();
         EncasedBricksChisel.Register();
         ZagChisel.Register();
+        ArrayChisel.Register();
     }
 }

@@ -67,3 +67,10 @@ zag/stone
 zag/quartz
 zag/end_stone
 zag/purpur
+array/sandstone
+array/red_sandstone
+array/cobblestone
+array/stone
+array/quartz
+array/end_stone
+array/purpur

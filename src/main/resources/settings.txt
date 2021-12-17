@@ -1,4 +1,4 @@
-zag
+array
 sandstone
 red_sandstone
 cobblestone
