@@ -1,4 +1,4 @@
-encased_bricks
+zag
 sandstone
 red_sandstone
 cobblestone

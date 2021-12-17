@@ -62,6 +62,13 @@
     "chisel:slant/red_sandstone",
     "chisel:slant/sandstone",
     "chisel:slant/sandstone",
-    "chisel:slant/stone"
+    "chisel:slant/stone",
+    "chisel:zag/cobblestone",
+    "chisel:zag/end_stone",
+    "chisel:zag/purpur",
+    "chisel:zag/quartz",
+    "chisel:zag/red_sandstone",
+    "chisel:zag/sandstone",
+    "chisel:zag/stone"
   ]
 }

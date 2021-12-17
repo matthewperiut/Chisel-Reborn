@@ -94,18 +94,19 @@ def get_zero(file_path):
 def get_settings():
     path = Path(os.getcwd()).parent.parent.parent.parent
     new_path = str(path) + "/settings.txt"
-    return open(new_path)
+
+    settings_f = open(new_path)
+    settings = settings_f.readlines()
+    for i in range(len(settings)):
+        settings[i] = settings[i].replace("\n","")
+    return settings
 
 
 
 #block_type = input("block type: ")
 #block = input("block: ")
 
-settings_f = get_settings()
-settings = settings_f.readlines()
-for i in range(len(settings)):
-    settings[i] = settings[i].replace("\n","")
-
+settings = get_settings()
 for i in range(1, len(settings)):
     file_path = settings[0] + '/' + settings[i]
     image_manipulation(file_path, settings[0])

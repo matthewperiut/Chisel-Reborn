@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "chisel:zag/cobblestone"
+  },
+  "result": "chisel:zag/stone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

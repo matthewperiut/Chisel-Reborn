@@ -60,3 +60,10 @@ encased_bricks/stone
 encased_bricks/quartz
 encased_bricks/end_stone
 encased_bricks/purpur
+zag/sandstone
+zag/red_sandstone
+zag/cobblestone
+zag/stone
+zag/quartz
+zag/end_stone
+zag/purpur

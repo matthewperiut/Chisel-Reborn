@@ -81,6 +81,15 @@
     "block.chisel.encased_bricks.end_stone": "Encased Brick End Stone",
     "block.chisel.encased_bricks.purpur": "Encased Brick Purpur Block",
 
+    "block.chisel.zag.sandstone": "Sandstone Zag",
+    "block.chisel.zag.red_sandstone": "Red Sandstone Zag",
+    "block.chisel.zag.cobblestone": "Cobblestone Zag",
+    "block.chisel.zag.stone": "Stone Zag",
+    "block.chisel.zag.nether_brick": "Nether Brick Zag",
+    "block.chisel.zag.blackstone": "Blackstone Zag",
+    "block.chisel.zag.deepslate": "Deepslate Zag",
+    "block.chisel.zag.end_stone": "End Stone Zag",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }
