@@ -32,3 +32,10 @@ cut/quartz
 cut/end_stone
 cut/purpur
 slant/sandstone
+circular/sandstone
+circular/red_sandstone
+circular/cobblestone
+circular/stone
+circular/quartz
+circular/end_stone
+circular/purpur

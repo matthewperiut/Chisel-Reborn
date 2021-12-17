@@ -41,6 +41,16 @@
     "block.chisel.cut.end_stone": "Cut End Stone",
     "block.chisel.cut.purpur": "Cut Purpur Block",
 
+    "block.chisel.circular.sandstone": "Circular Sandstone",
+    "block.chisel.circular.red_sandstone": "Circular Red Sandstone",
+    "block.chisel.circular.cobblestone": "Circular Cobblestone",
+    "block.chisel.circular.stone": "Circular Stone",
+    "block.chisel.circular.nether_brick": "Circular Nether Bricks",
+    "block.chisel.circular.deepslate": "Circular Deepslate",
+    "block.chisel.circular.quartz": "Circular Quartz Block",
+    "block.chisel.circular.end_stone": "Circular End Stone",
+    "block.chisel.circular.purpur": "Circular Purpur Block",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }

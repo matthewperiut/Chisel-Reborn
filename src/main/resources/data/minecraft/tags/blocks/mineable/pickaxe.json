@@ -33,6 +33,14 @@
     "chisel:cut/stone",
     "chisel:cut/quartz",
     "chisel:cut/end_stone",
-    "chisel:cut/purpur"
+    "chisel:cut/purpur",
+    "chisel:slant/sandstone",
+    "chisel:circular/sandstone",
+    "chisel:circular/red_sandstone",
+    "chisel:circular/cobblestone",
+    "chisel:circular/stone",
+    "chisel:circular/quartz",
+    "chisel:circular/end_stone",
+    "chisel:circular/purpur"
   ]
 }
