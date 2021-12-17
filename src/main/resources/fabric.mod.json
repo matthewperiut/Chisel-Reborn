@@ -4,7 +4,7 @@
   "version": "1.3.0",
 
   "name": "Chisel",
-  "description": "Adds Thousands of New Blocks!",
+  "description": "Adds New Blocks!",
   "authors": [
     "Slaincow",
     "KnowYourKnot",
@@ -35,6 +35,6 @@
     "minecraft": "1.18.x"
   },
   "suggests": {
-    "another-mod": "continuity"
+    "continuity": "*"
   }
 }
