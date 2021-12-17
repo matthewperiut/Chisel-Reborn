@@ -144,6 +144,19 @@
     "block.chisel.cracked.andesite": "Cracked Andesite",
     "block.chisel.cracked.diorite": "Cracked Diorite",
 
+    "block.chisel.twist.sandstone": "Twisted Sandstone",
+    "block.chisel.twist.red_sandstone": "Twisted Red Sandstone",
+    "block.chisel.twist.cobblestone": "Twisted Cobblestone",
+    "block.chisel.twist.stone": "Twisted Stone",
+    "block.chisel.twist.nether_brick": "Twisted Nether Bricks",
+    "block.chisel.twist.deepslate": "Twisted Deepslate",
+    "block.chisel.twist.quartz": "Twisted Quartz Block",
+    "block.chisel.twist.end_stone": "Twisted End Stone",
+    "block.chisel.twist.purpur": "Twisted Purpur Block",
+    "block.chisel.twist.granite": "Twisted Granite",
+    "block.chisel.twist.andesite": "Twisted Andesite",
+    "block.chisel.twist.diorite": "Twisted Diorite",
+
     "gui.chisel.chisel": "Chisel",
     "rei.chisel.category": "Chisel Recipes"
 }

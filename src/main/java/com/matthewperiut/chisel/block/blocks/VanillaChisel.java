@@ -40,6 +40,12 @@ public class VanillaChisel
             },
             {
                 "granite", "polished_granite"
+            },
+            {
+                "andesite", "polished_andesite"
+            },
+            {
+                "diorite", "polished_diorite"
             }
     };
 

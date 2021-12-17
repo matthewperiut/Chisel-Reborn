@@ -1,4 +1,11 @@
-slant
-granite
+twist
 andesite
+cobblestone
 diorite
+end_stone
+granite
+purpur
+quartz
+red_sandstone
+sandstone
+stone

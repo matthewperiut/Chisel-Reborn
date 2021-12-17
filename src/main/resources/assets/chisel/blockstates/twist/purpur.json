@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "chisel:block/twist/purpur_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "chisel:block/twist/purpur"
+    },
+    "axis=z": {
+      "model": "chisel:block/twist/purpur_horizontal",
+      "x": 90
+    }
+  }
+}

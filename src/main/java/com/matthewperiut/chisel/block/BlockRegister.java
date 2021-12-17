@@ -11,6 +11,7 @@ import com.matthewperiut.chisel.block.blocks.mosaic.MosaicChisel;
 import com.matthewperiut.chisel.block.blocks.pillar.PillarChisel;
 import com.matthewperiut.chisel.block.blocks.slant.SlantChisel;
 import com.matthewperiut.chisel.block.blocks.tiles_large.TilesLargeChisel;
+import com.matthewperiut.chisel.block.blocks.twist.TwistChisel;
 import com.matthewperiut.chisel.block.blocks.zag.ZagChisel;
 
 public class BlockRegister
@@ -29,5 +30,6 @@ public class BlockRegister
         ZagChisel.Register();
         ArrayChisel.Register();
         CrackedChisel.Register();
+        TwistChisel.Register();
     }
 }

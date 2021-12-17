@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "chisel:large_tile/cobblestone"
-  },
-  "result": "chisel:large_tile/stone",
-  "experience": 0.1,
-  "cookingtime": 200
-}

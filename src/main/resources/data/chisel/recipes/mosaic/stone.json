@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "chisel:mosaic/cobblestone"
-  },
-  "result": "chisel:mosaic/stone",
-  "experience": 0.1,
-  "cookingtime": 200
-}

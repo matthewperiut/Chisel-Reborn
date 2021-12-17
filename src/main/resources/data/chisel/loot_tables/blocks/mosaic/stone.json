@@ -2,41 +2,16 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
-      "bonus_rolls": 0.0,
+      "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "enchantments": [
-                      {
-                        "enchantment": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
-                        }
-                      }
-                    ]
-                  }
-                }
-              ],
-              "name": "chisel:mosaic/stone"
-            },
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:survives_explosion"
-                }
-              ],
-              "name": "chisel:mosaic/cobblestone"
-            }
-          ]
+          "type": "minecraft:item",
+          "name": "chisel:mosaic/stone"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }
