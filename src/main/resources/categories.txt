@@ -11,6 +11,7 @@ dent
 encased_bricks
 french
 jellybean
+large_bricks
 large_tile
 layer
 masonry

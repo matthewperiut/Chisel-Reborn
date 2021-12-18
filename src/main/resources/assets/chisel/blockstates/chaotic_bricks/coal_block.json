@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/chaotic_bricks/coal_block" }
+  }
+}
