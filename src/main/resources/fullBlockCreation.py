@@ -209,6 +209,11 @@ def sort_from_folder(folder_path):
 
         block_list.append([full_name,file_name])
 
+    # basic french include
+    if len(french_blocks) > 0:
+        block_full_name = french_blocks[0]
+        block_list.append(["french/" + block_name,french_blocks[0][1]])
+
     # data files first
     #add_blocks_from_list(block_list)
     pillar_base = []
@@ -242,7 +247,6 @@ def sort_from_folder(folder_path):
             french_dirs += folder_path + "/" + str(d[1]) + ","
 
         create_ctm_texture("french/"+block_name, True, french_dirs[0:-1])
-        move_png("assets/chisel/optifine/ctm/french/" + block_name + "/0.png", "assets/chisel/textures/block/french/" + block_name + ".png")
 
     should_auto = []
     for name in block_list:

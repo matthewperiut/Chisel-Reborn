@@ -273,10 +273,18 @@ def check_lang(list_of_full_names):
                 exit()
 
             key = "block.chisel." + first + "." + second
+            #if not key in data.keys():
+            #    print('Input English for "' + key + '":\n e.g.: ' + data[stone_key])
+            #    print(first + "." + second)
+            #    data[key] = input('yours: ')
             if not key in data.keys():
-                print('Input English for "' + key + '":\n e.g.: ' + data[stone_key])
-                print(first + "." + second)
-                data[key] = input('yours: ')
+                fancy = second.split('_')
+                fancy_text = ""
+                for text in fancy:
+                    fancy_text += text.capitalize() + " "
+                fancy_text = fancy_text[:-1]
+
+                data[key] = data[stone_key].replace("Stone", fancy_text)
 
         with open('assets/chisel/lang/en_us.json', 'w') as outfile:
                 json.dump(data, outfile, separators=(',\n', ':'), sort_keys=True)
