@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/bevel_skeleton/red_sandstone" }
+  }
+}

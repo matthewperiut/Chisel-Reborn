@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/solid_bricks/granite" }
+  }
+}
