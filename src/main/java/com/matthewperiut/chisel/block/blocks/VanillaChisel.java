@@ -49,6 +49,9 @@ public class VanillaChisel
             },
             {
                 "bricks"
+            },
+            {
+                "coal_block"
             }
     };
 

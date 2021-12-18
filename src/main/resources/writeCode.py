@@ -30,7 +30,6 @@ def get_block_id(name):
         output = "quartz_block"
     return output.upper()
 
-register_dir = "java/com/matthewperiut/chisel/block/GeneratedRegister"
 def write_generated_register(register_dir):
     f = open(register_dir + ".txt", "r")
     lines = f.readlines()
@@ -58,5 +57,3 @@ def write_generated_register(register_dir):
     for j in lines:
         final_file.write(j)
     final_file.close()
-
-write_generated_register(register_dir)

@@ -35,6 +35,7 @@ public class GeneratedRegister
    public static final Block SLANT_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
    public static final PillarBlock TWIST_BRICKS = new PillarBlock(FabricBlockSettings.copyOf(Blocks.BRICKS));
    public static final Block ZAG_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
+   public static final Block MASONRY_COAL_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK));
    public static final Block ARRAY_COBBLESTONE = new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE));
    public static final Block CIRCULAR_COBBLESTONE = new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE));
    public static final Block CRACKED_COBBLESTONE = new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE));
@@ -175,6 +176,7 @@ public class GeneratedRegister
         Reg("bricks", "slant/bricks", SLANT_BRICKS);
         Reg("bricks", "twist/bricks", TWIST_BRICKS);
         Reg("bricks", "zag/bricks", ZAG_BRICKS);
+        Reg("coal_block", "masonry/coal_block", MASONRY_COAL_BLOCK);
         Reg("cobblestone", "array/cobblestone", ARRAY_COBBLESTONE);
         Reg("cobblestone", "circular/cobblestone", CIRCULAR_COBBLESTONE);
         Reg("cobblestone", "cracked/cobblestone", CRACKED_COBBLESTONE);

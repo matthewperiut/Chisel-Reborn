@@ -5,6 +5,7 @@ cut
 dent
 encased_bricks
 large_tile
+masonry
 mosaic
 pillar
 slant

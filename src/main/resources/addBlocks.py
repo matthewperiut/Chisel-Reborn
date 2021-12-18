@@ -12,7 +12,6 @@ def create_dir(dirname):
 
 def open_file(file_name):
     create_dir((os.path.dirname(file_name)))
-
     f = open(file_name, "w")
     return f
 
@@ -161,7 +160,7 @@ def write_tags(file_path, full_names):
 
     stub = '    "chisel:'
     end = '",\n'
-    endend = '"\n'
+    true_end = '"\n'
 
     for x in range(0,len(full_names)):
         if(full_names[x] == ''):
@@ -171,32 +170,25 @@ def write_tags(file_path, full_names):
         if(x != len(full_names)-1):
             f.write(stub + full_names[x] + end)
         else:
-            f.write(stub + full_names[x] + endend)
+            f.write(stub + full_names[x] + true_end)
 
     f.write('  ]\n')
     f.write('}')
     f.close()
 
-def create_ctm_dir(block_type, block):
-    create_dir("assets/chisel/optifine/ctm/" + block_type + "/" + block)
+def create_dirs(full_name):
+    semi = full_name.split('/')
+    create_dir("assets/chisel/optifine/ctm/" + full_name)
+    create_dir("assets/chisel/textures/block/" + semi[0])
+
+def create_dirs_partials(block_type, block):
+    create_dirs(block_type + "/" + block)
 
 def refresh_names():
-    full_names = []
-    with open('full_names.txt') as my_file:
-        full_names = my_file.readlines()
-
-    for x in range(len(full_names)):
-        if('\n' in full_names[x]):
-            full_names[x] = full_names[x][0:-1]
+    full_names = get_full_names_from_file("full_names.txt", False)
 
     full_names.sort()
     full_names = [i for n, i in enumerate(full_names) if i not in full_names[:n]]
-
-    #for x in full_names:
-    #    write_blockstate(x)
-    #    write_item_model(x)
-    #    write_block_model(x)
-    #    write_loot_table(x)
 
     f = open("full_names.txt", "w")
     for i in range(len(full_names)):
@@ -210,64 +202,57 @@ def refresh_names():
     write_tags("data/minecraft/tags/blocks/needs_stone_tool.json", full_names)
 
 def from_settings():
-
-    settings_f = open("settings.txt", "r")
-    settings = settings_f.readlines()
-    for i in range(len(settings)):
-        settings[i] = settings[i].replace("\n","")
-
-    f = open('full_names.txt', 'a')
-    for i in range(1, len(settings)):
-        first = settings[0]
-        second = settings[i]
-
-        if first == "":
-            first = settings[i]
-            second = settings[1]
-            if i == 1:
-                continue
-
-        full_name = first + '/' + second
-        f.write('\n' + full_name)
-        create_ctm_dir(first, second)
-        write_blockstate(full_name)
-        write_item_model(full_name)
-        write_block_model(full_name)
-        write_loot_table(full_name)
-    f.close()
+    add_blocks_from_list(get_full_names_from_file("settings.txt", True, True))
 
 def reload_all():
-    all_names_f = open("full_names.txt", "r")
-    all_names = all_names_f.readlines()
-    all_names_f.close()
-    for i in range(len(all_names)):
-        all_names[i] = all_names[i].replace("\n","")
-        write_blockstate(all_names[i])
-        write_item_model(all_names[i])
-        write_block_model(all_names[i])
-        write_loot_table(all_names[i])
-    check_lang(all_names)
+    add_blocks_from_list(get_full_names_from_file("full_names.txt", False, True))
 
-def check_lang_from_settings():
-    settings_f = open("settings.txt", "r")
-    settings = settings_f.readlines()
-    for i in range(len(settings)):
-        settings[i] = settings[i].replace("\n","")
+def add_blocks_from_list(full_names):
+    check_lang(full_names)
+    f = open('full_names.txt', 'a')
+    for name in full_names:
+        f.write('\n' + name)
+        create_dirs(name)
+        write_blockstate(name)
+        write_item_model(name)
+        write_block_model(name)
+        write_loot_table(name)
+    f.close()
+    refresh_names()
+    generate_blocks_and_categories()
+
+def get_full_names_from_file(file_name, partial_names_input=True, check_if_correct=False):
+    names_f = open(file_name, "r")
+    names = names_f.readlines()
+    for i in range(len(names)):
+        names[i] = names[i].replace("\n","")
 
     list_of_full_names = []
-    for i in range(1, len(settings)):
-        first = settings[0]
-        second = settings[i]
+    if partial_names_input == True:
+        for i in range(1, len(names)):
+            first = names[0]
+            second = names[i]
 
-        if first == "":
-            first = settings[i]
-            second = settings[1]
-            if i == 1:
-                continue
+            if first == "":
+                first = names[i]
+                second = names[1]
+                if i == 1:
+                    continue
 
-        list_of_full_names.append(first + "/" + second)
+            list_of_full_names.append(first + "/" + second)
+    else:
+        list_of_full_names = names
 
-    check_lang(list_of_full_names)
+    if check_if_correct:
+        response = input('Does "' + list_of_full_names[0] + '" look correct? (y/n)\n')
+        if(response.lower() != "y"):
+            print("Cancelling...")
+            exit()
+
+    return list_of_full_names
+
+def check_lang_from_settings():
+    check_lang(get_full_names_from_file("settings.txt"))
 
 def check_lang(list_of_full_names):
     with open('assets/chisel/lang/en_us.json') as json_file:
@@ -278,10 +263,21 @@ def check_lang(list_of_full_names):
             first = temp[0]
             second = temp[1]
 
+            stone_key = "block.chisel." + first + ".stone"
+            if not stone_key in data.keys():
+                print('"' + stone_key + '" does not exist, does this seem correct? (type "no" to exit)')
+                print('If so, please input a proper name for this key, this is the e.g.')
+                print(first + ".stone")
+                data[stone_key] = input('yours: ')
+
+            if (data[stone_key] == "no"):
+                exit()
+
             key = "block.chisel." + first + "." + second
             if not key in data.keys():
-                value = input('Input English for "' + key + '":\n e.g.: ' + data["block.chisel." + first + ".stone"] + '\n' + 'yours: ')
-                data[key] = value
+                print('Input English for "' + key + '":\n e.g.: ' + data[stone_key])
+                print(first + "." + second)
+                data[key] = input('yours: ')
 
         with open('assets/chisel/lang/en_us.json', 'w') as outfile:
                 json.dump(data, outfile, separators=(',\n', ':'), sort_keys=True)
@@ -315,9 +311,5 @@ def generate_blocks_and_categories():
     write_list_to_file(blocks, "blocks.txt")
     write_list_to_file(categories, "categories.txt")
 
-
-from_settings()
-check_lang_from_settings()
+#from_settings()
 #reload_all()
-refresh_names()
-generate_blocks_and_categories()

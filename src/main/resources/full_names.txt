@@ -75,6 +75,7 @@ large_tile/quartz
 large_tile/red_sandstone
 large_tile/sandstone
 large_tile/stone
+masonry/coal_block
 mosaic/andesite
 mosaic/bricks
 mosaic/cobblestone

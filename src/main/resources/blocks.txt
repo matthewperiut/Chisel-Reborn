@@ -1,6 +1,7 @@
 andesite
 blackstone
 bricks
+coal_block
 cobblestone
 deepslate
 diorite
