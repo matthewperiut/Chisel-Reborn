@@ -20,7 +20,7 @@ public class Chisel implements ModInitializer
 	public static final Logger LOGGER = LogManager.getFormatterLogger("Chisel");
 
 	public static final Item ITEM_CHISEL = new ChiselItem(new FabricItemSettings().group(ItemGroup.TOOLS).maxCount(1));
-	//public static final ItemGroup CHISEL_GROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "chisel")).icon(() -> new ItemStack(ITEM_CHISEL)).build();
+	public static final ItemGroup CHISEL_GROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "chisel")).icon(() -> new ItemStack(ITEM_CHISEL)).build();
 
 	@Override
 	public void onInitialize()

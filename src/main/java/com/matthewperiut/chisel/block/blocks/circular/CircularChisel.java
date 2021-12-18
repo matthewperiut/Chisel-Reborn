@@ -17,6 +17,7 @@ public class CircularChisel
     public static final Block CIRCULAR_QUARTZ = new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final Block CIRCULAR_END_STONE = new Block(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final Block CIRCULAR_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block CIRCULAR_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
 
     public static void Register()
     {
@@ -29,6 +30,7 @@ public class CircularChisel
         Reg("quartz_block", "circular/quartz", CIRCULAR_QUARTZ);
         Reg("end_stone", "circular/end_stone", CIRCULAR_END_STONE);
         Reg("purpur_block", "circular/purpur", CIRCULAR_PURPUR);
+        Reg("bricks", "circular/bricks", CIRCULAR_BRICKS);
         StonesCircularChisel.Register();
     }
 }

@@ -17,6 +17,7 @@ public class EncasedBricksChisel
     public static final Block ENCASED_BRICKS_QUARTZ = new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final Block ENCASED_BRICKS_END_STONE = new Block(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final Block ENCASED_BRICKS_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block ENCASED_BRICKS_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
 
     public static void Register()
     {
@@ -29,6 +30,7 @@ public class EncasedBricksChisel
         Reg("quartz_block", "encased_bricks/quartz", ENCASED_BRICKS_QUARTZ);
         Reg("end_stone", "encased_bricks/end_stone", ENCASED_BRICKS_END_STONE);
         Reg("purpur_block", "encased_bricks/purpur", ENCASED_BRICKS_PURPUR);
+        Reg("bricks", "encased_bricks/bricks", ENCASED_BRICKS_BRICKS);
         StonesEncasedBricksChisel.Register();
     }
 }

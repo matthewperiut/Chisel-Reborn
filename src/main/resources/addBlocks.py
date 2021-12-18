@@ -1,4 +1,5 @@
 import os
+import json
 import errno
 
 def create_dir(dirname):
@@ -217,9 +218,18 @@ def from_settings():
 
     f = open('full_names.txt', 'a')
     for i in range(1, len(settings)):
-        full_name = settings[0] + '/' + settings[i]
+        first = settings[0]
+        second = settings[i]
+
+        if first == "":
+            first = settings[i]
+            second = settings[1]
+            if i == 1:
+                continue
+
+        full_name = first + '/' + second
         f.write('\n' + full_name)
-        create_ctm_dir(settings[0], settings[i])
+        create_ctm_dir(first, second)
         write_blockstate(full_name)
         write_item_model(full_name)
         write_block_model(full_name)
@@ -236,7 +246,49 @@ def reload_all():
         write_item_model(all_names[i])
         write_block_model(all_names[i])
         write_loot_table(all_names[i])
+    check_lang(all_names)
 
-from_settings()
-#reload_all()
-refresh_names()
+def check_lang_from_settings():
+    settings_f = open("settings.txt", "r")
+    settings = settings_f.readlines()
+    for i in range(len(settings)):
+        settings[i] = settings[i].replace("\n","")
+
+    list_of_full_names = []
+    for i in range(1, len(settings)):
+        first = settings[0]
+        second = settings[i]
+
+        if first == "":
+            first = settings[i]
+            second = settings[1]
+            if i == 1:
+                continue
+
+        list_of_full_names.append(first + "/" + second)
+
+    check_lang(list_of_full_names)
+
+def check_lang(list_of_full_names):
+    with open('assets/chisel/lang/en_us.json') as json_file:
+        data = json.load(json_file)
+
+        for name in list_of_full_names:
+            temp = name.split('/')
+            first = temp[0]
+            second = temp[1]
+
+            key = "block.chisel." + first + "." + second
+            if not key in data.keys():
+                value = input('Input English for "' + key + '":\n e.g.: ' + data["block.chisel." + first + ".stone"] + '\n' + 'yours: ')
+                data[key] = value
+
+        with open('assets/chisel/lang/en_us.json', 'w') as outfile:
+                json.dump(data, outfile, separators=(',\n', ':'), sort_keys=True)
+
+
+
+#from_settings()
+#check_lang_from_settings()
+reload_all()
+#refresh_names()

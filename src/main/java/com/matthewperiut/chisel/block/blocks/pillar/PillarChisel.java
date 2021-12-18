@@ -1,13 +1,9 @@
 package com.matthewperiut.chisel.block.blocks.pillar;
 
-import com.matthewperiut.chisel.Chisel;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.collection.DefaultedList;
 
 import static com.matthewperiut.chisel.block.blocks.EzReg.Reg;
 
@@ -21,6 +17,7 @@ public class PillarChisel
     public static final PillarBlock BLACKSTONE_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE));
     public static final PillarBlock DEEPSLATE_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE));
     public static final PillarBlock END_STONE_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(Blocks.END_STONE));
+    public static final PillarBlock BRICKS_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(Blocks.BRICKS));
 
     public static void Register()
     {
@@ -32,6 +29,7 @@ public class PillarChisel
         Reg("blackstone", "pillar/blackstone", BLACKSTONE_PILLAR);
         Reg("deepslate", "pillar/deepslate", DEEPSLATE_PILLAR);
         Reg("end_stone", "pillar/end_stone", END_STONE_PILLAR);
+        Reg("bricks", "pillar/bricks", BRICKS_PILLAR);
         StonesPillarChisel.Register();
     }
 }

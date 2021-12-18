@@ -1,5 +1,6 @@
-twist
+zag
 andesite
+bricks
 cobblestone
 diorite
 end_stone

@@ -15,10 +15,7 @@ def make_random_properties(file_path, block_type, block, size):
 
     f.close()
 
-cut_size = int(input("Number in ?x?: "))
-
-settings = get_settings()
-for i in range(1, len(settings)):
-    file_path = settings[0] + '/' + settings[i]
-    cutter(file_path, settings[0], cut_size)
-    make_random_properties(file_path, settings[0], settings[i], cut_size)
+def rando(first, second, num):
+    file_path = first + '/' + second
+    cutter(file_path, first, num)
+    make_random_properties(file_path, first, second, num)

@@ -46,6 +46,9 @@ public class VanillaChisel
             },
             {
                 "diorite", "polished_diorite"
+            },
+            {
+                "bricks"
             }
     };
 

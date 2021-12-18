@@ -17,6 +17,7 @@ public class CutChisel
     public static final Block CUT_QUARTZ = new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final Block CUT_END_STONE = new Block(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final Block CUT_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block CUT_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
 
     public static void Register()
     {
@@ -29,6 +30,7 @@ public class CutChisel
         Reg("quartz_block", "cut/quartz", CUT_QUARTZ);
         Reg("end_stone", "cut/end_stone", CUT_END_STONE);
         Reg("purpur_block", "cut/purpur", CUT_PURPUR);
+        Reg("bricks", "cut/bricks", CUT_BRICKS);
         StonesCutChisel.Register();
     }
 }

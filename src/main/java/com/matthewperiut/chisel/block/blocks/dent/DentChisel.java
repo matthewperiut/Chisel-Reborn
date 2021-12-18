@@ -17,6 +17,7 @@ public class DentChisel
     public static final Block DENT_QUARTZ = new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final Block DENT_END_STONE = new Block(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final Block DENT_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block DENT_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
 
     public static void Register()
     {
@@ -29,6 +30,7 @@ public class DentChisel
         Reg("quartz_block", "dent/quartz", DENT_QUARTZ);
         Reg("end_stone", "dent/end_stone", DENT_END_STONE);
         Reg("purpur_block", "dent/purpur", DENT_PURPUR);
+        Reg("bricks", "dent/bricks", DENT_BRICKS);
         StonesDentChisel.Register();
     }
 }

@@ -1,4 +1,5 @@
 array/andesite
+array/bricks
 array/cobblestone
 array/diorite
 array/end_stone
@@ -9,6 +10,7 @@ array/red_sandstone
 array/sandstone
 array/stone
 circular/andesite
+circular/bricks
 circular/cobblestone
 circular/diorite
 circular/end_stone
@@ -19,6 +21,7 @@ circular/red_sandstone
 circular/sandstone
 circular/stone
 cracked/andesite
+cracked/bricks
 cracked/cobblestone
 cracked/diorite
 cracked/end_stone
@@ -29,6 +32,7 @@ cracked/red_sandstone
 cracked/sandstone
 cracked/stone
 cut/andesite
+cut/bricks
 cut/cobblestone
 cut/diorite
 cut/end_stone
@@ -39,6 +43,7 @@ cut/red_sandstone
 cut/sandstone
 cut/stone
 dent/andesite
+dent/bricks
 dent/cobblestone
 dent/diorite
 dent/end_stone
@@ -49,6 +54,7 @@ dent/red_sandstone
 dent/sandstone
 dent/stone
 encased_bricks/andesite
+encased_bricks/bricks
 encased_bricks/cobblestone
 encased_bricks/diorite
 encased_bricks/end_stone
@@ -59,6 +65,7 @@ encased_bricks/red_sandstone
 encased_bricks/sandstone
 encased_bricks/stone
 large_tile/andesite
+large_tile/bricks
 large_tile/cobblestone
 large_tile/diorite
 large_tile/end_stone
@@ -69,6 +76,7 @@ large_tile/red_sandstone
 large_tile/sandstone
 large_tile/stone
 mosaic/andesite
+mosaic/bricks
 mosaic/cobblestone
 mosaic/deepslate
 mosaic/diorite
@@ -82,6 +90,7 @@ mosaic/sandstone
 mosaic/stone
 pillar/andesite
 pillar/blackstone
+pillar/bricks
 pillar/cobblestone
 pillar/deepslate
 pillar/diorite
@@ -92,6 +101,7 @@ pillar/red_sandstone
 pillar/sandstone
 pillar/stone
 slant/andesite
+slant/bricks
 slant/cobblestone
 slant/deepslate
 slant/diorite
@@ -104,6 +114,7 @@ slant/red_sandstone
 slant/sandstone
 slant/stone
 twist/andesite
+twist/bricks
 twist/cobblestone
 twist/diorite
 twist/end_stone
@@ -114,6 +125,7 @@ twist/red_sandstone
 twist/sandstone
 twist/stone
 zag/andesite
+zag/bricks
 zag/cobblestone
 zag/diorite
 zag/end_stone

@@ -1,0 +1,12 @@
+array
+circular
+cracked
+cut
+dent
+encased_bricks
+large_tile
+mosaic
+pillar
+slant
+twist
+zag

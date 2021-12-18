@@ -1,5 +1,6 @@
 import os
 import math
+import shutil
 from PIL import Image
 from pathlib import Path
 
@@ -24,7 +25,11 @@ def open_file(file_name):
     f = open(file_name, "w")
     return f
 
-def cutter(path, modifier, size, override=False):
+def cutter(path, modifier, size, start_ct=0):
+    override = False
+    if (size == 0):
+            override = True
+
     file_path = path + '/' + modifier + '-'
     if(override == False):
         file_path += str(size) + 'x' + str(size) + '.png'
@@ -32,9 +37,13 @@ def cutter(path, modifier, size, override=False):
         file_path += "ctm.png"
         size = 2
 
+    file_path.replace("cut","cuts",1)
+    file_path.replace("large_tile","tiles_large",1)
+    file_path.replace("slant","slanted",1)
+
     sheet = Image.open(file_path)
 
-    count = 0
+    count = start_ct
 
     for y in range(size):
         for x in range(size):
@@ -43,3 +52,9 @@ def cutter(path, modifier, size, override=False):
             icon = sheet.crop((a - 16, b - 16, a, b))
             icon.save(path + "/{}.png".format(count))
             count += 1
+
+    if ("zag" in file_path):
+        os.remove(path + "/2.png")
+        os.remove(path + "/3.png")
+        shutil.copyfile(path + "/0.png", path + "/3.png")
+        shutil.copyfile(path + "/1.png", path + "/2.png")

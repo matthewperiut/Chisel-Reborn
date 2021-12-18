@@ -1,0 +1,11 @@
+andesite
+bricks
+cobblestone
+diorite
+end_stone
+granite
+purpur
+quartz
+red_sandstone
+sandstone
+stone

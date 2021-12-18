@@ -17,14 +17,7 @@ def make_repeat_properties(file_path, block_type, block):
 
     f.close()
 
-cut_size = int(input("Number in ?x?: "))
-override = False
-
-if (cut_size == 0):
-    override = True
-
-settings = get_settings()
-for i in range(1, len(settings)):
-    file_path = settings[0] + '/' + settings[i]
-    cutter(file_path, settings[0], cut_size, override)
-    make_repeat_properties(file_path, settings[0], settings[i])
+def repeat(first, second, num):
+    file_path = first + '/' + second
+    cutter(file_path, first, num)
+    make_repeat_properties(file_path, first, second)

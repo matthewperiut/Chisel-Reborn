@@ -17,6 +17,7 @@ public class ArrayChisel
     public static final Block ARRAY_QUARTZ = new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final Block ARRAY_END_STONE = new Block(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final Block ARRAY_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block ARRAY_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
 
     public static void Register()
     {
@@ -29,6 +30,7 @@ public class ArrayChisel
         Reg("quartz_block", "array/quartz", ARRAY_QUARTZ);
         Reg("end_stone", "array/end_stone", ARRAY_END_STONE);
         Reg("purpur_block", "array/purpur", ARRAY_PURPUR);
+        Reg("bricks", "array/bricks", ARRAY_BRICKS);
         StonesArrayChisel.Register();
     }
 }

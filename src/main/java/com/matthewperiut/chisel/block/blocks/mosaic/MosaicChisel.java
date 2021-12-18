@@ -17,18 +17,21 @@ public class MosaicChisel
     public static final Block MOSAIC_QUARTZ = new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final Block MOSAIC_END_STONE = new Block(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final Block MOSAIC_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block MOSAIC_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
+
 
     public static void Register()
     {
-        Reg("sandstone", "mosaic/sandstone", MOSAIC_SANDSTONE); //
-        Reg("red_sandstone", "mosaic/red_sandstone", MOSAIC_RED_SANDSTONE); //
-        Reg("cobblestone", "mosaic/cobblestone", MOSAIC_COBBLESTONE); //
-        Reg("stone", "mosaic/stone", MOSAIC_STONE); //
+        Reg("sandstone", "mosaic/sandstone", MOSAIC_SANDSTONE);
+        Reg("red_sandstone", "mosaic/red_sandstone", MOSAIC_RED_SANDSTONE);
+        Reg("cobblestone", "mosaic/cobblestone", MOSAIC_COBBLESTONE);
+        Reg("stone", "mosaic/stone", MOSAIC_STONE);
         Reg("nether_bricks", "mosaic/nether_brick", MOSAIC_NETHER_BRICK);
         Reg("deepslate", "mosaic/deepslate", MOSAIC_DEEPSLATE);
-        Reg("quartz_block", "mosaic/quartz", MOSAIC_QUARTZ); //
+        Reg("quartz_block", "mosaic/quartz", MOSAIC_QUARTZ);
         Reg("end_stone", "mosaic/end_stone", MOSAIC_END_STONE);
         Reg("purpur_block", "mosaic/purpur", MOSAIC_PURPUR);
+        Reg("bricks", "mosaic/bricks", MOSAIC_BRICKS);
         StonesMosaicChisel.Register();
     }
 }

@@ -19,6 +19,7 @@ public class TwistChisel
     public static final PillarBlock TWIST_QUARTZ = new PillarBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
     public static final PillarBlock TWIST_END_STONE = new PillarBlock(FabricBlockSettings.copyOf(Blocks.END_STONE));
     public static final PillarBlock TWIST_PURPUR = new PillarBlock(FabricBlockSettings.copyOf(Blocks.END_STONE));
+    public static final PillarBlock TWIST_BRICKS = new PillarBlock(FabricBlockSettings.copyOf(Blocks.BRICKS));
 
     public static void Register()
     {
@@ -32,6 +33,7 @@ public class TwistChisel
         Reg("quartz_block", "twist/quartz", TWIST_QUARTZ);
         Reg("end_stone", "twist/end_stone", TWIST_END_STONE);
         Reg("purpur_block", "twist/purpur", TWIST_PURPUR);
+        Reg("bricks", "twist/bricks", TWIST_BRICKS);
         StonesTwistChisel.Register();
     }
 }
