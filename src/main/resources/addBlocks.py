@@ -199,7 +199,6 @@ def refresh_names():
     f.close()
 
     write_tags("data/minecraft/tags/blocks/mineable/pickaxe.json", full_names)
-    write_tags("data/minecraft/tags/blocks/needs_stone_tool.json", full_names)
 
 def from_settings():
     add_blocks_from_list(get_full_names_from_file("settings.txt", True, True))
