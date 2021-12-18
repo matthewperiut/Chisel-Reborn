@@ -286,9 +286,38 @@ def check_lang(list_of_full_names):
         with open('assets/chisel/lang/en_us.json', 'w') as outfile:
                 json.dump(data, outfile, separators=(',\n', ':'), sort_keys=True)
 
+def write_list_to_file(l,fp):
+    f = open(fp, "w")
+    for i in range(len(l)):
+        f.write(l[i])
+        if i != len(l)-1:
+            f.write('\n')
+
+def generate_blocks_and_categories():
+    f = open("full_names.txt", "r")
+    blocks = []
+    categories = []
+    full_names = f.readlines()
+    for i in range(len(full_names)):
+        full_names[i] = full_names[i].replace("\n","")
+        name = full_names[i].split('/')
+
+        if not name[0] in categories:
+            categories.append(name[0])
+
+        if not name[1] in blocks:
+            blocks.append(name[1])
+    f.close()
+
+    blocks.sort()
+    categories.sort()
+
+    write_list_to_file(blocks, "blocks.txt")
+    write_list_to_file(categories, "categories.txt")
 
 
-#from_settings()
-#check_lang_from_settings()
-reload_all()
-#refresh_names()
+from_settings()
+check_lang_from_settings()
+#reload_all()
+refresh_names()
+generate_blocks_and_categories()

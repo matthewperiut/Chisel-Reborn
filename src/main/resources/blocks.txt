@@ -1,9 +1,12 @@
 andesite
+blackstone
 bricks
 cobblestone
+deepslate
 diorite
 end_stone
 granite
+nether_brick
 purpur
 quartz
 red_sandstone
