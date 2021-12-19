@@ -5,7 +5,9 @@ coal_block
 cobblestone
 deepslate
 diorite
+dirt
 end_stone
+glowstone
 granite
 nether_brick
 purpur

@@ -120,8 +120,23 @@ def write_block_model(full_name):
 
     pass
 
+def write_glowstone_loot_table(full_name):
+    f = open("data/chisel/loot_tables/blocks/template/glowstone.txt", "r")
+    data = f.readlines()
+    f.close()
+
+    f = open("data/chisel/loot_tables/blocks/" + full_name + ".json", "w")
+    for d in data:
+        d = d.replace("FULL_NAME", full_name)
+        f.write(d)
+    f.close()
+
 def write_loot_table(full_name):
     file_name = "data/chisel/loot_tables/blocks/" + full_name + ".json"
+
+    if "glowstone" in full_name:
+        write_glowstone_loot_table(full_name)
+        return
 
     f = open_file(file_name)
 
@@ -198,6 +213,36 @@ def refresh_names():
         f.write("\n")
     f.close()
 
+    wood = ["plank","log","wooden","crafting","bookshelf","pumpkin","jack","note","bee"]
+    soft = ["dirt","clay","farmland","sand","soul","soil","snow","powder","mycelium","gravel"]
+
+    mine_axe = []
+    mine_shovel = []
+
+    for name in full_names:
+        for w in wood:
+            if w in name:
+                if not "stone" in name:
+                    mine_axe.append(name)
+        for s in soft:
+            if s in name:
+                if not "stone" in name:
+                    mine_shovel.append(name)
+        if "glow" in name:
+            full_names.remove(name)
+
+    for a in mine_axe:
+        full_names.remove(a)
+    for s in mine_shovel:
+        full_names.remove(s)
+
+    mine_axe.sort()
+    mine_axe = [i for n, i in enumerate(mine_axe) if i not in mine_axe[:n]]
+    mine_shovel.sort()
+    mine_shovel = [i for n, i in enumerate(mine_shovel) if i not in mine_shovel[:n]]
+
+    write_tags("data/minecraft/tags/blocks/mineable/axe.json", mine_axe)
+    write_tags("data/minecraft/tags/blocks/mineable/shovel.json", mine_shovel)
     write_tags("data/minecraft/tags/blocks/mineable/pickaxe.json", full_names)
 
 def from_settings():

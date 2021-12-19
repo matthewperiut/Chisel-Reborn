@@ -52,6 +52,12 @@ public class VanillaChisel
             },
             {
                 "coal_block"
+            },
+            {
+                "glowstone"
+            },
+            {
+                "dirt"
             }
     };
 

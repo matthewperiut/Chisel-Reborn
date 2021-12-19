@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "chisel:bricks/dirt",
+    "chisel:bricks2/dirt",
+    "chisel:bricks3/dirt",
+    "chisel:chunky/dirt",
+    "chisel:cobble/dirt",
+    "chisel:happy/dirt",
+    "chisel:horizontal/dirt",
+    "chisel:layer/dirt",
+    "chisel:panel/dirt",
+    "chisel:reinforced/dirt",
+    "chisel:reinforcedcobble/dirt",
+    "chisel:vertical/dirt"
+  ]
+}
