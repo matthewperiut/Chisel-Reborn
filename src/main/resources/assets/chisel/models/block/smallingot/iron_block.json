@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "chisel:block/smallingot/iron_block",
+    "north": "chisel:block/smallingot/iron_block",
+    "south": "chisel:block/smallingot/iron_block",
+    "east": "chisel:block/smallingot/iron_block",
+    "west": "chisel:block/smallingot/iron_block",
+    "up": "chisel:block/smallingot/iron_block_top",
+    "down": "chisel:block/smallingot/iron_block_bottom"
+  }
+}

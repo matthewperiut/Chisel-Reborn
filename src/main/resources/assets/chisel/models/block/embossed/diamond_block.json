@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "chisel:block/embossed/diamond_block",
+    "north": "chisel:block/embossed/diamond_block",
+    "south": "chisel:block/embossed/diamond_block",
+    "east": "chisel:block/embossed/diamond_block",
+    "west": "chisel:block/embossed/diamond_block",
+    "up": "chisel:block/embossed/diamond_block_top",
+    "down": "chisel:block/embossed/diamond_block_bottom"
+  }
+}

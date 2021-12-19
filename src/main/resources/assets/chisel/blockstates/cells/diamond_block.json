@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/cells/diamond_block" }
+  }
+}

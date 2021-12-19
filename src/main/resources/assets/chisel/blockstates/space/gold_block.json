@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/space/gold_block" }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/panelclassic/emerald_block" }
+  }
+}

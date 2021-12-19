@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/smallingot/iron_block" }
+  }
+}

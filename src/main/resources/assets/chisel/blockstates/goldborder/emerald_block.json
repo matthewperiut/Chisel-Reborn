@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/goldborder/emerald_block" }
+  }
+}

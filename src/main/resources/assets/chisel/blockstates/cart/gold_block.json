@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/cart/gold_block" }
+  }
+}

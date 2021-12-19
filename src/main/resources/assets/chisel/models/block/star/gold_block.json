@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "chisel:block/star/gold_block",
+    "north": "chisel:block/star/gold_block",
+    "south": "chisel:block/star/gold_block",
+    "east": "chisel:block/star/gold_block",
+    "west": "chisel:block/star/gold_block",
+    "up": "chisel:block/star/gold_block_top",
+    "down": "chisel:block/star/gold_block_bottom"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "chisel:block/FULL_NAME",
+    "north": "chisel:block/FULL_NAME",
+    "south": "chisel:block/FULL_NAME",
+    "east": "chisel:block/FULL_NAME",
+    "west": "chisel:block/FULL_NAME",
+    "up": "chisel:block/FULL_NAME_top",
+    "down": "chisel:block/FULL_NAME_bottom"
+  }
+}

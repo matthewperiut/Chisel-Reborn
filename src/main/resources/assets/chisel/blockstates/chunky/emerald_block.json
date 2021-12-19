@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/chunky/emerald_block" }
+  }
+}

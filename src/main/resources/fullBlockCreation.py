@@ -20,7 +20,7 @@ def move_png(p1,p2):
         print(str(err))
         return False
 
-def create_regular_texture(full_name, input_dir="", top=""):
+def create_regular_texture(full_name, input_dir="", top="", bottom=""):
     semi = full_name.split('/')
     if "pillar" in full_name or "twist" in full_name:
         if input_dir == "":
@@ -30,20 +30,31 @@ def create_regular_texture(full_name, input_dir="", top=""):
                     print("Your top texture is incorrect, cannot continue\nquitting...")
                     exit()
                 print("For the side, ",end="")
-        else:
-            if not check_img(input_dir) or not Path(input_dir).is_file():
-                print(full_name + " has improper auto -side texture or missing file")
-                print(input_dir)
-                return False
-            if not check_img(top) or not Path(input_dir).is_file():
-                print(full_name + " has improper auto -top texture or missing file")
-                print(top)
+    elif not top == "":
+        if not check_img(input_dir) or not Path(input_dir).is_file():
+            print(full_name + " has improper auto -side texture or missing file")
+            print(input_dir)
+            return False
+        if not check_img(top) or not Path(top).is_file():
+            print(full_name + " has improper auto -top texture or missing file")
+            print(top)
+            return False
+
+        if not bottom == "":
+            if not check_img(bottom) or not Path(bottom).is_file():
+                print(full_name + " has improper auto -bottom texture or missing file")
+                print(bottom)
                 return False
 
-            if move_png(input_dir, "assets/chisel/textures/block/" + full_name + ".png") and move_png(top, "assets/chisel/textures/block/" + full_name + "_top.png"):
-                return True
-            else:
-                return False
+        if move_png(input_dir, "assets/chisel/textures/block/" + full_name + ".png") and move_png(top, "assets/chisel/textures/block/" + full_name + "_top.png"):
+            if not bottom == "":
+                if move_png(bottom, "assets/chisel/textures/block/" + full_name + "_bottom.png"):
+                    return True
+                else:
+                    return False
+            return True
+        else:
+            return False
 
     regular_texture_output_dir = Path("assets/chisel/textures/block/" + full_name + ".png")
     if(regular_texture_output_dir.is_file()):
@@ -177,6 +188,7 @@ def sort_from_folder(folder_path):
     block_list = []
     french_blocks = []
     pillar_blocks = []
+    crate_bottom = []
     ctm_ids = ['ctm','2x2','3x3','4x4']
     ctm_textures = []
 
@@ -207,6 +219,11 @@ def sort_from_folder(folder_path):
             pillar_blocks.append([full_name,file_name])
             continue
 
+        if "-bottom" in full_name:
+            full_name = full_name.replace("-bottom","_bottom")
+            crate_bottom.append([full_name,file_name])
+            continue
+
         block_list.append([full_name,file_name])
 
     # basic french include
@@ -218,13 +235,41 @@ def sort_from_folder(folder_path):
     #add_blocks_from_list(block_list)
     pillar_base = []
     pillar_top = []
+
+    crate_base = []
+    crate_top = []
+
+    for crate in crate_bottom:
+        semi = crate[0].split('/')
+        simple_name = semi[0][:-7]
+        for pillar in pillar_blocks:
+            if simple_name in pillar[0]:
+                if not "top" in pillar[0] and not "bottom" in pillar[0]:
+                    crate_base.append(pillar)
+                elif not "bottom" in pillar[0]:
+                    crate_top.append(pillar)
+
+
+    remove_from_pillar = crate_base + crate_top
+
+    remove_from_pillar = [i for n, i in enumerate(remove_from_pillar) if i not in remove_from_pillar[:n]]
+
+    for r in remove_from_pillar:
+        if r in pillar_blocks:
+            pillar_blocks.remove(r)
+
     for pillar in pillar_blocks:
         if not "top" in pillar[0]:
             pillar_base.append(pillar)
         else:
             pillar_top.append(pillar)
 
-    combined_blocks = block_list + pillar_base
+    combined_blocks = block_list + pillar_base + crate_base
+    combined_blocks = [i for n, i in enumerate(combined_blocks) if i not in combined_blocks[:n]]
+
+    print(block_list)
+    print(pillar_base)
+    print(crate_base)
 
     # data
     # add_blocks_from_list(get_full_name_list(combined_blocks))
@@ -239,6 +284,11 @@ def sort_from_folder(folder_path):
     for i in range(len(pillar_base)):
         if create_regular_texture(pillar_base[i][0], folder_path + "/" + pillar_base[i][1], folder_path + "/" + pillar_top[i][1]):
             print("copied " + pillar_base[i][0])
+
+    # crates
+    for i in range(len(crate_base)):
+            if create_regular_texture(crate_base[i][0], folder_path + "/" + crate_base[i][1], folder_path + "/" + crate_top[i][1], folder_path + "/" + crate_bottom[i][1]):
+                print("copied " + crate_base[i][0])
 
     #french
     if len(french_blocks) > 0:

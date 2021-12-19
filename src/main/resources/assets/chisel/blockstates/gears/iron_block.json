@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/gears/iron_block" }
+  }
+}

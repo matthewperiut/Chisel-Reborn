@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/smallingot/gold_block" }
+  }
+}

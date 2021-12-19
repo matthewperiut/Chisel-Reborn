@@ -4,11 +4,16 @@ bricks
 coal_block
 cobblestone
 deepslate
+diamond_block
 diorite
 dirt
+emerald_block
 end_stone
 glowstone
+gold_block
 granite
+iron_block
+lapis_block
 nether_brick
 purpur
 quartz

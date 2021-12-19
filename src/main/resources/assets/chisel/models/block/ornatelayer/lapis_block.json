@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chisel:block/ornatelayer/lapis_block"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "chisel:block/moon/iron_block",
+    "north": "chisel:block/moon/iron_block",
+    "south": "chisel:block/moon/iron_block",
+    "east": "chisel:block/moon/iron_block",
+    "west": "chisel:block/moon/iron_block",
+    "up": "chisel:block/moon/iron_block_top",
+    "down": "chisel:block/moon/iron_block_bottom"
+  }
+}

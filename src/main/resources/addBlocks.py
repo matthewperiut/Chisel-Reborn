@@ -2,6 +2,8 @@ import os
 import json
 import errno
 
+from pathlib import Path
+
 def create_dir(dirname):
     if not os.path.exists(dirname):
             try:
@@ -78,8 +80,17 @@ def write_item_model(full_name):
     for x in item_model:
             f.write(x)
 
+def write_crate_block_model(full_name):
+    file_name = "assets/chisel/models/block/" + full_name + ".json"
+    write_file_replace_full_name(full_name, "assets/chisel/models/block/template/top_bottom.txt", file_name)
+
 def write_block_model(full_name):
     file_name = "assets/chisel/models/block/" + full_name + ".json"
+
+    crate_test = Path("assets/chisel/textures/block/" + full_name + "_bottom.png")
+    if crate_test.is_file():
+        write_crate_block_model(full_name)
+        return
 
     f = open_file(file_name)
 
@@ -120,16 +131,19 @@ def write_block_model(full_name):
 
     pass
 
-def write_glowstone_loot_table(full_name):
-    f = open("data/chisel/loot_tables/blocks/template/glowstone.txt", "r")
+def write_file_replace_full_name(full_name, template, outfile):
+    f = open(template, "r")
     data = f.readlines()
     f.close()
 
-    f = open("data/chisel/loot_tables/blocks/" + full_name + ".json", "w")
+    f = open(outfile, "w")
     for d in data:
         d = d.replace("FULL_NAME", full_name)
         f.write(d)
     f.close()
+
+def write_glowstone_loot_table(full_name):
+    write_file_replace_full_name(full_name,"data/chisel/loot_tables/blocks/template/glowstone.txt","data/chisel/loot_tables/blocks/" + full_name + ".json")
 
 def write_loot_table(full_name):
     file_name = "data/chisel/loot_tables/blocks/" + full_name + ".json"
