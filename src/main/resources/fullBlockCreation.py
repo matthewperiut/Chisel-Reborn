@@ -30,31 +30,31 @@ def create_regular_texture(full_name, input_dir="", top="", bottom=""):
                     print("Your top texture is incorrect, cannot continue\nquitting...")
                     exit()
                 print("For the side, ",end="")
-    elif not top == "":
-        if not check_img(input_dir) or not Path(input_dir).is_file():
-            print(full_name + " has improper auto -side texture or missing file")
-            print(input_dir)
-            return False
-        if not check_img(top) or not Path(top).is_file():
-            print(full_name + " has improper auto -top texture or missing file")
-            print(top)
-            return False
-
-        if not bottom == "":
-            if not check_img(bottom) or not Path(bottom).is_file():
-                print(full_name + " has improper auto -bottom texture or missing file")
-                print(bottom)
+        elif not top == "":
+            if not check_img(input_dir) or not Path(input_dir).is_file():
+                print(full_name + " has improper auto -side texture or missing file")
+                print(input_dir)
+                return False
+            if not check_img(top) or not Path(top).is_file():
+                print(full_name + " has improper auto -top texture or missing file")
+                print(top)
                 return False
 
-        if move_png(input_dir, "assets/chisel/textures/block/" + full_name + ".png") and move_png(top, "assets/chisel/textures/block/" + full_name + "_top.png"):
             if not bottom == "":
-                if move_png(bottom, "assets/chisel/textures/block/" + full_name + "_bottom.png"):
-                    return True
-                else:
+                if not check_img(bottom) or not Path(bottom).is_file():
+                    print(full_name + " has improper auto -bottom texture or missing file")
+                    print(bottom)
                     return False
-            return True
-        else:
-            return False
+
+            if move_png(input_dir, "assets/chisel/textures/block/" + full_name + ".png") and move_png(top, "assets/chisel/textures/block/" + full_name + "_top.png"):
+                if not bottom == "":
+                    if move_png(bottom, "assets/chisel/textures/block/" + full_name + "_bottom.png"):
+                        return True
+                    else:
+                        return False
+                return True
+            else:
+                return False
 
     regular_texture_output_dir = Path("assets/chisel/textures/block/" + full_name + ".png")
     if(regular_texture_output_dir.is_file()):

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chisel:block/cracked_bricks/light_gray_concrete"
+  }
+}

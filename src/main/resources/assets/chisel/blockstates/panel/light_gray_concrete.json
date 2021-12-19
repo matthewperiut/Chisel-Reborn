@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/panel/light_gray_concrete" }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/cut/light_gray_concrete" }
+  }
+}

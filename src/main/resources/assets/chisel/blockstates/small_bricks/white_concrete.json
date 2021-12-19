@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/small_bricks/white_concrete" }
+  }
+}

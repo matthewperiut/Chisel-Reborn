@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/array/green_concrete" }
+  }
+}

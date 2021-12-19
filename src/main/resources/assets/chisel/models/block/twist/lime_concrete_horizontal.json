@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "chisel:block/twist/lime_concrete_top",
+    "side": "chisel:block/twist/lime_concrete"
+  }
+}

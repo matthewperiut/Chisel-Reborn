@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/soft_bricks/red_concrete" }
+  }
+}

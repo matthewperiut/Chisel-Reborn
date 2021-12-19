@@ -15,9 +15,6 @@ public class VanillaChisel
                 "red_sandstone", "chiseled_red_sandstone", "cut_red_sandstone", "smooth_red_sandstone"
             },
             {
-                "cobblestone"
-            },
-            {
                 "stone", "smooth_stone", "stone_bricks", "chiseled_stone_bricks", "cracked_stone_bricks", "mossy_stone_bricks"
             },
             {
@@ -46,63 +43,6 @@ public class VanillaChisel
             },
             {
                 "diorite", "polished_diorite"
-            },
-            {
-                "bricks"
-            },
-            {
-                "coal_block"
-            },
-            {
-                "glowstone"
-            },
-            {
-                "dirt"
-            },
-            {
-                "emerald_block"
-            },
-            {
-                "gold_block"
-            },
-            {
-                "diamond_block"
-            },
-            {
-                "iron_block"
-            },
-            {
-                "lapis_block"
-            },
-            {
-                "redstone_block"
-            },
-            {
-                "prismarine"
-            },
-            {
-                "acacia_planks"
-            },
-            {
-                "birch_planks"
-            },
-            {
-                "crimson_planks"
-            },
-            {
-                "dark_oak_planks"
-            },
-            {
-                "jungle_planks"
-            },
-            {
-                "spruce_planks"
-            },
-            {
-                "oak_planks"
-            },
-            {
-                "glass"
             }
     };
 

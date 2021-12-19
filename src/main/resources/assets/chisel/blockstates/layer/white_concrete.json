@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "chisel:block/layer/white_concrete" }
+  }
+}
