@@ -172,7 +172,8 @@ def block_creation():
         os.chdir("..")
     print(os.getcwd())
     register_dir = "java/com/matthewperiut/chisel/block/GeneratedRegister"
-    write_generated_register(register_dir)
+    client_register_dir = "java/com/matthewperiut/chisel/block/GeneratedClientRegister"
+    write_generated_register(register_dir,client_register_dir)
 
 def get_full_name_list(double_list):
     output = []
@@ -312,7 +313,8 @@ def sort_from_folder(folder_path):
     os.chdir("../../../../..")
     print(os.getcwd())
     register_dir = "java/com/matthewperiut/chisel/block/GeneratedRegister"
-    write_generated_register(register_dir)
+    client_register_dir = "java/com/matthewperiut/chisel/block/GeneratedClientRegister"
+    write_generated_register(register_dir,client_register_dir)
 
     #print(block_list)
     #print(pillar_blocks)

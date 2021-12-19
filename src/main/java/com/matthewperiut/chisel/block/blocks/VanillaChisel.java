@@ -100,6 +100,9 @@ public class VanillaChisel
             },
             {
                 "oak_planks"
+            },
+            {
+                "glass"
             }
     };
 

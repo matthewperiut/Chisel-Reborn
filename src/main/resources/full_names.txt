@@ -6,6 +6,7 @@ array/diorite
 array/end_stone
 array/glowstone
 array/granite
+array/ice
 array/prismarine
 array/purpur
 array/quartz
@@ -30,6 +31,7 @@ braid/diorite
 braid/end_stone
 braid/glowstone
 braid/granite
+braid/ice
 braid/jungle_planks
 braid/oak_planks
 braid/prismarine
@@ -45,6 +47,7 @@ brick/iron_block
 bricks/dirt
 bricks2/dirt
 bricks3/dirt
+bubble/glass
 cart/gold_block
 cells/diamond_block
 cells/emerald_block
@@ -55,6 +58,7 @@ chaotic_bricks/cobblestone
 chaotic_bricks/diorite
 chaotic_bricks/end_stone
 chaotic_bricks/granite
+chaotic_bricks/ice
 chaotic_bricks/prismarine
 chaotic_bricks/purpur
 chaotic_bricks/quartz
@@ -69,6 +73,7 @@ chaotic_medium/diorite
 chaotic_medium/end_stone
 chaotic_medium/glowstone
 chaotic_medium/granite
+chaotic_medium/ice
 chaotic_medium/prismarine
 chaotic_medium/purpur
 chaotic_medium/quartz
@@ -84,6 +89,7 @@ chaotic_small/diorite
 chaotic_small/end_stone
 chaotic_small/glowstone
 chaotic_small/granite
+chaotic_small/ice
 chaotic_small/prismarine
 chaotic_small/purpur
 chaotic_small/quartz
@@ -91,6 +97,9 @@ chaotic_small/red_sandstone
 chaotic_small/redstone_block
 chaotic_small/sandstone
 chaotic_small/stone
+chinese/glass
+chinese2/glass
+chrono/glass
 chunky/dirt
 chunky/emerald_block
 chunky/lapis_block
@@ -103,6 +112,7 @@ circular/emerald_block
 circular/end_stone
 circular/glowstone
 circular/granite
+circular/ice
 circular/prismarine
 circular/purpur
 circular/quartz
@@ -123,6 +133,7 @@ cracked/diorite
 cracked/end_stone
 cracked/glowstone
 cracked/granite
+cracked/ice
 cracked/prismarine
 cracked/purpur
 cracked/quartz
@@ -138,6 +149,7 @@ cracked_bricks/diorite
 cracked_bricks/end_stone
 cracked_bricks/glowstone
 cracked_bricks/granite
+cracked_bricks/ice
 cracked_bricks/prismarine
 cracked_bricks/purpur
 cracked_bricks/quartz
@@ -178,6 +190,7 @@ cut/cobblestone
 cut/diorite
 cut/end_stone
 cut/granite
+cut/ice
 cut/prismarine
 cut/purpur
 cut/quartz
@@ -192,6 +205,7 @@ dent/diorite
 dent/end_stone
 dent/glowstone
 dent/granite
+dent/ice
 dent/prismarine
 dent/purpur
 dent/quartz
@@ -199,6 +213,7 @@ dent/red_sandstone
 dent/redstone_block
 dent/sandstone
 dent/stone
+dungeon/glass
 embossed/diamond_block
 encased/acacia_planks
 encased/birch_planks
@@ -215,6 +230,7 @@ encased_bricks/diorite
 encased_bricks/end_stone
 encased_bricks/glowstone
 encased_bricks/granite
+encased_bricks/ice
 encased_bricks/prismarine
 encased_bricks/purpur
 encased_bricks/quartz
@@ -248,6 +264,7 @@ french/diorite
 french/end_stone
 french/glowstone
 french/granite
+french/ice
 french/prismarine
 french/purpur
 french/quartz
@@ -262,6 +279,9 @@ glyphs/sandstone
 goldborder/emerald_block
 happy/dirt
 horizontal/dirt
+ironfencemodern/glass
+japanese/glass
+japanese2/glass
 jellybean/andesite
 jellybean/bricks
 jellybean/coal_block
@@ -270,6 +290,7 @@ jellybean/diorite
 jellybean/end_stone
 jellybean/glowstone
 jellybean/granite
+jellybean/ice
 jellybean/prismarine
 jellybean/purpur
 jellybean/quartz
@@ -293,6 +314,7 @@ large_tile/diorite
 large_tile/end_stone
 large_tile/glowstone
 large_tile/granite
+large_tile/ice
 large_tile/lapis_block
 large_tile/prismarine
 large_tile/purpur
@@ -313,6 +335,7 @@ layer/dirt
 layer/end_stone
 layer/glowstone
 layer/granite
+layer/ice
 layer/prismarine
 layer/purpur
 layer/quartz
@@ -320,6 +343,7 @@ layer/red_sandstone
 layer/redstone_block
 layer/sandstone
 layer/stone
+light/glass
 log_bordered/acacia_planks
 log_bordered/birch_planks
 log_bordered/crimson_planks
@@ -340,6 +364,7 @@ mosaic/diorite
 mosaic/end_stone
 mosaic/glowstone
 mosaic/granite
+mosaic/ice
 mosaic/nether_brick
 mosaic/prismarine
 mosaic/purpur
@@ -350,6 +375,7 @@ mosaic/sandstone
 mosaic/stone
 neon/glowstone
 neon_panel/glowstone
+noborder/glass
 ornate/andesite
 ornate/bricks
 ornate/coal_block
@@ -359,6 +385,7 @@ ornate/emerald_block
 ornate/end_stone
 ornate/glowstone
 ornate/granite
+ornate/ice
 ornate/lapis_block
 ornate/prismarine
 ornate/purpur
@@ -369,6 +396,8 @@ ornate/sandstone
 ornate/stone
 ornatelayer/diamond_block
 ornatelayer/lapis_block
+ornatesteel/glass
+ornatesteel_old/glass
 panel/andesite
 panel/bricks
 panel/coal_block
@@ -379,6 +408,7 @@ panel/emerald_block
 panel/end_stone
 panel/glowstone
 panel/granite
+panel/ice
 panel/lapis_block
 panel/prismarine
 panel/purpur
@@ -406,6 +436,7 @@ pillar/diorite
 pillar/end_stone
 pillar/glowstone
 pillar/granite
+pillar/ice
 pillar/nether_brick
 pillar/prismarine
 pillar/purpur
@@ -426,6 +457,7 @@ prism/emerald_block
 prism/end_stone
 prism/glowstone
 prism/granite
+prism/ice
 prism/prismarine
 prism/purpur
 prism/quartz
@@ -440,6 +472,7 @@ raw/cobblestone
 raw/diorite
 raw/end_stone
 raw/granite
+raw/ice
 raw/prismarine
 raw/purpur
 raw/quartz
@@ -458,6 +491,7 @@ road/diorite
 road/end_stone
 road/glowstone
 road/granite
+road/ice
 road/prismarine
 road/purpur
 road/quartz
@@ -465,6 +499,8 @@ road/red_sandstone
 road/redstone_block
 road/sandstone
 road/stone
+screen/glass
+shale/glass
 shipping_crate/acacia_planks
 shipping_crate/birch_planks
 shipping_crate/crimson_planks
@@ -484,6 +520,7 @@ slant/diorite
 slant/end_stone
 slant/glowstone
 slant/granite
+slant/ice
 slant/nether_brick
 slant/prismarine
 slant/purpur
@@ -502,6 +539,7 @@ small_bricks/diorite
 small_bricks/end_stone
 small_bricks/glowstone
 small_bricks/granite
+small_bricks/ice
 small_bricks/prismarine
 small_bricks/purpur
 small_bricks/quartz
@@ -528,6 +566,7 @@ soft_bricks/diorite
 soft_bricks/end_stone
 soft_bricks/glowstone
 soft_bricks/granite
+soft_bricks/ice
 soft_bricks/prismarine
 soft_bricks/purpur
 soft_bricks/quartz
@@ -543,6 +582,7 @@ solid_bricks/diorite
 solid_bricks/end_stone
 solid_bricks/glowstone
 solid_bricks/granite
+solid_bricks/ice
 solid_bricks/prismarine
 solid_bricks/purpur
 solid_bricks/quartz
@@ -564,7 +604,12 @@ stacked/jungle_planks
 stacked/oak_planks
 stacked/spruce_planks
 star/gold_block
+steelframe/glass
+stone/glass
+streak/glass
 sunken/stone
+thick/glass
+thin/glass
 tiles_medium/andesite
 tiles_medium/bricks
 tiles_medium/coal_block
@@ -573,6 +618,7 @@ tiles_medium/diorite
 tiles_medium/end_stone
 tiles_medium/glowstone
 tiles_medium/granite
+tiles_medium/ice
 tiles_medium/prismarine
 tiles_medium/purpur
 tiles_medium/quartz
@@ -589,6 +635,7 @@ tiles_small/diorite
 tiles_small/end_stone
 tiles_small/glowstone
 tiles_small/granite
+tiles_small/ice
 tiles_small/prismarine
 tiles_small/purpur
 tiles_small/quartz
@@ -604,6 +651,7 @@ triple_bricks/diorite
 triple_bricks/end_stone
 triple_bricks/glowstone
 triple_bricks/granite
+triple_bricks/ice
 triple_bricks/prismarine
 triple_bricks/purpur
 triple_bricks/quartz
@@ -619,6 +667,7 @@ twist/diorite
 twist/end_stone
 twist/glowstone
 twist/granite
+twist/ice
 twist/prismarine
 twist/purpur
 twist/quartz
@@ -642,6 +691,7 @@ weaver/cobblestone
 weaver/diorite
 weaver/end_stone
 weaver/granite
+weaver/ice
 weaver/prismarine
 weaver/purpur
 weaver/quartz
@@ -655,6 +705,7 @@ zag/cobblestone
 zag/diorite
 zag/end_stone
 zag/granite
+zag/ice
 zag/prismarine
 zag/purpur
 zag/quartz

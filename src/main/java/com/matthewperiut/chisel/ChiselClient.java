@@ -1,5 +1,6 @@
 package com.matthewperiut.chisel;
 
+import com.matthewperiut.chisel.block.GeneratedClientRegister;
 import com.matthewperiut.chisel.gui.ChiselScreen;
 import com.matthewperiut.chisel.gui.ChiselScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
@@ -16,5 +17,6 @@ public class ChiselClient implements ClientModInitializer
     public void onInitializeClient()
     {
         ScreenRegistry.register(CHISEL_SCREEN_HANDLER, ChiselScreen::new);
+        GeneratedClientRegister.Register();
     }
 }

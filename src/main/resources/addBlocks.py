@@ -152,6 +152,13 @@ def write_loot_table(full_name):
         write_glowstone_loot_table(full_name)
         return
 
+    if "ice" in full_name or "glass" in full_name:
+        write_file_replace_full_name(full_name,"data/chisel/loot_tables/blocks/template/ice.txt","data/chisel/loot_tables/blocks/" + full_name + ".json")
+        return
+
+    if "glass" in full_name:
+        return
+
     f = open_file(file_name)
 
     loot_table =\
