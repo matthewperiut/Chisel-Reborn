@@ -25,6 +25,8 @@ public class Chisel implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
+		com.matthewperiut.chisel.legacy.Chisel.onInitialize();
+
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "chisel"), ITEM_CHISEL);
 
 		BlockRegister.Register();

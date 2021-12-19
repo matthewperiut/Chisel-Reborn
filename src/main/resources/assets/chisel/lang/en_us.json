@@ -1367,4 +1367,6 @@
 "gui.chisel.chisel":"Chisel",
 "item.chisel.chisel":"Chisel",
 "itemGroup.chisel.chisel":"Chisel Blocks",
-"rei.chisel.category":"Chisel Recipes"}
+"rei.chisel.category":"Chisel Recipes",
+"chisel.deprecated": "Deprecated Do Not Use"
+}
