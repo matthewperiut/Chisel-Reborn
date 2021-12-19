@@ -21,11 +21,17 @@ cracked
 cracked_bricks
 crate_dark
 crate_light
+crude_horizontal
+crude_paneling
+crude_vertical
 crushed
 cut
 dent
 embossed
+encased
 encased_bricks
+encased_large
+encased_smooth
 four
 fourornate
 french
@@ -36,12 +42,14 @@ goldborder
 happy
 horizontal
 jellybean
+large
 large_bricks
 large_tile
 large_tile_bismuth
 largeingot
 largeornate
 layer
+log_bordered
 masonry
 moon
 mosaic
@@ -51,6 +59,7 @@ ornate
 ornatelayer
 panel
 panelclassic
+paneling
 pillar
 plates
 poison
@@ -60,6 +69,7 @@ reinforced
 reinforcedcobble
 rivets
 road
+shipping_crate
 simple
 slant
 small
@@ -70,6 +80,7 @@ soft_bricks
 solid_bricks
 space
 spaceblack
+stacked
 star
 sunken
 tiles_medium

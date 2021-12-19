@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chisel:block/crude_vertical/acacia_planks"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chisel:block/shipping_crate/crimson_planks"
+  }
+}

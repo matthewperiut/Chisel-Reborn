@@ -160,7 +160,7 @@ def convert(name, reverse = False):
     return name
 
 def block_creation():
-    block_list = [input("Full Block Name\n e.g.: pillar/stone\nyours: ")]
+    block_list = [input("Full Block Name\n e.g.: pillar/stone\nyours: ").replace('\\','/')]
     block_list[0] = convert(block_list[0])
     add_blocks_from_list(block_list)
     create_regular_texture(block_list[0])

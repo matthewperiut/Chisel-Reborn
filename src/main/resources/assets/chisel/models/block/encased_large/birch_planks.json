@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chisel:block/encased_large/birch_planks"
+  }
+}

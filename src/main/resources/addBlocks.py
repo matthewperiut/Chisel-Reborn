@@ -246,9 +246,16 @@ def refresh_names():
             full_names.remove(name)
 
     for a in mine_axe:
-        full_names.remove(a)
-    for s in mine_shovel:
-        full_names.remove(s)
+        for name in full_names:
+            if a == name:
+                full_names.remove(a)
+                break
+
+    for a in mine_shovel:
+        for name in full_names:
+            if a == name:
+                full_names.remove(a)
+                break
 
     mine_axe.sort()
     mine_axe = [i for n, i in enumerate(mine_axe) if i not in mine_axe[:n]]

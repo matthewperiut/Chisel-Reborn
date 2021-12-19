@@ -58,6 +58,48 @@ public class VanillaChisel
             },
             {
                 "dirt"
+            },
+            {
+                "emerald_block"
+            },
+            {
+                "gold_block"
+            },
+            {
+                "diamond_block"
+            },
+            {
+                "iron_block"
+            },
+            {
+                "lapis_block"
+            },
+            {
+                "redstone_block"
+            },
+            {
+                "prismarine"
+            },
+            {
+                "acacia_planks"
+            },
+            {
+                "birch_planks"
+            },
+            {
+                "crimson_planks"
+            },
+            {
+                "dark_oak_planks"
+            },
+            {
+                "jungle_planks"
+            },
+            {
+                "spruce_planks"
+            },
+            {
+                "oak_planks"
             }
     };
 
