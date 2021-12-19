@@ -236,9 +236,11 @@ def refresh_names():
 
     wood = ["plank","log","wooden","crafting","bookshelf","pumpkin","jack","note","bee"]
     soft = ["dirt","clay","farmland","sand","soul","soil","snow","powder","mycelium","gravel"]
+    shear = ["wool", "leave"]
 
     mine_axe = []
     mine_shovel = []
+    mine_shears = []
 
     for name in full_names:
         for w in wood:
@@ -249,6 +251,9 @@ def refresh_names():
             if s in name:
                 if not "stone" in name:
                     mine_shovel.append(name)
+        for s in shear:
+            if s in name:
+                mine_shears.append(name)
         if "glow" in name:
             full_names.remove(name)
 
@@ -259,6 +264,12 @@ def refresh_names():
                 break
 
     for a in mine_shovel:
+        for name in full_names:
+            if a == name:
+                full_names.remove(a)
+                break
+
+    for a in mine_shears:
         for name in full_names:
             if a == name:
                 full_names.remove(a)

@@ -57,7 +57,9 @@ large_tile_bismuth
 largeingot
 largeornate
 layer
+legacy
 light
+llama
 log_bordered
 masonry
 moon

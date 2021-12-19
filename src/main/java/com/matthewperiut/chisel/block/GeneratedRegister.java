@@ -69,7 +69,11 @@ public class GeneratedRegister
    public static final Block SMOOTH_BIRCH_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS));
    public static final Block STACKED_BIRCH_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS));
    public static final Block VERTICAL_BIRCH_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS));
+   public static final Block LEGACY_BLACK_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL));
+   public static final Block LLAMA_BLACK_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL));
    public static final PillarBlock PILLAR_BLACKSTONE = new PillarBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE));
+   public static final Block LEGACY_BLUE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_WOOL));
+   public static final Block LLAMA_BLUE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_WOOL));
    public static final Block ARRAY_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
    public static final Block BRAID_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
    public static final Block CHAOTIC_BRICKS_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
@@ -102,6 +106,8 @@ public class GeneratedRegister
    public static final PillarBlock TWIST_BRICKS = new PillarBlock(FabricBlockSettings.copyOf(Blocks.BRICKS));
    public static final Block WEAVER_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
    public static final Block ZAG_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BRICKS));
+   public static final Block LEGACY_BROWN_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.BROWN_WOOL));
+   public static final Block LLAMA_BROWN_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.BROWN_WOOL));
    public static final Block ARRAY_COAL_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK));
    public static final Block BRAID_COAL_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK));
    public static final Block CHAOTIC_BRICKS_COAL_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK));
@@ -181,6 +187,8 @@ public class GeneratedRegister
    public static final Block SMOOTH_CRIMSON_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS));
    public static final Block STACKED_CRIMSON_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS));
    public static final Block VERTICAL_CRIMSON_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS));
+   public static final Block LEGACY_CYAN_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.CYAN_WOOL));
+   public static final Block LLAMA_CYAN_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.CYAN_WOOL));
    public static final Block BRAID_DARK_OAK_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS));
    public static final Block CRUDE_HORIZONTAL_DARK_OAK_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS));
    public static final Block CRUDE_PANELING_DARK_OAK_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS));
@@ -397,6 +405,10 @@ public class GeneratedRegister
    public static final PillarBlock TWIST_GRANITE = new PillarBlock(FabricBlockSettings.copyOf(Blocks.GRANITE));
    public static final Block WEAVER_GRANITE = new Block(FabricBlockSettings.copyOf(Blocks.GRANITE));
    public static final Block ZAG_GRANITE = new Block(FabricBlockSettings.copyOf(Blocks.GRANITE));
+   public static final Block LEGACY_GRAY_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.GRAY_WOOL));
+   public static final Block LLAMA_GRAY_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.GRAY_WOOL));
+   public static final Block LEGACY_GREEN_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.GREEN_WOOL));
+   public static final Block LLAMA_GREEN_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.GREEN_WOOL));
    public static final IceBlock ARRAY_ICE = new IceBlock(FabricBlockSettings.copyOf(Blocks.ICE));
    public static final IceBlock BRAID_ICE = new IceBlock(FabricBlockSettings.copyOf(Blocks.ICE));
    public static final IceBlock CHAOTIC_BRICKS_ICE = new IceBlock(FabricBlockSettings.copyOf(Blocks.ICE));
@@ -467,6 +479,14 @@ public class GeneratedRegister
    public static final Block PANELCLASSIC_LAPIS_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_BLOCK));
    public static final Block SMOOTH_LAPIS_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_BLOCK));
    public static final Block ZELDA_LAPIS_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_BLOCK));
+   public static final Block LEGACY_LIGHT_BLUE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_WOOL));
+   public static final Block LLAMA_LIGHT_BLUE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_WOOL));
+   public static final Block LEGACY_LIGHT_GRAY_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_WOOL));
+   public static final Block LLAMA_LIGHT_GRAY_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_WOOL));
+   public static final Block LEGACY_LIME_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.LIME_WOOL));
+   public static final Block LLAMA_LIME_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.LIME_WOOL));
+   public static final Block LEGACY_MAGENTA_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.MAGENTA_WOOL));
+   public static final Block LLAMA_MAGENTA_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.MAGENTA_WOOL));
    public static final Block MOSAIC_NETHER_BRICK = new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS));
    public static final PillarBlock PILLAR_NETHER_BRICK = new PillarBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS));
    public static final Block SLANT_NETHER_BRICK = new Block(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS));
@@ -484,6 +504,10 @@ public class GeneratedRegister
    public static final Block SMOOTH_OAK_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
    public static final Block STACKED_OAK_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
    public static final Block VERTICAL_OAK_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS));
+   public static final Block LEGACY_ORANGE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.ORANGE_WOOL));
+   public static final Block LLAMA_ORANGE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.ORANGE_WOOL));
+   public static final Block LEGACY_PINK_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.PINK_WOOL));
+   public static final Block LLAMA_PINK_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.PINK_WOOL));
    public static final Block ARRAY_PRISMARINE = new Block(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
    public static final Block BRAID_PRISMARINE = new Block(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
    public static final Block CHAOTIC_BRICKS_PRISMARINE = new Block(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
@@ -516,6 +540,8 @@ public class GeneratedRegister
    public static final PillarBlock TWIST_PRISMARINE = new PillarBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
    public static final Block WEAVER_PRISMARINE = new Block(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
    public static final Block ZAG_PRISMARINE = new Block(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
+   public static final Block LEGACY_PURPLE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.PURPLE_WOOL));
+   public static final Block LLAMA_PURPLE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.PURPLE_WOOL));
    public static final Block ARRAY_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
    public static final Block BRAID_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
    public static final Block CHAOTIC_BRICKS_PURPUR = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
@@ -615,6 +641,8 @@ public class GeneratedRegister
    public static final PillarBlock TWIST_RED_SANDSTONE = new PillarBlock(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE));
    public static final Block WEAVER_RED_SANDSTONE = new Block(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE));
    public static final Block ZAG_RED_SANDSTONE = new Block(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE));
+   public static final Block LEGACY_RED_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.RED_WOOL));
+   public static final Block LLAMA_RED_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.RED_WOOL));
    public static final RedstoneBlock ARRAY_REDSTONE_BLOCK = new RedstoneBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_BLOCK));
    public static final RedstoneBlock BRAID_REDSTONE_BLOCK = new RedstoneBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_BLOCK));
    public static final RedstoneBlock CHAOTIC_MEDIUM_REDSTONE_BLOCK = new RedstoneBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_BLOCK));
@@ -726,6 +754,10 @@ public class GeneratedRegister
    public static final PillarBlock TWIST_STONE = new PillarBlock(FabricBlockSettings.copyOf(Blocks.STONE));
    public static final Block WEAVER_STONE = new Block(FabricBlockSettings.copyOf(Blocks.STONE));
    public static final Block ZAG_STONE = new Block(FabricBlockSettings.copyOf(Blocks.STONE));
+   public static final Block LEGACY_WHITE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL));
+   public static final Block LLAMA_WHITE_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL));
+   public static final Block LEGACY_YELLOW_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.YELLOW_WOOL));
+   public static final Block LLAMA_YELLOW_WOOL = new Block(FabricBlockSettings.copyOf(Blocks.YELLOW_WOOL));
 
     public static void Register()
     {
@@ -789,7 +821,11 @@ public class GeneratedRegister
         Reg("birch_planks", "smooth/birch_planks", SMOOTH_BIRCH_PLANKS);
         Reg("birch_planks", "stacked/birch_planks", STACKED_BIRCH_PLANKS);
         Reg("birch_planks", "vertical/birch_planks", VERTICAL_BIRCH_PLANKS);
+        Reg("black_wool", "legacy/black_wool", LEGACY_BLACK_WOOL);
+        Reg("black_wool", "llama/black_wool", LLAMA_BLACK_WOOL);
         Reg("blackstone", "pillar/blackstone", PILLAR_BLACKSTONE);
+        Reg("blue_wool", "legacy/blue_wool", LEGACY_BLUE_WOOL);
+        Reg("blue_wool", "llama/blue_wool", LLAMA_BLUE_WOOL);
         Reg("bricks", "array/bricks", ARRAY_BRICKS);
         Reg("bricks", "braid/bricks", BRAID_BRICKS);
         Reg("bricks", "chaotic_bricks/bricks", CHAOTIC_BRICKS_BRICKS);
@@ -822,6 +858,8 @@ public class GeneratedRegister
         Reg("bricks", "twist/bricks", TWIST_BRICKS);
         Reg("bricks", "weaver/bricks", WEAVER_BRICKS);
         Reg("bricks", "zag/bricks", ZAG_BRICKS);
+        Reg("brown_wool", "legacy/brown_wool", LEGACY_BROWN_WOOL);
+        Reg("brown_wool", "llama/brown_wool", LLAMA_BROWN_WOOL);
         Reg("coal_block", "array/coal_block", ARRAY_COAL_BLOCK);
         Reg("coal_block", "braid/coal_block", BRAID_COAL_BLOCK);
         Reg("coal_block", "chaotic_bricks/coal_block", CHAOTIC_BRICKS_COAL_BLOCK);
@@ -901,6 +939,8 @@ public class GeneratedRegister
         Reg("crimson_planks", "smooth/crimson_planks", SMOOTH_CRIMSON_PLANKS);
         Reg("crimson_planks", "stacked/crimson_planks", STACKED_CRIMSON_PLANKS);
         Reg("crimson_planks", "vertical/crimson_planks", VERTICAL_CRIMSON_PLANKS);
+        Reg("cyan_wool", "legacy/cyan_wool", LEGACY_CYAN_WOOL);
+        Reg("cyan_wool", "llama/cyan_wool", LLAMA_CYAN_WOOL);
         Reg("dark_oak_planks", "braid/dark_oak_planks", BRAID_DARK_OAK_PLANKS);
         Reg("dark_oak_planks", "crude_horizontal/dark_oak_planks", CRUDE_HORIZONTAL_DARK_OAK_PLANKS);
         Reg("dark_oak_planks", "crude_paneling/dark_oak_planks", CRUDE_PANELING_DARK_OAK_PLANKS);
@@ -1117,6 +1157,10 @@ public class GeneratedRegister
         Reg("granite", "twist/granite", TWIST_GRANITE);
         Reg("granite", "weaver/granite", WEAVER_GRANITE);
         Reg("granite", "zag/granite", ZAG_GRANITE);
+        Reg("gray_wool", "legacy/gray_wool", LEGACY_GRAY_WOOL);
+        Reg("gray_wool", "llama/gray_wool", LLAMA_GRAY_WOOL);
+        Reg("green_wool", "legacy/green_wool", LEGACY_GREEN_WOOL);
+        Reg("green_wool", "llama/green_wool", LLAMA_GREEN_WOOL);
         Reg("ice", "array/ice", ARRAY_ICE);
         Reg("ice", "braid/ice", BRAID_ICE);
         Reg("ice", "chaotic_bricks/ice", CHAOTIC_BRICKS_ICE);
@@ -1187,6 +1231,14 @@ public class GeneratedRegister
         Reg("lapis_block", "panelclassic/lapis_block", PANELCLASSIC_LAPIS_BLOCK);
         Reg("lapis_block", "smooth/lapis_block", SMOOTH_LAPIS_BLOCK);
         Reg("lapis_block", "zelda/lapis_block", ZELDA_LAPIS_BLOCK);
+        Reg("light_blue_wool", "legacy/light_blue_wool", LEGACY_LIGHT_BLUE_WOOL);
+        Reg("light_blue_wool", "llama/light_blue_wool", LLAMA_LIGHT_BLUE_WOOL);
+        Reg("light_gray_wool", "legacy/light_gray_wool", LEGACY_LIGHT_GRAY_WOOL);
+        Reg("light_gray_wool", "llama/light_gray_wool", LLAMA_LIGHT_GRAY_WOOL);
+        Reg("lime_wool", "legacy/lime_wool", LEGACY_LIME_WOOL);
+        Reg("lime_wool", "llama/lime_wool", LLAMA_LIME_WOOL);
+        Reg("magenta_wool", "legacy/magenta_wool", LEGACY_MAGENTA_WOOL);
+        Reg("magenta_wool", "llama/magenta_wool", LLAMA_MAGENTA_WOOL);
         Reg("nether_brick", "mosaic/nether_brick", MOSAIC_NETHER_BRICK);
         Reg("nether_brick", "pillar/nether_brick", PILLAR_NETHER_BRICK);
         Reg("nether_brick", "slant/nether_brick", SLANT_NETHER_BRICK);
@@ -1204,6 +1256,10 @@ public class GeneratedRegister
         Reg("oak_planks", "smooth/oak_planks", SMOOTH_OAK_PLANKS);
         Reg("oak_planks", "stacked/oak_planks", STACKED_OAK_PLANKS);
         Reg("oak_planks", "vertical/oak_planks", VERTICAL_OAK_PLANKS);
+        Reg("orange_wool", "legacy/orange_wool", LEGACY_ORANGE_WOOL);
+        Reg("orange_wool", "llama/orange_wool", LLAMA_ORANGE_WOOL);
+        Reg("pink_wool", "legacy/pink_wool", LEGACY_PINK_WOOL);
+        Reg("pink_wool", "llama/pink_wool", LLAMA_PINK_WOOL);
         Reg("prismarine", "array/prismarine", ARRAY_PRISMARINE);
         Reg("prismarine", "braid/prismarine", BRAID_PRISMARINE);
         Reg("prismarine", "chaotic_bricks/prismarine", CHAOTIC_BRICKS_PRISMARINE);
@@ -1236,6 +1292,8 @@ public class GeneratedRegister
         Reg("prismarine", "twist/prismarine", TWIST_PRISMARINE);
         Reg("prismarine", "weaver/prismarine", WEAVER_PRISMARINE);
         Reg("prismarine", "zag/prismarine", ZAG_PRISMARINE);
+        Reg("purple_wool", "legacy/purple_wool", LEGACY_PURPLE_WOOL);
+        Reg("purple_wool", "llama/purple_wool", LLAMA_PURPLE_WOOL);
         Reg("purpur", "array/purpur", ARRAY_PURPUR);
         Reg("purpur", "braid/purpur", BRAID_PURPUR);
         Reg("purpur", "chaotic_bricks/purpur", CHAOTIC_BRICKS_PURPUR);
@@ -1335,6 +1393,8 @@ public class GeneratedRegister
         Reg("red_sandstone", "twist/red_sandstone", TWIST_RED_SANDSTONE);
         Reg("red_sandstone", "weaver/red_sandstone", WEAVER_RED_SANDSTONE);
         Reg("red_sandstone", "zag/red_sandstone", ZAG_RED_SANDSTONE);
+        Reg("red_wool", "legacy/red_wool", LEGACY_RED_WOOL);
+        Reg("red_wool", "llama/red_wool", LLAMA_RED_WOOL);
         Reg("redstone_block", "array/redstone_block", ARRAY_REDSTONE_BLOCK);
         Reg("redstone_block", "braid/redstone_block", BRAID_REDSTONE_BLOCK);
         Reg("redstone_block", "chaotic_medium/redstone_block", CHAOTIC_MEDIUM_REDSTONE_BLOCK);
@@ -1446,5 +1506,9 @@ public class GeneratedRegister
         Reg("stone", "twist/stone", TWIST_STONE);
         Reg("stone", "weaver/stone", WEAVER_STONE);
         Reg("stone", "zag/stone", ZAG_STONE);
+        Reg("white_wool", "legacy/white_wool", LEGACY_WHITE_WOOL);
+        Reg("white_wool", "llama/white_wool", LLAMA_WHITE_WOOL);
+        Reg("yellow_wool", "legacy/yellow_wool", LEGACY_YELLOW_WOOL);
+        Reg("yellow_wool", "llama/yellow_wool", LLAMA_YELLOW_WOOL);
     }
 }
