@@ -15,6 +15,7 @@ granite
 iron_block
 lapis_block
 nether_brick
+prismarine
 purpur
 quartz
 red_sandstone

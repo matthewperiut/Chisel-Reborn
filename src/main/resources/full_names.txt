@@ -6,6 +6,7 @@ array/diorite
 array/end_stone
 array/glowstone
 array/granite
+array/prismarine
 array/purpur
 array/quartz
 array/red_sandstone
@@ -25,6 +26,7 @@ braid/diorite
 braid/end_stone
 braid/glowstone
 braid/granite
+braid/prismarine
 braid/purpur
 braid/quartz
 braid/red_sandstone
@@ -46,6 +48,7 @@ chaotic_bricks/cobblestone
 chaotic_bricks/diorite
 chaotic_bricks/end_stone
 chaotic_bricks/granite
+chaotic_bricks/prismarine
 chaotic_bricks/purpur
 chaotic_bricks/quartz
 chaotic_bricks/red_sandstone
@@ -59,6 +62,7 @@ chaotic_medium/diorite
 chaotic_medium/end_stone
 chaotic_medium/glowstone
 chaotic_medium/granite
+chaotic_medium/prismarine
 chaotic_medium/purpur
 chaotic_medium/quartz
 chaotic_medium/red_sandstone
@@ -73,6 +77,7 @@ chaotic_small/diorite
 chaotic_small/end_stone
 chaotic_small/glowstone
 chaotic_small/granite
+chaotic_small/prismarine
 chaotic_small/purpur
 chaotic_small/quartz
 chaotic_small/red_sandstone
@@ -91,6 +96,7 @@ circular/emerald_block
 circular/end_stone
 circular/glowstone
 circular/granite
+circular/prismarine
 circular/purpur
 circular/quartz
 circular/red_sandstone
@@ -110,6 +116,7 @@ cracked/diorite
 cracked/end_stone
 cracked/glowstone
 cracked/granite
+cracked/prismarine
 cracked/purpur
 cracked/quartz
 cracked/red_sandstone
@@ -124,6 +131,7 @@ cracked_bricks/diorite
 cracked_bricks/end_stone
 cracked_bricks/glowstone
 cracked_bricks/granite
+cracked_bricks/prismarine
 cracked_bricks/purpur
 cracked_bricks/quartz
 cracked_bricks/red_sandstone
@@ -142,6 +150,7 @@ cut/cobblestone
 cut/diorite
 cut/end_stone
 cut/granite
+cut/prismarine
 cut/purpur
 cut/quartz
 cut/red_sandstone
@@ -155,6 +164,7 @@ dent/diorite
 dent/end_stone
 dent/glowstone
 dent/granite
+dent/prismarine
 dent/purpur
 dent/quartz
 dent/red_sandstone
@@ -170,6 +180,7 @@ encased_bricks/diorite
 encased_bricks/end_stone
 encased_bricks/glowstone
 encased_bricks/granite
+encased_bricks/prismarine
 encased_bricks/purpur
 encased_bricks/quartz
 encased_bricks/red_sandstone
@@ -188,6 +199,7 @@ french/diorite
 french/end_stone
 french/glowstone
 french/granite
+french/prismarine
 french/purpur
 french/quartz
 french/red_sandstone
@@ -209,6 +221,7 @@ jellybean/diorite
 jellybean/end_stone
 jellybean/glowstone
 jellybean/granite
+jellybean/prismarine
 jellybean/purpur
 jellybean/quartz
 jellybean/red_sandstone
@@ -225,6 +238,7 @@ large_tile/end_stone
 large_tile/glowstone
 large_tile/granite
 large_tile/lapis_block
+large_tile/prismarine
 large_tile/purpur
 large_tile/quartz
 large_tile/red_sandstone
@@ -243,6 +257,7 @@ layer/dirt
 layer/end_stone
 layer/glowstone
 layer/granite
+layer/prismarine
 layer/purpur
 layer/quartz
 layer/red_sandstone
@@ -263,6 +278,7 @@ mosaic/end_stone
 mosaic/glowstone
 mosaic/granite
 mosaic/nether_brick
+mosaic/prismarine
 mosaic/purpur
 mosaic/quartz
 mosaic/red_sandstone
@@ -281,6 +297,7 @@ ornate/end_stone
 ornate/glowstone
 ornate/granite
 ornate/lapis_block
+ornate/prismarine
 ornate/purpur
 ornate/quartz
 ornate/red_sandstone
@@ -300,6 +317,7 @@ panel/end_stone
 panel/glowstone
 panel/granite
 panel/lapis_block
+panel/prismarine
 panel/purpur
 panel/quartz
 panel/red_sandstone
@@ -319,6 +337,7 @@ pillar/end_stone
 pillar/glowstone
 pillar/granite
 pillar/nether_brick
+pillar/prismarine
 pillar/purpur
 pillar/quartz
 pillar/red_sandstone
@@ -337,6 +356,7 @@ prism/emerald_block
 prism/end_stone
 prism/glowstone
 prism/granite
+prism/prismarine
 prism/purpur
 prism/quartz
 prism/red_sandstone
@@ -350,6 +370,7 @@ raw/cobblestone
 raw/diorite
 raw/end_stone
 raw/granite
+raw/prismarine
 raw/purpur
 raw/quartz
 raw/red_sandstone
@@ -367,6 +388,7 @@ road/diorite
 road/end_stone
 road/glowstone
 road/granite
+road/prismarine
 road/purpur
 road/quartz
 road/red_sandstone
@@ -386,6 +408,7 @@ slant/end_stone
 slant/glowstone
 slant/granite
 slant/nether_brick
+slant/prismarine
 slant/purpur
 slant/quartz
 slant/red_sandstone
@@ -402,6 +425,7 @@ small_bricks/diorite
 small_bricks/end_stone
 small_bricks/glowstone
 small_bricks/granite
+small_bricks/prismarine
 small_bricks/purpur
 small_bricks/quartz
 small_bricks/red_sandstone
@@ -420,6 +444,7 @@ soft_bricks/diorite
 soft_bricks/end_stone
 soft_bricks/glowstone
 soft_bricks/granite
+soft_bricks/prismarine
 soft_bricks/purpur
 soft_bricks/quartz
 soft_bricks/red_sandstone
@@ -434,6 +459,7 @@ solid_bricks/diorite
 solid_bricks/end_stone
 solid_bricks/glowstone
 solid_bricks/granite
+solid_bricks/prismarine
 solid_bricks/purpur
 solid_bricks/quartz
 solid_bricks/red_sandstone
@@ -456,6 +482,7 @@ tiles_medium/diorite
 tiles_medium/end_stone
 tiles_medium/glowstone
 tiles_medium/granite
+tiles_medium/prismarine
 tiles_medium/purpur
 tiles_medium/quartz
 tiles_medium/red_sandstone
@@ -471,6 +498,7 @@ tiles_small/diorite
 tiles_small/end_stone
 tiles_small/glowstone
 tiles_small/granite
+tiles_small/prismarine
 tiles_small/purpur
 tiles_small/quartz
 tiles_small/red_sandstone
@@ -485,6 +513,7 @@ triple_bricks/diorite
 triple_bricks/end_stone
 triple_bricks/glowstone
 triple_bricks/granite
+triple_bricks/prismarine
 triple_bricks/purpur
 triple_bricks/quartz
 triple_bricks/red_sandstone
@@ -499,6 +528,7 @@ twist/diorite
 twist/end_stone
 twist/glowstone
 twist/granite
+twist/prismarine
 twist/purpur
 twist/quartz
 twist/red_sandstone
@@ -514,6 +544,7 @@ weaver/cobblestone
 weaver/diorite
 weaver/end_stone
 weaver/granite
+weaver/prismarine
 weaver/purpur
 weaver/quartz
 weaver/red_sandstone
@@ -526,6 +557,7 @@ zag/cobblestone
 zag/diorite
 zag/end_stone
 zag/granite
+zag/prismarine
 zag/purpur
 zag/quartz
 zag/red_sandstone
