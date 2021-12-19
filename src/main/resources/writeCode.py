@@ -37,12 +37,18 @@ def write_generated_register(register_dir):
 
     full_names = sorted_full_names()
 
-    i = 12
+    i = 14
     for name in full_names:
         semi = name.split('/')
         inserted_line = "   public static final Block " + name.replace('/','_').upper() + " = new Block(FabricBlockSettings.copyOf(Blocks." + get_block_id(semi[1]) + "));"
+        pillar = False
         if "pillar" in name or "twist" in name:
             inserted_line = "   public static final PillarBlock " + name.replace('/','_').upper() + " = new PillarBlock(FabricBlockSettings.copyOf(Blocks." + get_block_id(semi[1]) + "));"
+            pillar = True
+            if "redstone" in name:
+                    inserted_line = "   public static final RedstonePillarBlock " + name.replace('/','_').upper() + " = new RedstonePillarBlock(FabricBlockSettings.copyOf(Blocks." + get_block_id(semi[1]) + "));"
+        if "redstone" in name and not pillar:
+            inserted_line = "   public static final RedstoneBlock " + name.replace('/','_').upper() + " = new RedstoneBlock(FabricBlockSettings.copyOf(Blocks." + get_block_id(semi[1]) + "));"
         lines.insert(i,inserted_line+'\n')
         i += 1
 

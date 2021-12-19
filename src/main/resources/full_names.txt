@@ -9,6 +9,7 @@ array/granite
 array/purpur
 array/quartz
 array/red_sandstone
+array/redstone_block
 array/sandstone
 array/stone
 bevel_creeper/sandstone
@@ -27,6 +28,7 @@ braid/granite
 braid/purpur
 braid/quartz
 braid/red_sandstone
+braid/redstone_block
 braid/sandstone
 braid/stone
 brick/gold_block
@@ -60,6 +62,7 @@ chaotic_medium/granite
 chaotic_medium/purpur
 chaotic_medium/quartz
 chaotic_medium/red_sandstone
+chaotic_medium/redstone_block
 chaotic_medium/sandstone
 chaotic_medium/stone
 chaotic_small/andesite
@@ -73,6 +76,7 @@ chaotic_small/granite
 chaotic_small/purpur
 chaotic_small/quartz
 chaotic_small/red_sandstone
+chaotic_small/redstone_block
 chaotic_small/sandstone
 chaotic_small/stone
 chunky/dirt
@@ -90,6 +94,7 @@ circular/granite
 circular/purpur
 circular/quartz
 circular/red_sandstone
+circular/redstone_block
 circular/sandstone
 circular/stone
 cobble/dirt
@@ -108,6 +113,7 @@ cracked/granite
 cracked/purpur
 cracked/quartz
 cracked/red_sandstone
+cracked/redstone_block
 cracked/sandstone
 cracked/stone
 cracked_bricks/andesite
@@ -121,6 +127,7 @@ cracked_bricks/granite
 cracked_bricks/purpur
 cracked_bricks/quartz
 cracked_bricks/red_sandstone
+cracked_bricks/redstone_block
 cracked_bricks/sandstone
 cracked_bricks/stone
 crate_dark/gold_block
@@ -151,6 +158,7 @@ dent/granite
 dent/purpur
 dent/quartz
 dent/red_sandstone
+dent/redstone_block
 dent/sandstone
 dent/stone
 embossed/diamond_block
@@ -165,6 +173,7 @@ encased_bricks/granite
 encased_bricks/purpur
 encased_bricks/quartz
 encased_bricks/red_sandstone
+encased_bricks/redstone_block
 encased_bricks/sandstone
 encased_bricks/stone
 four/diamond_block
@@ -182,6 +191,7 @@ french/granite
 french/purpur
 french/quartz
 french/red_sandstone
+french/redstone_block
 french/sandstone
 french/stone
 gears/iron_block
@@ -202,6 +212,7 @@ jellybean/granite
 jellybean/purpur
 jellybean/quartz
 jellybean/red_sandstone
+jellybean/redstone_block
 jellybean/sandstone
 jellybean/stone
 large_bricks/coal_block
@@ -217,6 +228,7 @@ large_tile/lapis_block
 large_tile/purpur
 large_tile/quartz
 large_tile/red_sandstone
+large_tile/redstone_block
 large_tile/sandstone
 large_tile/stone
 large_tile_bismuth/glowstone
@@ -234,6 +246,7 @@ layer/granite
 layer/purpur
 layer/quartz
 layer/red_sandstone
+layer/redstone_block
 layer/sandstone
 layer/stone
 masonry/coal_block
@@ -253,6 +266,7 @@ mosaic/nether_brick
 mosaic/purpur
 mosaic/quartz
 mosaic/red_sandstone
+mosaic/redstone_block
 mosaic/sandstone
 mosaic/stone
 neon/glowstone
@@ -270,6 +284,7 @@ ornate/lapis_block
 ornate/purpur
 ornate/quartz
 ornate/red_sandstone
+ornate/redstone_block
 ornate/sandstone
 ornate/stone
 ornatelayer/diamond_block
@@ -288,6 +303,7 @@ panel/lapis_block
 panel/purpur
 panel/quartz
 panel/red_sandstone
+panel/redstone_block
 panel/sandstone
 panel/stone
 panelclassic/emerald_block
@@ -306,6 +322,7 @@ pillar/nether_brick
 pillar/purpur
 pillar/quartz
 pillar/red_sandstone
+pillar/redstone_block
 pillar/sandstone
 pillar/stone
 plates/gold_block
@@ -323,6 +340,7 @@ prism/granite
 prism/purpur
 prism/quartz
 prism/red_sandstone
+prism/redstone_block
 prism/sandstone
 prism/stone
 raw/andesite
@@ -352,6 +370,7 @@ road/granite
 road/purpur
 road/quartz
 road/red_sandstone
+road/redstone_block
 road/sandstone
 road/stone
 simple/diamond_block
@@ -370,6 +389,7 @@ slant/nether_brick
 slant/purpur
 slant/quartz
 slant/red_sandstone
+slant/redstone_block
 slant/sandstone
 slant/stone
 small/red_sandstone
@@ -385,6 +405,7 @@ small_bricks/granite
 small_bricks/purpur
 small_bricks/quartz
 small_bricks/red_sandstone
+small_bricks/redstone_block
 small_bricks/sandstone
 small_bricks/stone
 smallingot/gold_block
@@ -402,6 +423,7 @@ soft_bricks/granite
 soft_bricks/purpur
 soft_bricks/quartz
 soft_bricks/red_sandstone
+soft_bricks/redstone_block
 soft_bricks/sandstone
 soft_bricks/stone
 solid_bricks/andesite
@@ -415,6 +437,7 @@ solid_bricks/granite
 solid_bricks/purpur
 solid_bricks/quartz
 solid_bricks/red_sandstone
+solid_bricks/redstone_block
 solid_bricks/sandstone
 solid_bricks/stone
 space/diamond_block
@@ -436,6 +459,7 @@ tiles_medium/granite
 tiles_medium/purpur
 tiles_medium/quartz
 tiles_medium/red_sandstone
+tiles_medium/redstone_block
 tiles_medium/sandstone
 tiles_medium/stone
 tiles_medium_bismuth/glowstone
@@ -450,6 +474,7 @@ tiles_small/granite
 tiles_small/purpur
 tiles_small/quartz
 tiles_small/red_sandstone
+tiles_small/redstone_block
 tiles_small/sandstone
 tiles_small/stone
 triple_bricks/andesite
@@ -463,6 +488,7 @@ triple_bricks/granite
 triple_bricks/purpur
 triple_bricks/quartz
 triple_bricks/red_sandstone
+triple_bricks/redstone_block
 triple_bricks/sandstone
 triple_bricks/stone
 twist/andesite
@@ -476,6 +502,7 @@ twist/granite
 twist/purpur
 twist/quartz
 twist/red_sandstone
+twist/redstone_block
 twist/sandstone
 twist/stone
 vents/iron_block

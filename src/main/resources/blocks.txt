@@ -18,5 +18,6 @@ nether_brick
 purpur
 quartz
 red_sandstone
+redstone_block
 sandstone
 stone
