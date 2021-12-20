@@ -90,6 +90,8 @@ def write_generated_register(register_dir,client_register_dir):
 
     for name in full_names:
         semi = name.split('/')
+        if semi[1] == "quartz":
+            semi[1] = "quartz_block"
         lines.insert(i, '        Reg("' + semi[1] + '", "' + name + '", ' + name.replace('/','_').upper() + ');\n')
         i += 1
 

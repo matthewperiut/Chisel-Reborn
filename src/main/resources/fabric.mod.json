@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "chisel",
-  "version": "1.4.1",
+  "version": "1.4.2",
 
   "name": "Chisel Refabricated",
   "description": "Adds New Blocks!",
@@ -25,6 +25,9 @@
     ],
     "client": [
       "com.matthewperiut.chisel.ChiselClient"
+    ],
+    "rei_plugins": [
+      "com.matthewperiut.chisel.ChiselREI"
     ]
   },
   "mixins": [],
@@ -32,7 +35,7 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": [ "1.17.x", "1.18.x", "1.19.x" ],
+    "minecraft": [ "1.18.x" ],
     "java": "17"
   },
   "suggests": {
