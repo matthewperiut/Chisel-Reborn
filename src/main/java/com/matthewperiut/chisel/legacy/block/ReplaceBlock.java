@@ -46,6 +46,8 @@ public class ReplaceBlock extends Block
         block_name = block_name.replace("tiles_large","large_tile");
         block_name = block_name.replace("stone_bricks","stone");
         block_name = block_name.replace("layers","layer");
+        block_name = block_name.replace("braced","log_bordered");
+        block_name = block_name.replace("vertical-uneven_log","log_bordered");
         if (!block_name.contains("bricks") && !block_name.contains("planks"))
         {
             block_name = block_name.replace("soft","soft_bricks");
@@ -55,13 +57,11 @@ public class ReplaceBlock extends Block
             block_name = block_name.replace("chaotic/red_sandstone","chaotic_bricks/red_sandstone");
         }
 
-        if (block_name.contains("obsidian") || block_name.contains("netherrack") || block_name.contains("nether_bricks"))
+        baseBlock = Registry.BLOCK.get(new Identifier(Chisel.MOD_ID, block_name));
+
+        if (baseBlock.toString().equals("Block{minecraft:air}"))
         {
             baseBlock = Registry.BLOCK.get(new Identifier("minecraft", vanilla_name));
-        }
-        else
-        {
-            baseBlock = Registry.BLOCK.get(new Identifier(Chisel.MOD_ID, block_name));
         }
     }
 

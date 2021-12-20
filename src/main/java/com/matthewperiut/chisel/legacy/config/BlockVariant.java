@@ -1,6 +1,6 @@
 package com.matthewperiut.chisel.legacy.config;
 
-import com.matthewperiut.chisel.legacy.Chisel;
+import com.matthewperiut.chisel.Chisel;
 import com.matthewperiut.chisel.legacy.block.ReplaceBlock;
 import com.matthewperiut.chisel.legacy.item.ChiselBlockItem;
 
@@ -46,14 +46,6 @@ public class BlockVariant {
 
     public Block makeBlock(FabricBlockSettings settings, boolean transparent) {
         FabricBlockSettings tempSettings = FabricBlockSettings.copyOf(settings);
-        if (transparent) {
-            tempSettings.nonOpaque();
-        }
-        if (transparent) {
-            Block tempBlock = new ReplaceBlock(tempSettings, typeName, variantName);
-            Chisel.TRANSPARENT_BLOCKS.add(tempBlock);
-            return tempBlock;
-        }
         return new ReplaceBlock(tempSettings, typeName, variantName);
     }
 

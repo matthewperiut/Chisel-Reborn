@@ -11,7 +11,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.matthewperiut.chisel.legacy.Chisel;
 import com.matthewperiut.chisel.legacy.data.Recipes;
 import com.matthewperiut.chisel.legacy.data.Recipes.RecipeKey;
 
