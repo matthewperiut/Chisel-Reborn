@@ -1,26 +1,18 @@
 package com.matthewperiut.chisel.legacy;
 
+import com.matthewperiut.chisel.legacy.config.BlockVariant;
+import net.devtech.arrp.json.models.JModel;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.math.Direction;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.matthewperiut.chisel.legacy.config.BlockVariant;
-import com.matthewperiut.chisel.gui.ChiselScreenHandler;
-
-import net.devtech.arrp.json.models.JModel;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Direction;
 
 public class Ref {
     private Ref() {}
 
-    public static final ScreenHandlerType<ChiselScreenHandler> CHISEL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Ref.MOD_ID, "chisel_screen_handler"), ChiselScreenHandler::new);
+    //public static final ScreenHandlerType<ChiselScreenHandler> CHISEL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Ref.MOD_ID, "chisel_screen_handler"), ChiselScreenHandler::new);
 
     public static final String MOD_ID = "chisel";
     public static final JModel CUBE_TWO_LAYER_TOPSHADED =

@@ -15,11 +15,10 @@ import net.minecraft.world.World;
 
 public class ChiselInventory implements IInventory {
     private DefaultedList<ItemStack> inventory;
-    // private World world;
 
-    public ChiselInventory(World world) {
+    public ChiselInventory()
+    {
         this.inventory = DefaultedList.ofSize(61, ItemStack.EMPTY);
-        // this.world = world;
     }
 
     @Override
@@ -30,10 +29,8 @@ public class ChiselInventory implements IInventory {
     @Override
     public void setStack(int slot, ItemStack stack) {
         getItems().set(slot, stack);
-        if (stack.getCount() > getMaxCountPerStack()) {
-            stack.setCount(getMaxCountPerStack());
-        }
-        if (slot == 0) {
+        if (slot == 0)
+        {
             refresh(stack.getItem());
         }
 
