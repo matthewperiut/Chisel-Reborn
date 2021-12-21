@@ -12,6 +12,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
+import net.minecraft.util.registry.Registry;
 
 public class ChiselScreenHandler extends ScreenHandler {
     private final ChiselInventory inventory;
@@ -74,6 +75,7 @@ public class ChiselScreenHandler extends ScreenHandler {
                 // slot clicked was in chisel inv
                 if (invSlot != 0) {
                     originalStack.setCount(this.slots.get(0).getStack().getCount());
+                    ChiselItem.chiselSound(player.world, Registry.BLOCK.get(Registry.ITEM.getId(originalStack.getItem())), player.getBlockPos());
                 }
                 if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
                     this.inventory.refresh(this.slots.get(0).getStack().getItem());
@@ -81,6 +83,7 @@ public class ChiselScreenHandler extends ScreenHandler {
                 } else {
                     this.inventory.clear();
                 }
+
             } else if (!this.insertItem(originalStack, 0, 1, false)) {
                 // slot clicked was not in chisel inv
                 return ItemStack.EMPTY;

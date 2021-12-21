@@ -3,8 +3,10 @@ import com.matthewperiut.chisel.Chisel;
 import com.matthewperiut.chisel.block.ChiselGroupLookup;
 import com.matthewperiut.chisel.gui.ChiselScreenHandler;
 import com.matthewperiut.chisel.inventory.InventoryNbtUtil;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -15,6 +17,8 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.ServerTagManagerHolder;
 import net.minecraft.tag.TagGroup;
 import net.minecraft.text.Text;
@@ -83,35 +87,71 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
         return ActionResult.PASS;
     }
 
-    @Override
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+    public static void chiselSound(World world, Block block, BlockPos pos)
+    {
         if (!world.isClient)
         {
-            ItemStack inHand = miner.getItemsHand().iterator().next();
-            NbtCompound nbtCompound = inHand.getOrCreateNbt();
+            world.playSound(
+                    null, // Player - if non-null, will play sound for every nearby player *except* the specified player
+                    pos, // The position of where the sound will come from
+                    block.getSoundGroup(block.getDefaultState()).getPlaceSound(), // The sound that will play
+                    SoundCategory.BLOCKS, // This determines which of the volume sliders affect this sound
+                    1f, //Volume multiplier, 1 is normal, 0.5 is half volume, etc
+                    1f // Pitch multiplier, 1 is normal, 0.5 is half pitch, etc
+            );
+        }
+    }
+
+    @Override
+    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        ItemStack inHand = miner.getItemsHand().iterator().next();
+        NbtCompound nbtCompound = inHand.getOrCreateNbt();
+
+        if (!world.isClient)
+        {
             if (!nbtCompound.contains("Items")) {
                 return false;
             }
+            if (world.getTime() - nbtCompound.getLong("time") < 5)
+            {
+                return false;
+            }
+
             NbtList nbtList = nbtCompound.getList("Items", 10);
 
             NbtCompound nbtCompound2 = nbtList.getCompound(0);
             ItemStack itemStack = ItemStack.fromNbt(nbtCompound2);
 
             String inInventoryModID;
-            Identifier inHandType = Registry.BLOCK.getId(state.getBlock());
+            Identifier blockId = Registry.BLOCK.getId(state.getBlock());
             Identifier inInventory = Registry.ITEM.getId(itemStack.getItem());
+
+            if (inInventory == Registry.ITEM.getId(Items.AIR))
+            {
+                TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getOrCreateTagGroup(Registry.ITEM.getKey());
+                List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem(), itemTags);
+                if(items.size() > 0)
+                {
+                    inInventory = Registry.ITEM.getId(items.get(world.random.nextInt(items.size())));
+                    world.setBlockState(pos, Registry.BLOCK.get(inInventory).getDefaultState());
+                    nbtCompound.putLong("time",world.getTime());
+                    chiselSound(world,state.getBlock(),pos);
+                }
+            }
 
             String[] compare = new String[2];
 
             String[] temp;
             temp = inInventory.getPath().split("/");
             compare[0] = temp[temp.length-1];
-            temp = inHandType.getPath().split("/");
+            temp = blockId.getPath().split("/");
             compare[1] = temp[temp.length-1];
 
             if(compare[0].contains(compare[1]) || compare[1].contains(compare[0]))
             {
                 world.setBlockState(pos, Registry.BLOCK.get(inInventory).getDefaultState());
+                nbtCompound.putLong("time",world.getTime());
+                chiselSound(world,state.getBlock(),pos);
             }
         }
         return false;
@@ -129,7 +169,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
         if (chiselBlocks.isEmpty()) {
             return 1.0f;
         }
-        return state.getBlock().getHardness() * 200.0f;
+        return 500.0f;
     }
 
     @Override

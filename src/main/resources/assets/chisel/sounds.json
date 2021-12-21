@@ -1,0 +1,8 @@
+{
+  "my_sound": {
+    "subtitle": "subtitles.chisel.chisel_sound",
+    "sounds": [
+      "chisel:chisel_sound"
+    ]
+  }
+}

@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +25,8 @@ public class Chisel implements ModInitializer
 	public static final Item ITEM_CHISEL = new ChiselItem(new FabricItemSettings().group(ItemGroup.TOOLS).maxCount(1));
 	public static final ItemGroup CHISEL_GROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "chisel")).icon(() -> new ItemStack(ITEM_CHISEL)).build();
 
+	public static final Identifier CHISEL_SOUND_ID = new Identifier(MOD_ID, "chisel_sound");
+	public static SoundEvent CHISEL_SOUND_EVENT = new SoundEvent(CHISEL_SOUND_ID);
 
 	public static final Identifier CHISEL_INVENTORY = new Identifier(MOD_ID, "chisel_inventory");
 	public static final ScreenHandlerType<ChiselScreenHandler> CHISEL_SCREEN_HANDLER;
@@ -36,6 +39,7 @@ public class Chisel implements ModInitializer
 	public void onInitialize()
 	{
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "chisel"), ITEM_CHISEL);
+		Registry.register(Registry.SOUND_EVENT, CHISEL_SOUND_ID, CHISEL_SOUND_EVENT);
 
 		BlockRegister.Register();
 		com.matthewperiut.chisel.legacy.Chisel.onInitialize();
