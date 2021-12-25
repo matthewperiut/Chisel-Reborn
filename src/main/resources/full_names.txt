@@ -93,6 +93,7 @@ chaotic_bricks/brown_concrete
 chaotic_bricks/coal_block
 chaotic_bricks/cobblestone
 chaotic_bricks/cyan_concrete
+chaotic_bricks/deepslate
 chaotic_bricks/diorite
 chaotic_bricks/end_stone
 chaotic_bricks/granite
@@ -123,6 +124,7 @@ chaotic_medium/brown_concrete
 chaotic_medium/coal_block
 chaotic_medium/cobblestone
 chaotic_medium/cyan_concrete
+chaotic_medium/deepslate
 chaotic_medium/diorite
 chaotic_medium/end_stone
 chaotic_medium/glowstone
@@ -155,6 +157,7 @@ chaotic_small/brown_concrete
 chaotic_small/coal_block
 chaotic_small/cobblestone
 chaotic_small/cyan_concrete
+chaotic_small/deepslate
 chaotic_small/diorite
 chaotic_small/end_stone
 chaotic_small/glowstone
@@ -193,6 +196,7 @@ circular/brown_concrete
 circular/coal_block
 circular/cobblestone
 circular/cyan_concrete
+circular/deepslate
 circular/diorite
 circular/emerald_block
 circular/end_stone
@@ -231,6 +235,7 @@ cracked/brown_concrete
 cracked/coal_block
 cracked/cobblestone
 cracked/cyan_concrete
+cracked/deepslate
 cracked/diorite
 cracked/end_stone
 cracked/glowstone
@@ -263,6 +268,7 @@ cracked_bricks/brown_concrete
 cracked_bricks/coal_block
 cracked_bricks/cobblestone
 cracked_bricks/cyan_concrete
+cracked_bricks/deepslate
 cracked_bricks/diorite
 cracked_bricks/end_stone
 cracked_bricks/glowstone
@@ -321,6 +327,7 @@ cut/brown_concrete
 cut/coal_block
 cut/cobblestone
 cut/cyan_concrete
+cut/deepslate
 cut/diorite
 cut/end_stone
 cut/granite
@@ -351,6 +358,7 @@ dent/brown_concrete
 dent/coal_block
 dent/cobblestone
 dent/cyan_concrete
+dent/deepslate
 dent/diorite
 dent/end_stone
 dent/glowstone
@@ -392,6 +400,7 @@ encased_bricks/brown_concrete
 encased_bricks/coal_block
 encased_bricks/cobblestone
 encased_bricks/cyan_concrete
+encased_bricks/deepslate
 encased_bricks/diorite
 encased_bricks/end_stone
 encased_bricks/glowstone
@@ -442,6 +451,7 @@ french/brown_concrete
 french/coal_block
 french/cobblestone
 french/cyan_concrete
+french/deepslate
 french/diorite
 french/end_stone
 french/glowstone
@@ -484,6 +494,7 @@ jellybean/brown_concrete
 jellybean/coal_block
 jellybean/cobblestone
 jellybean/cyan_concrete
+jellybean/deepslate
 jellybean/diorite
 jellybean/end_stone
 jellybean/glowstone
@@ -553,6 +564,7 @@ large_tile/yellow_concrete
 large_tile_bismuth/glowstone
 largeingot/gold_block
 largeingot/iron_block
+largeornate/deepslate
 largeornate/stone
 layer/andesite
 layer/black_concrete
@@ -561,6 +573,7 @@ layer/bricks
 layer/brown_concrete
 layer/cobblestone
 layer/cyan_concrete
+layer/deepslate
 layer/diorite
 layer/dirt
 layer/end_stone
@@ -675,6 +688,7 @@ ornate/brown_concrete
 ornate/coal_block
 ornate/cobblestone
 ornate/cyan_concrete
+ornate/deepslate
 ornate/diorite
 ornate/emerald_block
 ornate/end_stone
@@ -713,6 +727,7 @@ panel/brown_concrete
 panel/coal_block
 panel/cobblestone
 panel/cyan_concrete
+panel/deepslate
 panel/diorite
 panel/dirt
 panel/emerald_block
@@ -786,6 +801,7 @@ pillar/white_concrete
 pillar/yellow_concrete
 plates/gold_block
 plates/iron_block
+poison/deepslate
 poison/stone
 prism/andesite
 prism/black_concrete
@@ -795,6 +811,7 @@ prism/brown_concrete
 prism/coal_block
 prism/cobblestone
 prism/cyan_concrete
+prism/deepslate
 prism/diorite
 prism/emerald_block
 prism/end_stone
@@ -828,6 +845,7 @@ raw/brown_concrete
 raw/coal_block
 raw/cobblestone
 raw/cyan_concrete
+raw/deepslate
 raw/diorite
 raw/end_stone
 raw/granite
@@ -943,6 +961,7 @@ small_bricks/brown_concrete
 small_bricks/coal_block
 small_bricks/cobblestone
 small_bricks/cyan_concrete
+small_bricks/deepslate
 small_bricks/diorite
 small_bricks/end_stone
 small_bricks/glowstone
@@ -986,6 +1005,7 @@ soft_bricks/brown_concrete
 soft_bricks/coal_block
 soft_bricks/cobblestone
 soft_bricks/cyan_concrete
+soft_bricks/deepslate
 soft_bricks/diorite
 soft_bricks/end_stone
 soft_bricks/glowstone
@@ -1018,6 +1038,7 @@ solid_bricks/brown_concrete
 solid_bricks/coal_block
 solid_bricks/cobblestone
 solid_bricks/cyan_concrete
+solid_bricks/deepslate
 solid_bricks/diorite
 solid_bricks/end_stone
 solid_bricks/glowstone
@@ -1059,6 +1080,7 @@ star/gold_block
 steelframe/glass
 stone/glass
 streak/glass
+sunken/deepslate
 sunken/stone
 thick/glass
 thin/glass
@@ -1170,6 +1192,7 @@ twist/brown_concrete
 twist/coal_block
 twist/cobblestone
 twist/cyan_concrete
+twist/deepslate
 twist/diorite
 twist/end_stone
 twist/glowstone
@@ -1211,6 +1234,7 @@ weaver/brown_concrete
 weaver/coal_block
 weaver/cobblestone
 weaver/cyan_concrete
+weaver/deepslate
 weaver/diorite
 weaver/end_stone
 weaver/granite
@@ -1241,6 +1265,7 @@ zag/brown_concrete
 zag/coal_block
 zag/cobblestone
 zag/cyan_concrete
+zag/deepslate
 zag/diorite
 zag/end_stone
 zag/granite
