@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.10.58'
+	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -33,13 +33,8 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// ARRP for generating resource & data packs at runtime
-	modImplementation group: 'net.devtech', name: 'arrp', version: "${project.arrp_version}"
-	include group: 'net.devtech', name: 'arrp', version: "${project.arrp_version}"
-
 	// REI API for recipe plugin
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
-	modRuntime "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 }
 
 processResources {

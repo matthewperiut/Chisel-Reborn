@@ -19,8 +19,6 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.ServerTagManagerHolder;
-import net.minecraft.tag.TagGroup;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
@@ -128,8 +126,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
             if (inInventory == Registry.ITEM.getId(Items.AIR))
             {
-                TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getOrCreateTagGroup(Registry.ITEM.getKey());
-                List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem(), itemTags);
+                List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem());
                 if(items.size() > 0)
                 {
                     inInventory = Registry.ITEM.getId(items.get(world.random.nextInt(items.size())));
@@ -164,11 +161,11 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
             Chisel.LOGGER.info("How is " + item.getName().getString() +" not an blockItem?");
             return 1.0f;
         }
-        TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getOrCreateTagGroup(Registry.ITEM_KEY);
-        List<Item> chiselBlocks = ChiselGroupLookup.getBlocksInGroup(item, itemTags);
-        if (chiselBlocks.isEmpty()) {
-            return 1.0f;
-        }
+        //TagGroup<Item> itemTags = ServerTagManagerHolder.getTagManager().getOrCreateTagGroup(Registry.ITEM_KEY);
+        //List<Item> chiselBlocks = ChiselGroupLookup.getBlocksInGroup(item, itemTags);
+        //if (chiselBlocks.isEmpty()) {
+        //    return 1.0f;
+        //}
         return 500.0f;
     }
 

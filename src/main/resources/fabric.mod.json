@@ -25,6 +25,9 @@
     ],
     "client": [
       "com.matthewperiut.chisel.ChiselClient"
+    ],
+    "rei_plugins": [
+      "com.matthewperiut.chisel.ChiselREI"
     ]
   },
   "mixins": [],

@@ -1,4 +1,4 @@
-/*package com.matthewperiut.chisel;
+package com.matthewperiut.chisel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +29,6 @@ import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
-import net.minecraft.tag.ServerTagManagerHolder;
 
 
 @Environment(EnvType.CLIENT)
@@ -53,7 +52,7 @@ public class ChiselREI implements REIClientPlugin {
         private final List<Item> chiselGroupItems;
 
         public ChiselDisplay(String chiselGroup) {
-            chiselGroupItems = ChiselGroupLookup.getBlocksInGroup(chiselGroup, ServerTagManagerHolder.getTagManager().getOrCreateTagGroup(Registry.ITEM_KEY));
+            chiselGroupItems = ChiselGroupLookup.getBlocksInGroup(chiselGroup);
         }
 
         @Override
@@ -148,4 +147,4 @@ public class ChiselREI implements REIClientPlugin {
             return widgets;
         }
     }
-}*/
+}

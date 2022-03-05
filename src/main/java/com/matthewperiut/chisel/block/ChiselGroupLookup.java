@@ -5,12 +5,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.tag.Tag;
-import net.minecraft.tag.TagGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -64,51 +61,43 @@ public class ChiselGroupLookup {
 
     }
 
-    public static ChiselGroup getGroup(Item item, TagGroup<Item> itemTags) {
+    public static ChiselGroup getGroup(Item item) {
         Iterator<ChiselGroup> chiselGroupIterator = CHISEL_GROUPS.values().iterator();
         Identifier itemId = Registry.ITEM.getId(item);
         while (chiselGroupIterator.hasNext()) {
             ChiselGroup group = chiselGroupIterator.next();
-            if (group.containsItem(itemId, itemTags)) {
+            if (group.containsItem(itemId)) {
                 return group;
             }
         }
         return null;
     }
 
-    public static List<Item> getBlocksInGroup(String name, TagGroup<Item> itemTags) {
+    public static List<Item> getBlocksInGroup(String name) {
         ChiselGroup group = CHISEL_GROUPS.get(name);
         if (group != null) {
-            return getBlocksInGroup(group, itemTags);
+            return getBlocksInGroup(group);
         }
         return new ArrayList<>();
     }
 
-    public static List<Item> getBlocksInGroup(Item item, TagGroup<Item> itemTags) {
-        ChiselGroup group = getGroup(item, itemTags);
+    public static List<Item> getBlocksInGroup(Item item) {
+        ChiselGroup group = getGroup(item);
         if (group != null) {
-            return getBlocksInGroup(group, itemTags);
+            return getBlocksInGroup(group);
         }
         return new ArrayList<>();
     }
 
-    public static List<Item> getBlocksInGroup(ChiselGroup group, TagGroup<Item> itemTags) {
+    public static List<Item> getBlocksInGroup(ChiselGroup group) {
         List<Item> groupItems = new ArrayList<>();
-        groupItems.addAll(group.getItems(itemTags));
+        groupItems.addAll(group.getItems());
         return groupItems;
     }
 
-    public static List<Identifier> getTagsFor(Item item, TagGroup<Item> tagGroup) {
+    public static List<Identifier> getTagsFor(Item item) {
         List<Identifier> tags = new ArrayList<>();
-        Iterator<Entry<Identifier, Tag<Item>>> entries = tagGroup.getTags().entrySet().iterator();
-
-        while (entries.hasNext()) {
-            Entry<Identifier, Tag<Item>> entry = entries.next();
-            if ((entry.getValue()).contains(item)) {
-                tags.add(entry.getKey());
-            }
-        }
-
+        //redo later
         return tags;
     }
 
@@ -129,26 +118,20 @@ public class ChiselGroupLookup {
             tags.add(tag);
         }
 
-        public boolean containsItem(Identifier item, TagGroup<Item> itemTags) {
-            return inItems(item) || inTags(item, itemTags);
+        public boolean containsItem(Identifier item) {
+            return inItems(item) || inTags(item);
         }
 
         public boolean inItems(Identifier item) {
             return items.contains(item);
         }
 
-        public boolean inTags(Identifier id, TagGroup<Item> itemTags) {
-            Item item = Registry.ITEM.get(id);
-            Iterator<Identifier> tagsForItem = getTagsFor(item, itemTags).iterator();
-            while (tagsForItem.hasNext()) {
-                if (tags.contains(tagsForItem.next())) {
-                    return true;
-                }
-            }
+        public boolean inTags(Identifier id) {
+            // redo later when it matters
             return false;
         }
 
-        public List<Item> getItems(TagGroup<Item> itemTags) {
+        public List<Item> getItems() {
             List<Item> itemsInGroup = new ArrayList<>();
             for (int i = 0; i < items.size(); i++) {
                 Item item = Registry.ITEM.get(items.get(i));
@@ -156,14 +139,6 @@ public class ChiselGroupLookup {
                     continue;
                 }
                 itemsInGroup.add(item);
-            }
-            for (int i = 0; i < tags.size(); i++) {
-                Tag<Item> itemTag = itemTags.getTag(tags.get(i));
-                if (itemTag == null) {
-                    continue;
-                }
-                List<Item> tagItems = itemTag.values();
-                itemsInGroup.addAll(tagItems);
             }
             List<Item> itemsInGroupNoDupes = new ArrayList<>();
             for (int i = 0; i < itemsInGroup.size(); i++) {
