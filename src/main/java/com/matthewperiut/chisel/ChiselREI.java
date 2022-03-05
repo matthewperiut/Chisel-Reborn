@@ -1,4 +1,4 @@
-package com.matthewperiut.chisel;
+/*package com.matthewperiut.chisel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -148,4 +148,4 @@ public class ChiselREI implements REIClientPlugin {
             return widgets;
         }
     }
-}
+}*/

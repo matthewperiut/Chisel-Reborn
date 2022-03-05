@@ -42,6 +42,5 @@ public class Chisel implements ModInitializer
 		Registry.register(Registry.SOUND_EVENT, CHISEL_SOUND_ID, CHISEL_SOUND_EVENT);
 
 		BlockRegister.Register();
-		com.matthewperiut.chisel.legacy.Chisel.onInitialize();
 	}
 }
