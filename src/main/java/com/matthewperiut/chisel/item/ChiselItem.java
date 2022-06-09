@@ -20,7 +20,6 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -62,12 +61,14 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
     {
+        if(hand == Hand.OFF_HAND)
+            return TypedActionResult.pass(user.getStackInHand(hand));
+
         if (!world.isClient)
-        {
-            if (user.getItemsHand().iterator().next().isOf(ITEM_CHISEL))
+            if (user.getMainHandStack().isOf(ITEM_CHISEL))
                 user.openHandledScreen(this);
-        }
-        return TypedActionResult.pass(user.getStackInHand(hand));
+
+        return TypedActionResult.success(user.getStackInHand(hand), false);
     }
 
     @Override
@@ -81,7 +82,6 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-
         return ActionResult.PASS;
     }
 
@@ -171,7 +171,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText("gui.chisel.chisel");
+        return Text.translatable("gui.chisel.chisel");
     }
 
 }
