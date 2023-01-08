@@ -12,6 +12,7 @@ import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
@@ -19,7 +20,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -117,16 +117,16 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
             NbtCompound nbtCompound2 = nbtList.getCompound(0);
             ItemStack itemStack = ItemStack.fromNbt(nbtCompound2);
 
-            Identifier blockId = Registry.BLOCK.getId(state.getBlock());
-            Identifier inInventory = Registry.ITEM.getId(itemStack.getItem());
+            Identifier blockId = Registries.BLOCK.getId(state.getBlock());
+            Identifier inInventory = Registries.ITEM.getId(itemStack.getItem());
 
-            if (inInventory == Registry.ITEM.getId(Items.AIR))
+            if (inInventory == Registries.ITEM.getId(Items.AIR))
             {
                 List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem());
                 if(items.size() > 0)
                 {
-                    inInventory = Registry.ITEM.getId(items.get(world.random.nextInt(items.size())));
-                    world.setBlockState(pos, Registry.BLOCK.get(inInventory).getDefaultState());
+                    inInventory = Registries.ITEM.getId(items.get(world.random.nextInt(items.size())));
+                    world.setBlockState(pos, Registries.BLOCK.get(inInventory).getDefaultState());
                     nbtCompound.putLong("time",world.getTime());
                     chiselSound(world, pos);
                 }
@@ -142,7 +142,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
             if(compare[0].contains(compare[1]) || compare[1].contains(compare[0]))
             {
-                world.setBlockState(pos, Registry.BLOCK.get(inInventory).getDefaultState());
+                world.setBlockState(pos, Registries.BLOCK.get(inInventory).getDefaultState());
                 nbtCompound.putLong("time",world.getTime());
                 chiselSound(world, pos);
             }
