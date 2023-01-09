@@ -7,7 +7,8 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version + "+" + project.minecraft_version
+// Remove ending after continuity updates
+version = project.mod_version + "+" + project.minecraft_version + "+continuity-inside"
 group = project.maven_group
 
 repositories {
@@ -35,6 +36,9 @@ dependencies {
 
 	// REI API for recipe plugin
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
+
+	// Remove integrated installation once 1.19.3 continuity officially releases.
+	include implementation("me.pepperbell:continuity:2.0.2")
 }
 
 processResources {
