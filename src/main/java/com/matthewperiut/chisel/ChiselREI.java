@@ -23,8 +23,6 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
