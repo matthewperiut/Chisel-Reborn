@@ -36,9 +36,6 @@ dependencies {
 
 	// REI API for recipe plugin
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
-
-	// Remove integrated installation once 1.19.3 continuity officially releases.
-	include implementation("me.pepperbell:continuity:2.0.2")
 }
 
 processResources {
