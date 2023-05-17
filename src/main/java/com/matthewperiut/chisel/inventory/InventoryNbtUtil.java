@@ -26,26 +26,16 @@ public class InventoryNbtUtil
     public static Inventory createInventory(NbtCompound nbtCompound)
     {
         Inventory result = new ChiselInventory();
-        if (!nbtCompound.contains("Items"))
-        {
-            return result;
-        }
-        else
-        {
+        if (nbtCompound.contains("Items")) {
             NbtList nbtList = nbtCompound.getList("Items", 10);
-            if (nbtList.isEmpty())
-            {
-                return result;
-            }
-            else
-            {
+            if (!nbtList.isEmpty()) {
                 NbtCompound nbtCompound2 = nbtList.getCompound(0);
                 ItemStack itemStack = ItemStack.fromNbt(nbtCompound2);
 
                 result.setStack(0, ItemStack.fromNbt(nbtCompound2));
 
-                return result;
             }
         }
+        return result;
     }
 }

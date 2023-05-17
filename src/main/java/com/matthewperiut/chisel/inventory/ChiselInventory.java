@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 
 public class ChiselInventory implements IInventory {
-    private DefaultedList<ItemStack> inventory;
+    private final DefaultedList<ItemStack> inventory;
 
     public ChiselInventory()
     {

@@ -98,8 +98,8 @@ public class ChiselScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public void close(PlayerEntity player) {
-        super.close(player);
+    public void onClosed(PlayerEntity player) {
+        super.onClosed(player);
         ItemStack hand = player.getHandItems().iterator().next();
         if (!hand.isOf(Chisel.ITEM_CHISEL))
         {
@@ -122,14 +122,14 @@ public class ChiselScreenHandler extends ScreenHandler {
     public void onSlotClick(int i, int j, SlotActionType actionType, PlayerEntity playerEntity) {
         if (i >= 0 && i < this.slots.size()) {
             Slot slot = this.slots.get(i);
-            if (slot != null && slot.getStack().getItem() instanceof ChiselItem) {
+            if (slot.getStack().getItem() instanceof ChiselItem) {
                 return;
             }
         }
         super.onSlotClick(i, j, actionType, playerEntity);
     }
 
-    private class SlotChiselOutput extends Slot {
+    private static class SlotChiselOutput extends Slot {
         public SlotChiselOutput(Inventory inventory, int index, int x, int y) {
             super(inventory, index, x, y);
         }
