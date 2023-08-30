@@ -72,7 +72,7 @@ def make_compact_properties(file_path, block_type, block):
     file_path = file_path + "/" + file_name + ".properties"
 
     f = open_file(file_path)
-    f.write("matchBlocks=chisel:" + block_type + "/" + block + "\n")
+    f.write("matchTiles=chisel:block/" + block_type + "/" + block + "\n")
     f.write("method=ctm_compact\n")
     f.write("innerSeams=true\n")
     f.write("tiles=0-4")
@@ -84,7 +84,7 @@ def make_random_properties(file_path, block_type, block, size):
 
     f = open_file(file_path)
 
-    f.write("matchBlocks=chisel:" + block_type + "/" + block + "\n")
+    f.write("matchTiles=chisel:block/" + block_type + "/" + block + "\n")
     f.write("method=random\n")
     f.write("tiles=0-" + str(int(math.pow(size,2)-1)))
 
@@ -96,7 +96,7 @@ def make_repeat_properties(file_path, block_type, block):
 
     f = open_file(file_path)
 
-    f.write("matchBlocks=chisel:" + block_type + "/" + block + "\n")
+    f.write("matchTiles=chisel:block/" + block_type + "/" + block + "\n")
     f.write("method=repeat\n")
     f.write("width=2\n")
     f.write("height=2\n")

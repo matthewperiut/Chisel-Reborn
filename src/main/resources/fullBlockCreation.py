@@ -71,7 +71,7 @@ def create_regular_texture(full_name, input_dir="", top="", bottom=""):
 
 def write_french_properties(full_name, count):
     f = open("assets/chisel/optifine/ctm/" + full_name + "/" + full_name.replace('/','_') + ".properties", "w")
-    f.write('matchBlocks=chisel:' + full_name + '\n')
+    f.write('matchTiles=chisel:block/' + full_name + '\n')
     f.write('method=random\n')
     f.write('tiles=0-' + str(count-1))
     f.close()
