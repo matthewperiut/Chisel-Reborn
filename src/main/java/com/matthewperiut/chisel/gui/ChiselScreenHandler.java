@@ -74,7 +74,7 @@ public class ChiselScreenHandler extends ScreenHandler {
                 // slot clicked was in chisel inv
                 if (invSlot != 0) {
                     originalStack.setCount(this.slots.get(0).getStack().getCount());
-                    ChiselItem.chiselSound(player.world, player.getBlockPos());
+                    ChiselItem.chiselSound(player.getWorld(), player.getBlockPos());
                 }
                 if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
                     this.inventory.refresh(this.slots.get(0).getStack().getItem());
