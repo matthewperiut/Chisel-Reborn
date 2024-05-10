@@ -124,7 +124,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
             if (inInventory == Registries.ITEM.getId(Items.AIR))
             {
                 List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem());
-                if(items.size() > 0)
+                if(!items.isEmpty())
                 {
                     inInventory = Registries.ITEM.getId(items.get(world.random.nextInt(items.size())));
                     world.setBlockState(pos, Registries.BLOCK.get(inInventory).getDefaultState());
@@ -140,6 +140,10 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
             compare[0] = temp[temp.length-1];
             temp = blockId.getPath().split("/");
             compare[1] = temp[temp.length-1];
+
+            if (compare[1].contains("stairs")) {
+                return false;
+            }
 
             if(compare[0].contains(compare[1]) || compare[1].contains(compare[0]))
             {
