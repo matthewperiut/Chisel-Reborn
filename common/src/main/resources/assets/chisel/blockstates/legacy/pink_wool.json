@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/legacy/pink_wool"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/legacy/pink_wool/4",
+        "empty": "chisel:block/ctm/legacy/pink_wool/1",
+        "horizontal": "chisel:block/ctm/legacy/pink_wool/3",
+        "particle": "chisel:block/ctm/legacy/pink_wool/0",
+        "vertical": "chisel:block/ctm/legacy/pink_wool/2"
+    }
+}

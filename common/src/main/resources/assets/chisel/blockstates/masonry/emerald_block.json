@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/masonry/emerald_block"
+        }
+    },
+    "athena:loader": "athena:giant",
+    "ctm_textures": {
+        "1": "chisel:block/ctm/masonry/emerald_block/0",
+        "2": "chisel:block/ctm/masonry/emerald_block/1",
+        "3": "chisel:block/ctm/masonry/emerald_block/2",
+        "4": "chisel:block/ctm/masonry/emerald_block/3",
+        "particle": "chisel:block/masonry/emerald_block"
+    },
+    "height": 2,
+    "width": 2
+}

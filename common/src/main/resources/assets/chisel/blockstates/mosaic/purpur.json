@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/purpur"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/purpur/4",
+        "empty": "chisel:block/ctm/mosaic/purpur/1",
+        "horizontal": "chisel:block/ctm/mosaic/purpur/3",
+        "particle": "chisel:block/ctm/mosaic/purpur/0",
+        "vertical": "chisel:block/ctm/mosaic/purpur/2"
+    }
+}

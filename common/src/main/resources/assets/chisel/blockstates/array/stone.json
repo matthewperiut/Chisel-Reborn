@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/array/stone"
+        }
+    },
+    "athena:loader": "athena:giant",
+    "ctm_textures": {
+        "1": "chisel:block/ctm/array/stone/0",
+        "2": "chisel:block/ctm/array/stone/1",
+        "3": "chisel:block/ctm/array/stone/2",
+        "4": "chisel:block/ctm/array/stone/3",
+        "particle": "chisel:block/array/stone"
+    },
+    "height": 2,
+    "width": 2
+}

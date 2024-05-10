@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/deepslate"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/deepslate/4",
+        "empty": "chisel:block/ctm/mosaic/deepslate/1",
+        "horizontal": "chisel:block/ctm/mosaic/deepslate/3",
+        "particle": "chisel:block/ctm/mosaic/deepslate/0",
+        "vertical": "chisel:block/ctm/mosaic/deepslate/2"
+    }
+}

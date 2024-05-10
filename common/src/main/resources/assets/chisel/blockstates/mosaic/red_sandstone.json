@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/red_sandstone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/red_sandstone/4",
+        "empty": "chisel:block/ctm/mosaic/red_sandstone/1",
+        "horizontal": "chisel:block/ctm/mosaic/red_sandstone/3",
+        "particle": "chisel:block/ctm/mosaic/red_sandstone/0",
+        "vertical": "chisel:block/ctm/mosaic/red_sandstone/2"
+    }
+}

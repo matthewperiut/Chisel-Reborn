@@ -1,0 +1,70 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/cut/bricks_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_8",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_9",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_10",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_11",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_12",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_13",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_14",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/bricks_15",
+                "weight": 1
+            }
+        ]
+    }
+}

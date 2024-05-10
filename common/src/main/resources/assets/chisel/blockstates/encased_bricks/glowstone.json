@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/encased_bricks/glowstone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/encased_bricks/glowstone/4",
+        "empty": "chisel:block/ctm/encased_bricks/glowstone/1",
+        "horizontal": "chisel:block/ctm/encased_bricks/glowstone/3",
+        "particle": "chisel:block/ctm/encased_bricks/glowstone/0",
+        "vertical": "chisel:block/ctm/encased_bricks/glowstone/2"
+    }
+}

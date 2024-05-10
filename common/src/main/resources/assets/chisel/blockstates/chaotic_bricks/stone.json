@@ -1,0 +1,42 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/chaotic_bricks/stone_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/chaotic_bricks/stone_8",
+                "weight": 1
+            }
+        ]
+    }
+}

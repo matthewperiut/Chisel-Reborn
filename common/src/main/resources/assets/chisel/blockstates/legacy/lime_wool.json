@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/legacy/lime_wool"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/legacy/lime_wool/4",
+        "empty": "chisel:block/ctm/legacy/lime_wool/1",
+        "horizontal": "chisel:block/ctm/legacy/lime_wool/3",
+        "particle": "chisel:block/ctm/legacy/lime_wool/0",
+        "vertical": "chisel:block/ctm/legacy/lime_wool/2"
+    }
+}

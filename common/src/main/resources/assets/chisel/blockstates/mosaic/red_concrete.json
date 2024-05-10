@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/red_concrete"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/red_concrete/4",
+        "empty": "chisel:block/ctm/mosaic/red_concrete/1",
+        "horizontal": "chisel:block/ctm/mosaic/red_concrete/3",
+        "particle": "chisel:block/ctm/mosaic/red_concrete/0",
+        "vertical": "chisel:block/ctm/mosaic/red_concrete/2"
+    }
+}

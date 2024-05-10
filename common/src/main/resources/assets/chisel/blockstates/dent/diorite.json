@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/dent/diorite"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/dent/diorite/4",
+        "empty": "chisel:block/ctm/dent/diorite/1",
+        "horizontal": "chisel:block/ctm/dent/diorite/3",
+        "particle": "chisel:block/ctm/dent/diorite/0",
+        "vertical": "chisel:block/ctm/dent/diorite/2"
+    }
+}

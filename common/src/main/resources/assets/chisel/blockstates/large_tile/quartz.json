@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/large_tile/quartz"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/large_tile/quartz/4",
+        "empty": "chisel:block/ctm/large_tile/quartz/1",
+        "horizontal": "chisel:block/ctm/large_tile/quartz/3",
+        "particle": "chisel:block/ctm/large_tile/quartz/0",
+        "vertical": "chisel:block/ctm/large_tile/quartz/2"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/crude_horizontal/spruce_planks_8",
+                "weight": 1
+            }
+        ]
+    }
+}

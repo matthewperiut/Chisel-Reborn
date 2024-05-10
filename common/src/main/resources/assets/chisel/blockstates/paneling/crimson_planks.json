@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/paneling/crimson_planks"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/paneling/crimson_planks/4",
+        "empty": "chisel:block/ctm/paneling/crimson_planks/1",
+        "horizontal": "chisel:block/ctm/paneling/crimson_planks/3",
+        "particle": "chisel:block/ctm/paneling/crimson_planks/0",
+        "vertical": "chisel:block/ctm/paneling/crimson_planks/2"
+    }
+}

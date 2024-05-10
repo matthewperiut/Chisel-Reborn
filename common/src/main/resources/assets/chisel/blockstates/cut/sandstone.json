@@ -1,0 +1,70 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/cut/sandstone_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_8",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_9",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_10",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_11",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_12",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_13",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_14",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/sandstone_15",
+                "weight": 1
+            }
+        ]
+    }
+}

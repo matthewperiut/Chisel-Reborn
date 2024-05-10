@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/cobble/dirt"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/cobble/dirt/4",
+        "empty": "chisel:block/ctm/cobble/dirt/1",
+        "horizontal": "chisel:block/ctm/cobble/dirt/3",
+        "particle": "chisel:block/ctm/cobble/dirt/0",
+        "vertical": "chisel:block/ctm/cobble/dirt/2"
+    }
+}

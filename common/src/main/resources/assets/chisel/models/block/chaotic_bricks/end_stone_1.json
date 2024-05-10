@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/chaotic_bricks/end_stone/1",
+        "particle": "chisel:block/chaotic_bricks/end_stone"
+    }
+}

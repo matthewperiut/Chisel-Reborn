@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/french/deepslate_0",
+                "weight": 1
+            }
+        ]
+    }
+}

@@ -1,0 +1,4 @@
+accessWidener   v1  named
+accessible class net/minecraft/screen/ScreenHandlerType
+accessible method net/minecraft/screen/ScreenHandlerType register (Ljava/lang/String;Lnet/minecraft/screen/ScreenHandlerType$Factory;)Lnet/minecraft/screen/ScreenHandlerType;
+accessible method net/minecraft/screen/ScreenHandlerType register (Ljava/lang/String;Lnet/minecraft/screen/ScreenHandlerType$Factory;[Lnet/minecraft/resource/featuretoggle/FeatureFlag;)Lnet/minecraft/screen/ScreenHandlerType;

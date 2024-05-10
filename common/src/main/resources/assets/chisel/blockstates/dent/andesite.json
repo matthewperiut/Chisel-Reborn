@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/dent/andesite"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/dent/andesite/4",
+        "empty": "chisel:block/ctm/dent/andesite/1",
+        "horizontal": "chisel:block/ctm/dent/andesite/3",
+        "particle": "chisel:block/ctm/dent/andesite/0",
+        "vertical": "chisel:block/ctm/dent/andesite/2"
+    }
+}

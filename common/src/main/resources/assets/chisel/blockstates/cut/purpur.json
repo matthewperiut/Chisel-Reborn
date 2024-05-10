@@ -1,0 +1,70 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/cut/purpur_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_8",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_9",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_10",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_11",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_12",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_13",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_14",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/purpur_15",
+                "weight": 1
+            }
+        ]
+    }
+}

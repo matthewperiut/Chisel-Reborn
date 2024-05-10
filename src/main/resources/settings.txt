@@ -1,4 +1,0 @@
-
-granite
-pillar
-zag

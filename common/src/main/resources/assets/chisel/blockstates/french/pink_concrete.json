@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/french/pink_concrete_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/french/pink_concrete_1",
+                "weight": 1
+            }
+        ]
+    }
+}

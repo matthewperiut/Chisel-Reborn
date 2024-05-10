@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/circular/ice"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/circular/ice/4",
+        "empty": "chisel:block/ctm/circular/ice/1",
+        "horizontal": "chisel:block/ctm/circular/ice/3",
+        "particle": "chisel:block/ctm/circular/ice/0",
+        "vertical": "chisel:block/ctm/circular/ice/2"
+    }
+}

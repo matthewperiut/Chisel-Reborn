@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/ornatesteel/glass"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/ornatesteel/glass/4",
+        "empty": "chisel:block/ctm/ornatesteel/glass/1",
+        "horizontal": "chisel:block/ctm/ornatesteel/glass/3",
+        "particle": "chisel:block/ctm/ornatesteel/glass/0",
+        "vertical": "chisel:block/ctm/ornatesteel/glass/2"
+    }
+}

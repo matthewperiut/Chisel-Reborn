@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/slant/light_blue_concrete"
+        }
+    },
+    "athena:loader": "athena:giant",
+    "ctm_textures": {
+        "1": "chisel:block/ctm/slant/light_blue_concrete/0",
+        "2": "chisel:block/ctm/slant/light_blue_concrete/1",
+        "3": "chisel:block/ctm/slant/light_blue_concrete/2",
+        "4": "chisel:block/ctm/slant/light_blue_concrete/3",
+        "particle": "chisel:block/slant/light_blue_concrete"
+    },
+    "height": 2,
+    "width": 2
+}

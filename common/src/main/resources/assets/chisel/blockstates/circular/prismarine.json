@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/circular/prismarine"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/circular/prismarine/4",
+        "empty": "chisel:block/ctm/circular/prismarine/1",
+        "horizontal": "chisel:block/ctm/circular/prismarine/3",
+        "particle": "chisel:block/ctm/circular/prismarine/0",
+        "vertical": "chisel:block/ctm/circular/prismarine/2"
+    }
+}

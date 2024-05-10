@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/sunken/stone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/sunken/stone/4",
+        "empty": "chisel:block/ctm/sunken/stone/1",
+        "horizontal": "chisel:block/ctm/sunken/stone/3",
+        "particle": "chisel:block/ctm/sunken/stone/0",
+        "vertical": "chisel:block/ctm/sunken/stone/2"
+    }
+}

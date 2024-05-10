@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/jellybean/andesite"
+        }
+    },
+    "athena:loader": "athena:giant",
+    "ctm_textures": {
+        "1": "chisel:block/ctm/jellybean/andesite/0",
+        "2": "chisel:block/ctm/jellybean/andesite/1",
+        "3": "chisel:block/ctm/jellybean/andesite/2",
+        "4": "chisel:block/ctm/jellybean/andesite/3",
+        "particle": "chisel:block/jellybean/andesite"
+    },
+    "height": 2,
+    "width": 2
+}

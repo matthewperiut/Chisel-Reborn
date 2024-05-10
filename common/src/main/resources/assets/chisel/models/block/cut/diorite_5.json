@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/cut/diorite/5",
+        "particle": "chisel:block/cut/diorite"
+    }
+}

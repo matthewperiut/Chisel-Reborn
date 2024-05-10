@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/llama/orange_wool"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/llama/orange_wool/4",
+        "empty": "chisel:block/ctm/llama/orange_wool/1",
+        "horizontal": "chisel:block/ctm/llama/orange_wool/3",
+        "particle": "chisel:block/ctm/llama/orange_wool/0",
+        "vertical": "chisel:block/ctm/llama/orange_wool/2"
+    }
+}

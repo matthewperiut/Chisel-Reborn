@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/vertical/jungle_planks/7",
+        "particle": "chisel:block/vertical/jungle_planks"
+    }
+}

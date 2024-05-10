@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/dent/orange_concrete"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/dent/orange_concrete/4",
+        "empty": "chisel:block/ctm/dent/orange_concrete/1",
+        "horizontal": "chisel:block/ctm/dent/orange_concrete/3",
+        "particle": "chisel:block/ctm/dent/orange_concrete/0",
+        "vertical": "chisel:block/ctm/dent/orange_concrete/2"
+    }
+}

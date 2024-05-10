@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/crude_vertical/dark_oak_planks/8",
+        "particle": "chisel:block/crude_vertical/dark_oak_planks"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/circular/purpur"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/circular/purpur/4",
+        "empty": "chisel:block/ctm/circular/purpur/1",
+        "horizontal": "chisel:block/ctm/circular/purpur/3",
+        "particle": "chisel:block/ctm/circular/purpur/0",
+        "vertical": "chisel:block/ctm/circular/purpur/2"
+    }
+}

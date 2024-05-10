@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/slant/red_sandstone"
+        }
+    },
+    "athena:loader": "athena:giant",
+    "ctm_textures": {
+        "1": "chisel:block/ctm/slant/red_sandstone/0",
+        "2": "chisel:block/ctm/slant/red_sandstone/1",
+        "3": "chisel:block/ctm/slant/red_sandstone/2",
+        "4": "chisel:block/ctm/slant/red_sandstone/3",
+        "particle": "chisel:block/slant/red_sandstone"
+    },
+    "height": 2,
+    "width": 2
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/chaotic_bricks/light_gray_concrete/3",
+        "particle": "chisel:block/chaotic_bricks/light_gray_concrete"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/french/redstone_block_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/french/redstone_block_1",
+                "weight": 1
+            }
+        ]
+    }
+}

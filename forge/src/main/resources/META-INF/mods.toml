@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/matthewperiut/Chisel-Reborn/issues"
+license = "GPLv2"
+
+[[mods]]
+modId = "chisel"
+version = "${version}"
+displayName = "Chisel Reborn"
+authors = ["Slaincow", "KnowYourKnot", "Original Creator: AUTOMATIC_MAIDEN"]
+description = '''
+Adds New Blocks!
+'''
+logoFile = "assets/chisel/icon.png"
+
+[[dependencies.chisel]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.chisel]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.chisel]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.1.12,)"
+ordering = "AFTER"
+side = "BOTH"

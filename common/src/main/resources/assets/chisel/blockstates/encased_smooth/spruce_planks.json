@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/encased_smooth/spruce_planks"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/encased_smooth/spruce_planks/4",
+        "empty": "chisel:block/ctm/encased_smooth/spruce_planks/1",
+        "horizontal": "chisel:block/ctm/encased_smooth/spruce_planks/3",
+        "particle": "chisel:block/ctm/encased_smooth/spruce_planks/0",
+        "vertical": "chisel:block/ctm/encased_smooth/spruce_planks/2"
+    }
+}

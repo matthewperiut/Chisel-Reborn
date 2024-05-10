@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/dent/cobblestone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/dent/cobblestone/4",
+        "empty": "chisel:block/ctm/dent/cobblestone/1",
+        "horizontal": "chisel:block/ctm/dent/cobblestone/3",
+        "particle": "chisel:block/ctm/dent/cobblestone/0",
+        "vertical": "chisel:block/ctm/dent/cobblestone/2"
+    }
+}

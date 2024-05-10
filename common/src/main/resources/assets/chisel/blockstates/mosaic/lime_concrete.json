@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/lime_concrete"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/lime_concrete/4",
+        "empty": "chisel:block/ctm/mosaic/lime_concrete/1",
+        "horizontal": "chisel:block/ctm/mosaic/lime_concrete/3",
+        "particle": "chisel:block/ctm/mosaic/lime_concrete/0",
+        "vertical": "chisel:block/ctm/mosaic/lime_concrete/2"
+    }
+}

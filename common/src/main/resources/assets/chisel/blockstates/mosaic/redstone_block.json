@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/redstone_block"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/redstone_block/4",
+        "empty": "chisel:block/ctm/mosaic/redstone_block/1",
+        "horizontal": "chisel:block/ctm/mosaic/redstone_block/3",
+        "particle": "chisel:block/ctm/mosaic/redstone_block/0",
+        "vertical": "chisel:block/ctm/mosaic/redstone_block/2"
+    }
+}

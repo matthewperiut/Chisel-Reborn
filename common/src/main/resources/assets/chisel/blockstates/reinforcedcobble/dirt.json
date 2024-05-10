@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/reinforcedcobble/dirt"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/reinforcedcobble/dirt/4",
+        "empty": "chisel:block/ctm/reinforcedcobble/dirt/1",
+        "horizontal": "chisel:block/ctm/reinforcedcobble/dirt/3",
+        "particle": "chisel:block/ctm/reinforcedcobble/dirt/0",
+        "vertical": "chisel:block/ctm/reinforcedcobble/dirt/2"
+    }
+}

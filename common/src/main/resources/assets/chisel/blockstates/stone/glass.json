@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/stone/glass"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/stone/glass/4",
+        "empty": "chisel:block/ctm/stone/glass/1",
+        "horizontal": "chisel:block/ctm/stone/glass/3",
+        "particle": "chisel:block/ctm/stone/glass/0",
+        "vertical": "chisel:block/ctm/stone/glass/2"
+    }
+}

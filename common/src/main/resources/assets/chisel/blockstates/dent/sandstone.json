@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/dent/sandstone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/dent/sandstone/4",
+        "empty": "chisel:block/ctm/dent/sandstone/1",
+        "horizontal": "chisel:block/ctm/dent/sandstone/3",
+        "particle": "chisel:block/ctm/dent/sandstone/0",
+        "vertical": "chisel:block/ctm/dent/sandstone/2"
+    }
+}

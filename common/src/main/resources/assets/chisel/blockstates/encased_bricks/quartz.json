@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/encased_bricks/quartz"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/encased_bricks/quartz/4",
+        "empty": "chisel:block/ctm/encased_bricks/quartz/1",
+        "horizontal": "chisel:block/ctm/encased_bricks/quartz/3",
+        "particle": "chisel:block/ctm/encased_bricks/quartz/0",
+        "vertical": "chisel:block/ctm/encased_bricks/quartz/2"
+    }
+}

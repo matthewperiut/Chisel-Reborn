@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/circular/andesite"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/circular/andesite/4",
+        "empty": "chisel:block/ctm/circular/andesite/1",
+        "horizontal": "chisel:block/ctm/circular/andesite/3",
+        "particle": "chisel:block/ctm/circular/andesite/0",
+        "vertical": "chisel:block/ctm/circular/andesite/2"
+    }
+}

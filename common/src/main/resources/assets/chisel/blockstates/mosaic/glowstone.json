@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/glowstone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/glowstone/4",
+        "empty": "chisel:block/ctm/mosaic/glowstone/1",
+        "horizontal": "chisel:block/ctm/mosaic/glowstone/3",
+        "particle": "chisel:block/ctm/mosaic/glowstone/0",
+        "vertical": "chisel:block/ctm/mosaic/glowstone/2"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/french/diorite_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/french/diorite_1",
+                "weight": 1
+            }
+        ]
+    }
+}

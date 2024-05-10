@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/encased_bricks/deepslate"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/encased_bricks/deepslate/4",
+        "empty": "chisel:block/ctm/encased_bricks/deepslate/1",
+        "horizontal": "chisel:block/ctm/encased_bricks/deepslate/3",
+        "particle": "chisel:block/ctm/encased_bricks/deepslate/0",
+        "vertical": "chisel:block/ctm/encased_bricks/deepslate/2"
+    }
+}

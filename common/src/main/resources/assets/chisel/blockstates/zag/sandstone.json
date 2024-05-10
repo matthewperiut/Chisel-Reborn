@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/zag/sandstone"
+        }
+    },
+    "athena:loader": "athena:giant",
+    "ctm_textures": {
+        "1": "chisel:block/ctm/zag/sandstone/0",
+        "2": "chisel:block/ctm/zag/sandstone/1",
+        "3": "chisel:block/ctm/zag/sandstone/2",
+        "4": "chisel:block/ctm/zag/sandstone/3",
+        "particle": "chisel:block/zag/sandstone"
+    },
+    "height": 2,
+    "width": 2
+}

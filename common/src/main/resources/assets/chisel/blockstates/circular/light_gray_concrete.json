@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/circular/light_gray_concrete"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/circular/light_gray_concrete/4",
+        "empty": "chisel:block/ctm/circular/light_gray_concrete/1",
+        "horizontal": "chisel:block/ctm/circular/light_gray_concrete/3",
+        "particle": "chisel:block/ctm/circular/light_gray_concrete/0",
+        "vertical": "chisel:block/ctm/circular/light_gray_concrete/2"
+    }
+}

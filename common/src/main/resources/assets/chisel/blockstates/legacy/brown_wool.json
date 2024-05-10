@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/legacy/brown_wool"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/legacy/brown_wool/4",
+        "empty": "chisel:block/ctm/legacy/brown_wool/1",
+        "horizontal": "chisel:block/ctm/legacy/brown_wool/3",
+        "particle": "chisel:block/ctm/legacy/brown_wool/0",
+        "vertical": "chisel:block/ctm/legacy/brown_wool/2"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/encased_bricks/end_stone"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/encased_bricks/end_stone/4",
+        "empty": "chisel:block/ctm/encased_bricks/end_stone/1",
+        "horizontal": "chisel:block/ctm/encased_bricks/end_stone/3",
+        "particle": "chisel:block/ctm/encased_bricks/end_stone/0",
+        "vertical": "chisel:block/ctm/encased_bricks/end_stone/2"
+    }
+}

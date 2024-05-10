@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/cut/andesite/6",
+        "particle": "chisel:block/cut/andesite"
+    }
+}

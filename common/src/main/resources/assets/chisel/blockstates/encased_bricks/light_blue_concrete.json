@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/encased_bricks/light_blue_concrete"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/encased_bricks/light_blue_concrete/4",
+        "empty": "chisel:block/ctm/encased_bricks/light_blue_concrete/1",
+        "horizontal": "chisel:block/ctm/encased_bricks/light_blue_concrete/3",
+        "particle": "chisel:block/ctm/encased_bricks/light_blue_concrete/0",
+        "vertical": "chisel:block/ctm/encased_bricks/light_blue_concrete/2"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/sunken/deepslate"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/sunken/deepslate/4",
+        "empty": "chisel:block/ctm/sunken/deepslate/1",
+        "horizontal": "chisel:block/ctm/sunken/deepslate/3",
+        "particle": "chisel:block/ctm/sunken/deepslate/0",
+        "vertical": "chisel:block/ctm/sunken/deepslate/2"
+    }
+}

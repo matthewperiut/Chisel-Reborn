@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/cut/yellow_concrete/15",
+        "particle": "chisel:block/cut/yellow_concrete"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": {
+            "model": "chisel:block/mosaic/nether_brick"
+        }
+    },
+    "athena:loader": "athena:ctm",
+    "ctm_textures": {
+        "center": "chisel:block/ctm/mosaic/nether_brick/4",
+        "empty": "chisel:block/ctm/mosaic/nether_brick/1",
+        "horizontal": "chisel:block/ctm/mosaic/nether_brick/3",
+        "particle": "chisel:block/ctm/mosaic/nether_brick/0",
+        "vertical": "chisel:block/ctm/mosaic/nether_brick/2"
+    }
+}

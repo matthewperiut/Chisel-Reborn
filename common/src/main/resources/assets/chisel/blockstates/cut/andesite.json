@@ -1,0 +1,70 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/cut/andesite_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_8",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_9",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_10",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_11",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_12",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_13",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_14",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/andesite_15",
+                "weight": 1
+            }
+        ]
+    }
+}

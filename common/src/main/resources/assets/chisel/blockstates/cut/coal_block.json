@@ -1,0 +1,70 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "chisel:block/cut/coal_block_0",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_1",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_2",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_3",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_4",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_5",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_6",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_7",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_8",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_9",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_10",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_11",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_12",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_13",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_14",
+                "weight": 1
+            },
+            {
+                "model": "chisel:block/cut/coal_block_15",
+                "weight": 1
+            }
+        ]
+    }
+}

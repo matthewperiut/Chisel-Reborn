@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "chisel:block/ctm/cut/deepslate/3",
+        "particle": "chisel:block/cut/deepslate"
+    }
+}
