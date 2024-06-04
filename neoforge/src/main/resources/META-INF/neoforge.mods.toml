@@ -16,12 +16,12 @@ logoFile = "assets/chisel/icon.png"
 [[dependencies.chisel]]
 modId="minecraft"
 type="required"
-versionRange="[1.20.4,)"
+versionRange="[1.20.5,1.20.6]"
 
 [[dependencies.chisel]]
 modId="neoforge"
 type="required"
-versionRange="[20.4.214,)"
+versionRange="[20.6,)"
 
 [[dependencies.chisel]]
 modId="architectury"
