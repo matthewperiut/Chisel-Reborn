@@ -12,11 +12,11 @@ public class ClientRegister
     public static void Register()
     {
         for (String name : Chisel.translucentBlocks) {
-            Block block = Registries.BLOCK.get(new Identifier(Chisel.MOD_ID, name));
+            Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
             BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
         }
         for (String name : Chisel.transparentBlocks) {
-            Block block = Registries.BLOCK.get(new Identifier(Chisel.MOD_ID, name));
+            Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
             BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
         }
     }

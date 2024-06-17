@@ -50,7 +50,7 @@ public class VanillaChisel
         {
             for(int j = 0; j < vanilla[i].length; j++)
             {
-                ChiselGroupLookup.addItemToGroup(vanilla[i][0], new Identifier("minecraft",vanilla[i][j]));
+                ChiselGroupLookup.addItemToGroup(vanilla[i][0], Identifier.of("minecraft",vanilla[i][j]));
             }
         }
     }

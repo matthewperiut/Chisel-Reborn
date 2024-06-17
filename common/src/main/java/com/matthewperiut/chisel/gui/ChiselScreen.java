@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ChiselScreen extends HandledScreen<ScreenHandler> {
-    public static final Identifier TEXTURE = new Identifier(Chisel.MOD_ID, "textures/chiselfabricgui.png");
+    public static final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/chiselfabricgui.png");
     public static final int TEXTURE_WIDTH = 194;
     public static final int TEXTURE_HEIGHT = 209;
 

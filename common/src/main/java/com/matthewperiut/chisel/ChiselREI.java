@@ -73,7 +73,7 @@ public class ChiselREI implements REIClientPlugin {
     }
 
     public static class ChiselCategory implements DisplayCategory<ChiselDisplay> {
-        private final Identifier TEXTURE = new Identifier(Chisel.MOD_ID, "textures/rei_recipes.png");
+        private final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/rei_recipes.png");
 
         @Override
         public Renderer getIcon() {
