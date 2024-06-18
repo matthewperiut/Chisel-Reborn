@@ -1,9 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " #",
-    "S "
-  ],
+  "category": "equipment",
   "key": {
     "#": {
       "item": "minecraft:iron_ingot"
@@ -12,7 +9,12 @@
       "item": "minecraft:stick"
     }
   },
+  "pattern": [
+    " #",
+    "S "
+  ],
   "result": {
-    "item": "chisel:chisel"
+    "count": 1,
+    "id": "chisel:chisel"
   }
 }
