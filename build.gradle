@@ -14,6 +14,13 @@ subprojects {
         silentMojangMappingsLicense()
     }
 
+    repositories {
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/"
+        }
+    }
+
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
 
@@ -23,8 +30,10 @@ subprojects {
         }
         if (project.name == "common")
         {
+            modCompileOnly "dev.emi:emi-xplat-intermediary:${project.emi_version}:api"
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
         } else {
+            modCompileOnly "dev.emi:emi-${project.name}:${project.emi_version}:api"
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-${project.name}:${project.rei_version}"
         }
     }
