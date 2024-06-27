@@ -36,7 +36,7 @@ public class ChiselEMI implements EmiPlugin {
 
     public static class ChiselCategory extends EmiRecipeCategory {
         public ChiselCategory() {
-            super(new Identifier(Chisel.MOD_ID, "chisel_recipes_category"), EmiStack.of(Chisel.chiselSupplier.get()));
+            super(Identifier.of(Chisel.MOD_ID, "chisel_recipes_category"), EmiStack.of(Chisel.chiselSupplier.get()));
         }
 
         @Override
@@ -46,14 +46,14 @@ public class ChiselEMI implements EmiPlugin {
     }
 
     public static class ChiselEmiRecipe implements EmiRecipe {
-        private static final Identifier TEXTURE = new Identifier(Chisel.MOD_ID, "textures/rei_recipes.png");
+        private static final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/rei_recipes.png");
 
         private final Identifier id;
         private final List<EmiIngredient> input;
         private final List<EmiStack> output;
 
         public ChiselEmiRecipe(String chiselGroup) {
-            this.id = new Identifier(Chisel.MOD_ID, chiselGroup);
+            this.id = Identifier.of(Chisel.MOD_ID, chiselGroup);
             this.input = new ArrayList<>();
             this.output = new ArrayList<>();
             for (Item item : ChiselGroupLookup.getBlocksInGroup(chiselGroup)) {

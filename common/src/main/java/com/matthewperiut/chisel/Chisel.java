@@ -45,7 +45,7 @@ public class Chisel {
 
     public static void init()
     {
-        Chisel.chiselSupplier = ITEMS.register(new Identifier("chisel", "chisel"), () -> new ChiselItem(new Item.Settings().maxCount(1).arch$tab(ItemGroupRegistry.CLAY_GROUP)));
+        Chisel.chiselSupplier = ITEMS.register(Identifier.of("chisel", "chisel"), () -> new ChiselItem(new Item.Settings().maxCount(1).arch$tab(ItemGroupRegistry.CLAY_GROUP)));
         ItemGroupRegistry.Register();
         BlockRegister.Register();
     }

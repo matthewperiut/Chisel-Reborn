@@ -44,22 +44,22 @@ public class EzReg
         }
 
         String[] individual = name.split("/", 2);
-        Identifier baseBlockIdentifier = new Identifier("minecraft",individual[1]);
+        Identifier baseBlockIdentifier = Identifier.of("minecraft",individual[1]);
         ChiselGroupLookup.addItemToGroup(individual[1], baseBlockIdentifier);
         Block baseBlock = purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier));
         RegistrySupplier<Block> blockSupplier;
 
         if (redstone && pillar)
-            blockSupplier = BLOCKS.register(new Identifier("chisel", name), () -> new RedstonePillarBlock(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new RedstonePillarBlock(AbstractBlock.Settings.copy(baseBlock)));
         else if (redstone)
-            blockSupplier = BLOCKS.register(new Identifier("chisel", name), () -> new RedstoneBlock(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new RedstoneBlock(AbstractBlock.Settings.copy(baseBlock)));
         else if (pillar)
-            blockSupplier = BLOCKS.register(new Identifier("chisel", name), () -> new PillarBlock(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new PillarBlock(AbstractBlock.Settings.copy(baseBlock)));
         else
-            blockSupplier = BLOCKS.register(new Identifier("chisel", name), () -> new Block(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new Block(AbstractBlock.Settings.copy(baseBlock)));
 
-        RegistrySupplier<Item> itemSupplier = ITEMS.register(new Identifier("chisel", name), () -> new BlockItem(blockSupplier.get(), new Item.Settings().arch$tab(ItemGroupRegistry.CLAY_GROUP)));
+        RegistrySupplier<Item> itemSupplier = ITEMS.register(Identifier.of("chisel", name), () -> new BlockItem(blockSupplier.get(), new Item.Settings().arch$tab(ItemGroupRegistry.CLAY_GROUP)));
 
-        ChiselGroupLookup.addItemToGroup(group, new Identifier("chisel", name));
+        ChiselGroupLookup.addItemToGroup(group, Identifier.of("chisel", name));
     }
 }
