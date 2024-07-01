@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "chisel:brick/iron_block",
+    "chisel:chunky/lapis_block",
+    "chisel:coin_heads/iron_block",
+    "chisel:coin_tails/iron_block",
+    "chisel:crate_dark/iron_block",
+    "chisel:crate_light/iron_block",
+    "chisel:gears/iron_block",
+    "chisel:large_tile/lapis_block",
+    "chisel:largeingot/iron_block",
+    "chisel:masonry/lapis_block",
+    "chisel:moon/iron_block",
+    "chisel:ornate/lapis_block",
+    "chisel:ornatelayer/lapis_block",
+    "chisel:panel/lapis_block",
+    "chisel:panelclassic/lapis_block",
+    "chisel:plates/iron_block",
+    "chisel:rivets/iron_block",
+    "chisel:simple/iron_block",
+    "chisel:smallingot/iron_block",
+    "chisel:smooth/lapis_block",
+    "chisel:space/iron_block",
+    "chisel:spaceblack/iron_block",
+    "chisel:vents/iron_block",
+    "chisel:zelda/lapis_block"
+  ]
+}
