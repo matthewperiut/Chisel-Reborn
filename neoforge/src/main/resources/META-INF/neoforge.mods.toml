@@ -13,6 +13,9 @@ Adds New Blocks!
 '''
 logoFile = "assets/chisel/icon.png"
 
+[[mixins]]
+config = "chisel.mixins.json"
+
 [[dependencies.chisel]]
 modId="minecraft"
 type="required"

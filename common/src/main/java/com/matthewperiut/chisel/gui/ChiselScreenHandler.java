@@ -15,11 +15,13 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class ChiselScreenHandler extends ScreenHandler {
     private final ChiselInventory inventory;
     private final BundleContentsComponent componentInventory;
+    LocalTime currentTime = LocalTime.now();
 
     public ChiselScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new ChiselInventory());
@@ -161,8 +163,10 @@ public class ChiselScreenHandler extends ScreenHandler {
 
         @Override
         public int getMaxItemCount() {
-            return 1;
+            return 64;
         }
+
+
 
     }
 

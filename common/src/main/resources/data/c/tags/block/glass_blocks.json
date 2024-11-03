@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "chisel:bubble/glass",
+    "chisel:chinese/glass",
+    "chisel:chinese2/glass",
+    "chisel:chrono/glass",
+    "chisel:ironfencemodern/glass",
+    "chisel:japanese/glass",
+    "chisel:japanese2/glass",
+    "chisel:light/glass",
+    "chisel:noborder/glass",
+    "chisel:ornatesteel/glass",
+    "chisel:ornatesteel_old/glass",
+    "chisel:screen/glass",
+    "chisel:shale/glass",
+    "chisel:steelframe/glass",
+    "chisel:stone/glass",
+    "chisel:streak/glass",
+    "chisel:thick/glass",
+    "chisel:thin/glass"
+  ]
+}

@@ -60,7 +60,7 @@ public class ChiselInventory implements IInventory {
         clearInv();
         for (int i = 0; i < 60 && i < chiselBlocks.size(); i++)
         {
-            this.setStack(i + 1, new ItemStack(chiselBlocks.get(i), 1));
+            this.setStack(i + 1, new ItemStack(chiselBlocks.get(i), getStack(0).getCount()));
         }
     }
 

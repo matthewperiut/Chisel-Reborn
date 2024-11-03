@@ -33,7 +33,9 @@
       "com.matthewperiut.chisel.ChiselREI"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "chisel.mixins.json"
+  ],
   
   "depends": {
     "fabricloader": ">=0.14.19",
