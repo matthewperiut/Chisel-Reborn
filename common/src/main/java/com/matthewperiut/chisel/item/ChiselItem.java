@@ -7,6 +7,7 @@ import com.matthewperiut.chisel.inventory.InventoryUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -29,8 +30,8 @@ import static com.matthewperiut.chisel.Chisel.chiselSupplier;
 
 public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 {
-    public ChiselItem(Settings settings) {
-        super(settings);
+    public ChiselItem(Identifier item, Settings settings) {
+        super(item, item, settings);
     }
 
     @Override
@@ -51,16 +52,16 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
-    {
-        if(hand == Hand.OFF_HAND)
-            return TypedActionResult.pass(user.getStackInHand(hand));
-
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient)
             if (user.getMainHandStack().isOf(chiselSupplier.get()))
                 user.openHandledScreen(this);
+        return super.use(world, user, hand);
+    }
 
-        return TypedActionResult.success(user.getStackInHand(hand), false);
+    @Override
+    public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
+
     }
 
     @Override

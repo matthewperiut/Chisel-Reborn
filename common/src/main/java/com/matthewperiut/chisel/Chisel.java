@@ -11,6 +11,7 @@ import dev.architectury.registry.registries.RegistrarManager;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandlerType;
@@ -45,7 +46,9 @@ public class Chisel {
 
     public static void init()
     {
-        Chisel.chiselSupplier = ITEMS.register(Identifier.of("chisel", "chisel"), () -> new ChiselItem(new Item.Settings().maxCount(1).arch$tab(ItemGroupRegistry.CLAY_GROUP)));
+        Identifier chisel_id = Identifier.of("chisel", "chisel");
+        RegistryKey<Item> chisel_key = RegistryKey.of(RegistryKeys.ITEM, chisel_id);
+        Chisel.chiselSupplier = ITEMS.register(chisel_id, () -> new ChiselItem(chisel_id, new Item.Settings().maxCount(1).arch$tab(ItemGroupRegistry.CLAY_GROUP).registryKey(chisel_key)));
         ItemGroupRegistry.Register();
         BlockRegister.Register();
     }

@@ -5,8 +5,10 @@ import com.matthewperiut.chisel.mixins.HandledScreenAccessor;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.ingame.FurnaceScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -29,14 +31,14 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         this.backgroundHeight = TEXTURE_HEIGHT;
     }
 
+
+
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+
     }
 
     @Override
@@ -58,7 +60,6 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
       context.drawText(this.textRenderer, this.title, this.titleX, this.titleY, 4210752, false);
     }
 
-    @Override
     protected void drawSlot(DrawContext context, Slot slot) {
         int i = slot.x;
         int j = slot.y;
@@ -99,7 +100,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
             Pair<Identifier, Identifier> pair = slot.getBackgroundSprite();
             if (pair != null) {
                 Sprite sprite = (Sprite)this.client.getSpriteAtlas((Identifier)pair.getFirst()).apply((Identifier)pair.getSecond());
-                context.drawSprite(i, j, 0, 16, 16, sprite);
+                context.drawSpriteStretched(RenderLayer::getGuiTextured, sprite, i, j, 16, 16);
                 bl2 = true;
             }
         }
@@ -116,9 +117,8 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
                 context.drawItem(itemStack, i, j, k);
             }
 
-            // Only draw the item count if the slot ID is outside the range 1-61
             if (slot.id < 1 || slot.id > 61) {
-                context.drawItemInSlot(this.textRenderer, itemStack, i, j, string);
+                context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
             }
         }
 

@@ -10,6 +10,8 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 import static com.matthewperiut.chisel.Chisel.BLOCKS;
@@ -49,16 +51,19 @@ public class EzReg
         Block baseBlock = purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier));
         RegistrySupplier<Block> blockSupplier;
 
+        Identifier block_id = Identifier.of("chisel", name);
+        RegistryKey<Block> block_key = RegistryKey.of(RegistryKeys.BLOCK, block_id);
         if (redstone && pillar)
-            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new RedstonePillarBlock(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(block_id, () -> new RedstonePillarBlock(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
         else if (redstone)
-            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new RedstoneBlock(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(block_id, () -> new RedstoneBlock(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
         else if (pillar)
-            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new PillarBlock(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(block_id, () -> new PillarBlock(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
         else
-            blockSupplier = BLOCKS.register(Identifier.of("chisel", name), () -> new Block(AbstractBlock.Settings.copy(baseBlock)));
+            blockSupplier = BLOCKS.register(block_id, () -> new Block(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
 
-        RegistrySupplier<Item> itemSupplier = ITEMS.register(Identifier.of("chisel", name), () -> new BlockItem(blockSupplier.get(), new Item.Settings().arch$tab(ItemGroupRegistry.CLAY_GROUP)));
+        RegistryKey<Item> item_key = RegistryKey.of(RegistryKeys.ITEM, block_id);
+        RegistrySupplier<Item> itemSupplier = ITEMS.register(block_id, () -> new BlockItem(blockSupplier.get(), new Item.Settings().arch$tab(ItemGroupRegistry.CLAY_GROUP).registryKey(item_key)));
 
         ChiselGroupLookup.addItemToGroup(group, Identifier.of("chisel", name));
     }
