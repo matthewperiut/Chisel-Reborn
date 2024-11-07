@@ -51,10 +51,10 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          name: '[${{ matrix.mod-loader }} ${{ steps.versions.outputs.minecraft-version }}] ${{ steps.versions.outputs.mod-version }}'
+          version: '[${{ matrix.mod-loader }} ${{ steps.versions.outputs.minecraft-version }}] ${{ steps.versions.outputs.mod-version }}'
 
           files: |
-            ${{ matrix.mod-loader }}/build/libs/!(*@(dev|sources|all|shadow|local-shadow|*-shadow|snapshot*|*-local)).jar
+            ${{ matrix.mod-loader }}/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
 
           version-type: release
 
