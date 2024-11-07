@@ -39,6 +39,32 @@ subprojects {
     }
 }
 
+def createVersionString() {
+    def builder = new StringBuilder()
+
+    def isReleaseBuild = project.hasProperty('build.release')
+    def buildId = System.getenv('GITHUB_RUN_NUMBER')
+
+    if (isReleaseBuild) {
+        builder.append(mod_version)
+    } else {
+        builder.append(mod_version.split('-')[0])
+        builder.append('-snapshot')
+    }
+
+    builder.append('+mc').append(minecraft_version)
+
+    if (!isReleaseBuild) {
+        if (buildId != null) {
+            builder.append("-build.${buildId}")
+        } else {
+            builder.append('-local')
+        }
+    }
+
+    return builder.toString()
+}
+
 allprojects {
     apply plugin: "java"
     apply plugin: "architectury-plugin"
@@ -48,7 +74,7 @@ allprojects {
         archivesName = rootProject.archives_base_name
     }
 
-    version = rootProject.mod_version
+    version = createVersionString()
     group = rootProject.maven_group
 
     repositories {

@@ -40,13 +40,15 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          files: fabric/build/libs/!(*-@(dev|sources|all)).jar
+          files: fabric/build/libs/!(*-@(dev|sources|all|shadow)).jar
 
           version-type: release
 
           loaders: fabric quilt
 
-          dependencies: fabric-api, architectury-api
+          dependencies: |
+            fabric-api
+            architectury-api
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
 
@@ -62,7 +64,7 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          files: neoforge/build/libs/!(*-@(dev|sources|all)).jar
+          files: neoforge/build/libs/!(*-@(dev|sources|all|shadow)).jar
 
           version-type: release
 
