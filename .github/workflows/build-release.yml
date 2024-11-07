@@ -1,25 +1,21 @@
-name: Gradle Release Artifact
+# This workflow will build a Java project with Brachyra
+# For more information see: docs/development/brachyura.md
+
+name: Release script
 
 on:
   release:
     types:
       - published
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        mod-loader: [fabric, neoforge] # Define the loaders here
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
-      - name: Set up Java 21
-        uses: actions/setup-java@v4
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
@@ -29,6 +25,9 @@ jobs:
         with:
           cache-read-only: false
 
+      - name: Run build with Gradle Wrapper
+        run: ./gradlew build -Dbuild.release=true
+
       - name: Extract versions from tag name
         id: versions
         run: |
@@ -36,10 +35,35 @@ jobs:
           echo "minecraft-version=${VERSIONS[0]}" >> "${GITHUB_OUTPUT}"
           echo "mod-version=${VERSIONS[1]}" >> "${GITHUB_OUTPUT}"
 
-      - name: Build ${{ matrix.mod-loader }}
-        run: ./gradlew ${{ matrix.mod-loader }}:build -Dbuild.release=true
+      - name: Upload fabric artifacts
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: 4KWv7wbN
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: true
 
-      - name: Publish ${{ matrix.mod-loader }}
+          name: '[${{ steps.versions.outputs.minecraft-version }}] Fabric ${{ steps.versions.outputs.mod-version }}'
+          version: 'fabric-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
+
+          curseforge-id: 551763
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+          files: |
+            fabric/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
+
+          version-type: release
+
+          loaders: fabric quilt
+
+          dependencies: |
+            fabric-api
+            architectury-api
+
+          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
+
+      - name: Upload neoforge artifacts
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: 4KWv7wbN
@@ -51,18 +75,16 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          name: '[${{ steps.versions.outputs.minecraft-version }}] ${{ matrix.mod-loader }} ${{ steps.versions.outputs.mod-version }}'
-          version: '${{ matrix.mod-loader }}-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
+          name: '[${{ steps.versions.outputs.minecraft-version }}] NeoForge ${{ steps.versions.outputs.mod-version }}'
+          version: 'neoforge-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
 
           files: |
-            ${{ matrix.mod-loader }}/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
+            neoforge/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
 
           version-type: release
 
-          loaders: ${{ matrix.mod-loader }}
+          loaders: neoforge
 
-          dependencies: |
-            fabric-api
-            architectury-api
+          dependencies: architectury-api
 
-          version-resolver: latest
+          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
