@@ -60,7 +60,6 @@ jobs:
           dependencies: |
             fabric-api(required)
             architectury-api(required)
-            athena-ctm(required){modrinth:b1ZV3DIJ}{curseforge:841890}
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
 
@@ -88,6 +87,5 @@ jobs:
 
           dependencies: |
             architectury-api
-            athena-ctm(required){modrinth:b1ZV3DIJ}{curseforge:841890}
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json

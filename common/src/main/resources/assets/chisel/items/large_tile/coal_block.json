@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "chisel:item/large_tile/coal_block"
+  }
+}

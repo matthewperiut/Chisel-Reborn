@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "chisel:item/coin_heads/gold_block"
+  }
+}

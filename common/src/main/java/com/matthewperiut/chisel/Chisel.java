@@ -48,7 +48,7 @@ public class Chisel {
     {
         Identifier chisel_id = Identifier.of("chisel", "chisel");
         RegistryKey<Item> chisel_key = RegistryKey.of(RegistryKeys.ITEM, chisel_id);
-        Chisel.chiselSupplier = ITEMS.register(chisel_id, () -> new ChiselItem(chisel_id, new Item.Settings().maxCount(1).arch$tab(ItemGroupRegistry.CLAY_GROUP).registryKey(chisel_key)));
+        Chisel.chiselSupplier = ITEMS.register(chisel_id, () -> new ChiselItem(new Item.Settings().maxCount(1).arch$tab(ItemGroupRegistry.CLAY_GROUP).registryKey(chisel_key)));
         ItemGroupRegistry.Register();
         BlockRegister.Register();
     }

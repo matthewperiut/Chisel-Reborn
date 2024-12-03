@@ -30,8 +30,8 @@ import static com.matthewperiut.chisel.Chisel.chiselSupplier;
 
 public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 {
-    public ChiselItem(Identifier item, Settings settings) {
-        super(item, item, settings);
+    public ChiselItem(Settings settings) {
+        super(settings);
     }
 
     @Override

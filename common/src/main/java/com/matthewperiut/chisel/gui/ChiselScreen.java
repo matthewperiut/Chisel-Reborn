@@ -97,10 +97,9 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         context.getMatrices().push();
         context.getMatrices().translate(0.0F, 0.0F, 100.0F);
         if (itemStack.isEmpty() && slot.isEnabled()) {
-            Pair<Identifier, Identifier> pair = slot.getBackgroundSprite();
-            if (pair != null) {
-                Sprite sprite = (Sprite)this.client.getSpriteAtlas((Identifier)pair.getFirst()).apply((Identifier)pair.getSecond());
-                context.drawSpriteStretched(RenderLayer::getGuiTextured, sprite, i, j, 16, 16);
+            Identifier identifier = slot.getBackgroundSprite();
+            if (identifier != null) {
+                context.drawGuiTexture(RenderLayer::getGuiTextured, identifier, i, j, 16, 16);
                 bl2 = true;
             }
         }
