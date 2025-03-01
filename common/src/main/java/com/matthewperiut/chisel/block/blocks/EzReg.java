@@ -24,6 +24,7 @@ public class EzReg
         boolean redstone = false;
         boolean pillar = false;
         boolean purpur = false;
+        boolean nether_brick = false;
         boolean quartz = false;
 
         if (name.toLowerCase().contains("redstone"))
@@ -34,6 +35,9 @@ public class EzReg
 
         if (name.toLowerCase().contains("purpur"))
             purpur = true;
+
+        if (name.toLowerCase().contains("nether_brick"))
+            nether_brick = true;
 
         if (name.toLowerCase().contains("quartz"))
             quartz = true;
@@ -48,7 +52,7 @@ public class EzReg
         String[] individual = name.split("/", 2);
         Identifier baseBlockIdentifier = Identifier.of("minecraft",individual[1]);
         ChiselGroupLookup.addItemToGroup(individual[1], baseBlockIdentifier);
-        Block baseBlock = purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier));
+        Block baseBlock = nether_brick ? Blocks.NETHER_BRICKS : (purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier)));
         RegistrySupplier<Block> blockSupplier;
 
         Identifier block_id = Identifier.of("chisel", name);
@@ -65,6 +69,9 @@ public class EzReg
         RegistryKey<Item> item_key = RegistryKey.of(RegistryKeys.ITEM, block_id);
         RegistrySupplier<Item> itemSupplier = ITEMS.register(block_id, () -> new BlockItem(blockSupplier.get(), new Item.Settings().arch$tab(ItemGroupRegistry.CLAY_GROUP).registryKey(item_key)));
 
-        ChiselGroupLookup.addItemToGroup(group, Identifier.of("chisel", name));
+        if (nether_brick)
+            ChiselGroupLookup.addItemToGroup("nether_bricks", Identifier.of("chisel", name));
+        else
+            ChiselGroupLookup.addItemToGroup(group, Identifier.of("chisel", name));
     }
 }
