@@ -52,11 +52,16 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     }
 
     @Override
-    public ActionResult use(World world, PlayerEntity user, Hand hand) {
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
+    {
+        if(hand == Hand.OFF_HAND)
+            return TypedActionResult.pass(user.getStackInHand(hand));
+
         if (!world.isClient)
             if (user.getMainHandStack().isOf(chiselSupplier.get()))
                 user.openHandledScreen(this);
-        return super.use(world, user, hand);
+
+        return TypedActionResult.success(user.getStackInHand(hand), false);
     }
 
     @Override

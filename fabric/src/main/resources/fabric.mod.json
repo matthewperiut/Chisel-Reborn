@@ -34,14 +34,15 @@
     ]
   },
   "mixins": [
-    "chisel.mixins.json"
+    "chisel.mixins.json",
+    "chisel.fabric.mixins.json"
   ],
   
   "depends": {
     "fabricloader": ">=0.14.19",
     "architectury": "*",
     "fabric": "*",
-    "minecraft": [ "1.21.4" ],
+    "minecraft": [ "1.21", "1.21.1" ],
     "java": ">=21",
     "cryonicconfig": "*"
   }

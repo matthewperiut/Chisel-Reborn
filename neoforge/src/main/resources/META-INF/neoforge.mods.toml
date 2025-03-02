@@ -16,10 +16,13 @@ logoFile = "assets/chisel/icon.png"
 [[mixins]]
 config = "chisel.mixins.json"
 
+[[mixins]]
+config = "chisel .neoforge.mixins.json"
+
 [[dependencies.chisel]]
 modId="minecraft"
 type="required"
-versionRange="[1.21.4]"
+versionRange="[1.21,1.21.1]"
 
 [[dependencies.chisel]]
 modId="neoforge"

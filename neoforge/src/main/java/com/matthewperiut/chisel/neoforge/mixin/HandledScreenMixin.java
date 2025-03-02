@@ -1,5 +1,7 @@
-package com.matthewperiut.chisel.mixins;
+package com.matthewperiut.chisel.neoforge.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.matthewperiut.chisel.gui.BigSlot;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -7,14 +9,11 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HandledScreen.class)
@@ -22,10 +21,6 @@ public abstract class HandledScreenMixin extends Screen {
 
     @Shadow
     protected Slot focusedSlot;
-
-    @Shadow @Final private static Identifier SLOT_HIGHLIGHT_BACK_TEXTURE;
-
-    @Shadow @Final private static Identifier SLOT_HIGHLIGHT_FRONT_TEXTURE;
 
     protected HandledScreenMixin(Text title) {
         super(title);
@@ -38,25 +33,17 @@ public abstract class HandledScreenMixin extends Screen {
     @Unique
     public final void drawSlotHighlightBackBig(DrawContext context) {
         if (this.focusedSlot != null && ((BigSlot)this.focusedSlot).isBigSlot()) {
-            context.drawGuiTexture(RenderLayer::getGuiTextured, SLOT_HIGHLIGHT_BACK_TEXTURE, this.focusedSlot.x-20, this.focusedSlot.y-20, 56, 56);
-        }
-
-    }
-
-    @Unique
-    public final void drawSlotHighlightFrontBig(DrawContext context) {
-        if (this.focusedSlot != null && ((BigSlot)this.focusedSlot).isBigSlot()) {
-            context.drawGuiTexture(RenderLayer::getGuiTexturedOverlay, SLOT_HIGHLIGHT_FRONT_TEXTURE, this.focusedSlot.x - 20, this.focusedSlot.y - 20, 56, 56);
+            context.fillGradient(RenderLayer.getGuiOverlay(), focusedSlot.x-16, focusedSlot.y-16, focusedSlot.x + 32, focusedSlot.y + 32, -2130706433, -2130706433, 0);
         }
     }
 
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawSlotHighlightBack(Lnet/minecraft/client/gui/DrawContext;)V"))
-    void back(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        drawSlotHighlightBackBig(context);
-    }
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawSlotHighlightFront(Lnet/minecraft/client/gui/DrawContext;)V"))
-    void front(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        drawSlotHighlightFrontBig(context);
+    @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;renderSlotHighlight(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/screen/slot/Slot;IIF)V"))
+    void back(HandledScreen instance, DrawContext drawContext, Slot slot, int x, int y, float v, Operation<Void> original) {
+        if (((BigSlot)slot).isBigSlot()) {
+            drawSlotHighlightBackBig(drawContext);
+        } else {
+            original.call(instance, drawContext, slot, x, y, v);
+        }
     }
 
     @Inject(method = "isPointOverSlot", at = @At("HEAD"), cancellable = true)

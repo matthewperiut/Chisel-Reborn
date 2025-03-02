@@ -2,10 +2,13 @@ package com.matthewperiut.chisel.gui;
 
 import com.matthewperiut.chisel.Chisel;
 import com.matthewperiut.chisel.mixins.HandledScreenAccessor;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.datafixers.util.Pair;
 import com.periut.cryonicconfig.CryonicConfig;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.texture.Sprite;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
@@ -43,12 +46,16 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
+        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         if (compactTexture) {
-            context.drawTexture(RenderLayer::getGuiTextured, OLD_TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+            RenderSystem.setShaderTexture(0, OLD_TEXTURE);
+            context.drawTexture(OLD_TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
         } else {
-            context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+            RenderSystem.setShaderTexture(0, TEXTURE);
+            context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
         }
     }
 
@@ -115,9 +122,10 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         context.getMatrices().translate(0.0F, 0.0F, 100.0F);
 
         if (itemStack.isEmpty() && slot.isEnabled()) {
-            Identifier identifier = slot.getBackgroundSprite();
-            if (identifier != null) {
-                context.drawGuiTexture(RenderLayer::getGuiTextured, identifier, i, j, 16, 16);
+            Pair<Identifier, Identifier> pair = slot.getBackgroundSprite();
+            if (pair != null) {
+                Sprite sprite = (Sprite)this.client.getSpriteAtlas((Identifier)pair.getFirst()).apply((Identifier)pair.getSecond());
+                context.drawSprite(i, j, 0, 16, 16, sprite);
                 bl2 = true;
             }
         }
@@ -152,8 +160,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
                 // Only draw overlay if needed (using your original condition)
                 if (slot.id < 1 || slot.id > 61) {
-                    // Adjust stack overlay position for larger items
-                    context.drawStackOverlay(this.textRenderer, itemStack, 0, 0, string);
+                    context.drawItemInSlot(this.textRenderer, itemStack, 0, 0, string);
                 }
 
                 // Restore state
@@ -167,7 +174,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
                 }
 
                 if (slot.id < 1 || slot.id > 61) {
-                    context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
+                    context.drawItemInSlot(this.textRenderer, itemStack, i, j, string);
                 }
             }
         }

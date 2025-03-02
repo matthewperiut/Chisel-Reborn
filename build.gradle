@@ -38,7 +38,7 @@ subprojects {
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-${project.name}:${project.rei_version}"
         }
 
-        modImplementation "com.periut.cryonicconfig:cryonicconfig-${project.name}:1.0.0+mc${rootProject.minecraft_version}"
+        modImplementation "com.periut.cryonicconfig:cryonicconfig-${project.name}:1.0.0+mc1.21.4"
     }
 }
 

@@ -4,13 +4,12 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "package": "com.matthewperiut.chisel.mixins",
+  "package": "com.matthewperiut.chisel.neoforge.mixin",
   "mixinPriority": 1100,
   "mixins": [
-    "HandledScreenAccessor",
-    "SlotMixin"
   ],
   "required": true,
   "client": [
+    "HandledScreenMixin"
   ]
 }
