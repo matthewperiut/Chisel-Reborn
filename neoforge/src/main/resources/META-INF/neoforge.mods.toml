@@ -17,7 +17,7 @@ logoFile = "assets/chisel/icon.png"
 config = "chisel.mixins.json"
 
 [[mixins]]
-config = "chisel .neoforge.mixins.json"
+config = "chisel.neoforge.mixins.json"
 
 [[dependencies.chisel]]
 modId="minecraft"
