@@ -2,14 +2,10 @@ package com.matthewperiut.chisel.gui;
 
 import com.matthewperiut.chisel.Chisel;
 import com.matthewperiut.chisel.mixins.HandledScreenAccessor;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.util.Pair;
+import com.periut.cryonicconfig.CryonicConfig;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.FurnaceScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.texture.Sprite;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
@@ -19,16 +15,28 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 public class ChiselScreen extends HandledScreen<ScreenHandler> {
-    public static final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/chiselfabricgui.png");
-    public static final int TEXTURE_WIDTH = 194;
-    public static final int TEXTURE_HEIGHT = 209;
+    boolean compactTexture;
+    public static final Identifier OLD_TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/chiselfabricgui.png");
+    public static final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/chisel2gui.png");
+    public static final int OLD_TEXTURE_WIDTH = 194;
+    public static final int OLD_TEXTURE_HEIGHT = 209;
+    public static final int TEXTURE_WIDTH = 248;
+    public static final int TEXTURE_HEIGHT = 202;
 
     public ChiselScreen(ScreenHandler handler, PlayerInventory inventory, Text title)
     {
         super(handler, inventory, title);
-        this.titleY = 5;
-        this.backgroundWidth =  TEXTURE_WIDTH;
-        this.backgroundHeight = TEXTURE_HEIGHT;
+        compactTexture = CryonicConfig.getConfig("chisel").getBoolean("compact_chisel_gui", false);
+        if (compactTexture) {
+            this.titleY = 5;
+            this.backgroundWidth = OLD_TEXTURE_WIDTH;
+            this.backgroundHeight = OLD_TEXTURE_HEIGHT;
+        } else {
+            this.titleX = 18;
+            this.titleY = 62;
+            this.backgroundWidth = TEXTURE_WIDTH;
+            this.backgroundHeight = TEXTURE_HEIGHT;
+        }
     }
 
 
@@ -37,8 +45,11 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
-        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
-
+        if (compactTexture) {
+            context.drawTexture(RenderLayer::getGuiTextured, OLD_TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+        } else {
+            context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+        }
     }
 
     @Override
@@ -51,7 +62,9 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
     @Override
     protected void init() {
         super.init();
-        titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
+        if (compactTexture) {
+            titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
+        }
     }
 
     @Override
@@ -69,6 +82,10 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         ItemStack itemStack2 = this.handler.getCursorStack();
         String string = null;
         int k;
+
+        // Check if this is a big slot
+        boolean isBigSlot = slot instanceof BigSlot && ((BigSlot)slot).isBigSlot();
+
         if (slot == ((HandledScreenAccessor)this).getTouchDragSlotStart() && !((HandledScreenAccessor)this).getTouchDragStack().isEmpty() && ((HandledScreenAccessor)this).getTouchIsRightClickDrag() && !itemStack.isEmpty()) {
             itemStack = itemStack.copyWithCount(itemStack.getCount() / 2);
         } else if (this.cursorDragging && this.cursorDragSlots.contains(slot) && !itemStack2.isEmpty()) {
@@ -96,6 +113,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
         context.getMatrices().push();
         context.getMatrices().translate(0.0F, 0.0F, 100.0F);
+
         if (itemStack.isEmpty() && slot.isEnabled()) {
             Identifier identifier = slot.getBackgroundSprite();
             if (identifier != null) {
@@ -110,18 +128,50 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
             }
 
             k = slot.x + slot.y * this.backgroundWidth;
-            if (slot.disablesDynamicDisplay()) {
-                context.drawItemWithoutEntity(itemStack, i, j, k);
-            } else {
-                context.drawItem(itemStack, i, j, k);
-            }
 
-            if (slot.id < 1 || slot.id > 61) {
-                context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
+            // Handle big slots differently
+            if (isBigSlot && !itemStack.isEmpty()) {
+                // Save state for big item rendering
+                context.getMatrices().push();
+
+                // Center at slot position
+                float centerX = i + 8;
+                float centerY = j + 8;
+
+                // Move to center, scale up, then move back
+                context.getMatrices().translate(centerX, centerY, 0);
+                context.getMatrices().scale(2.0f, 2.0f, 1.0f);  // 2x size
+                context.getMatrices().translate(-8, -8, 0);
+
+                // Draw the item at 2x size
+                if (slot.disablesDynamicDisplay()) {
+                    context.drawItemWithoutEntity(itemStack, 0, 0, k);
+                } else {
+                    context.drawItem(itemStack, 0, 0, k);
+                }
+
+                // Only draw overlay if needed (using your original condition)
+                if (slot.id < 1 || slot.id > 61) {
+                    // Adjust stack overlay position for larger items
+                    context.drawStackOverlay(this.textRenderer, itemStack, 0, 0, string);
+                }
+
+                // Restore state
+                context.getMatrices().pop();
+            } else {
+                // Normal item rendering (unchanged)
+                if (slot.disablesDynamicDisplay()) {
+                    context.drawItemWithoutEntity(itemStack, i, j, k);
+                } else {
+                    context.drawItem(itemStack, i, j, k);
+                }
+
+                if (slot.id < 1 || slot.id > 61) {
+                    context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
+                }
             }
         }
 
         context.getMatrices().pop();
     }
-
 }

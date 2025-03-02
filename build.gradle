@@ -19,6 +19,7 @@ subprojects {
             name = "TerraformersMC"
             url = "https://maven.terraformersmc.com/"
         }
+        maven { url "https://maven.periut.com/" }
     }
 
     dependencies {
@@ -36,6 +37,8 @@ subprojects {
             modCompileOnly "dev.emi:emi-${project.name}:${project.emi_version}:api"
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-${project.name}:${project.rei_version}"
         }
+
+        modImplementation "com.periut.cryonicconfig:cryonicconfig-${project.name}:1.0.0+mc${rootProject.minecraft_version}"
     }
 }
 

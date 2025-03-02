@@ -30,3 +30,8 @@ versionRange="[0,)"
 modId="architectury"
 type="required"
 versionRange="[0,)"
+
+[[dependencies.chisel]]
+modId="cryonicconfig"
+type="required"
+versionRange="[0,)"

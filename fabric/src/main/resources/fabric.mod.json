@@ -42,6 +42,7 @@
     "architectury": "*",
     "fabric": "*",
     "minecraft": [ "1.21.4" ],
-    "java": ">=21"
+    "java": ">=21",
+    "cryonicconfig": "*"
   }
 }

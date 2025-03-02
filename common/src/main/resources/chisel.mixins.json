@@ -7,7 +7,11 @@
   "package": "com.matthewperiut.chisel.mixins",
   "mixinPriority": 1100,
   "mixins": [
-    "HandledScreenAccessor"
+    "HandledScreenAccessor",
+    "SlotMixin"
   ],
-  "required": true
+  "required": true,
+  "client": [
+    "HandledScreenMixin"
+  ]
 }
