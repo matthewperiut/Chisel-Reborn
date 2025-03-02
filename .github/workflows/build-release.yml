@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
+          java-version: 17
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -85,6 +85,34 @@ jobs:
           version-type: release
 
           loaders: neoforge
+
+          dependencies: |
+            architectury-api(required)
+            cryonicconfig(required)
+
+          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
+
+      - name: Upload forge artifacts
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: 4KWv7wbN
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: true
+
+          curseforge-id: 551763
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+          name: '[${{ steps.versions.outputs.minecraft-version }}] Forge ${{ steps.versions.outputs.mod-version }}'
+          version: 'forge-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
+
+          files: |
+            forge/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
+
+          version-type: release
+
+          loaders: forge
 
           dependencies: |
             architectury-api(required)

@@ -1,28 +1,40 @@
 package com.matthewperiut.chisel.inventory;
 
-import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 
 public class InventoryUtil
 {
-    public static BundleContentsComponent createBundleComponent(Inventory inventory)
-    {
-        ItemStack stack = inventory.getStack(0);
-        List<ItemStack> itemStackList = new ArrayList<>();
-        itemStackList.add(stack);
+    // Uses NBT system made by bundle
 
-        return new BundleContentsComponent(itemStackList);
+    public static NbtCompound createCompound(Inventory inventory)
+    {
+        NbtCompound nbtCompound = new NbtCompound();
+        nbtCompound.put("Items", new NbtList());
+        NbtList nbtList = nbtCompound.getList("Items", 10);
+
+        ItemStack nbtCompound2 = inventory.getStack(0);
+        NbtCompound itemStack = new NbtCompound();
+        nbtCompound2.writeNbt(itemStack);
+        nbtList.add(0, itemStack);
+
+        return nbtCompound;
     }
 
-    public static Inventory createInventory(BundleContentsComponent bcc)
+    public static Inventory createInventory(NbtCompound nbtCompound)
     {
         Inventory result = new ChiselInventory();
-        if (!bcc.isEmpty()) {
-            result.setStack(0, bcc.get(0));
+        if (nbtCompound.contains("Items")) {
+            NbtList nbtList = nbtCompound.getList("Items", 10);
+            if (!nbtList.isEmpty()) {
+                NbtCompound nbtCompound2 = nbtList.getCompound(0);
+                ItemStack itemStack = ItemStack.fromNbt(nbtCompound2);
+
+                result.setStack(0, ItemStack.fromNbt(nbtCompound2));
+
+            }
         }
         return result;
     }

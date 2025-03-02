@@ -22,7 +22,7 @@ config = "chisel.neoforge.mixins.json"
 [[dependencies.chisel]]
 modId="minecraft"
 type="required"
-versionRange="[1.20.5,1.20.6]"
+versionRange="[1.20.3,1.20.4]"
 
 [[dependencies.chisel]]
 modId="neoforge"

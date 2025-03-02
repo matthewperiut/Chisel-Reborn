@@ -5,14 +5,14 @@ import com.matthewperiut.chisel.block.ChiselGroupLookup;
 import com.matthewperiut.chisel.gui.ChiselScreenHandler;
 import com.matthewperiut.chisel.inventory.InventoryUtil;
 import net.minecraft.block.BlockState;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.BundleContentsComponent;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
@@ -23,7 +23,6 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.matthewperiut.chisel.Chisel.chiselSupplier;
@@ -38,6 +37,12 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     public boolean isItemBarVisible(ItemStack stack)
     {
         return false;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context)
+    {
+
     }
 
     @Override
@@ -65,19 +70,11 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     }
 
     @Override
-    public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-
-    }
-
-    @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player)
     {
-        //ComponentMap nbt = player.getHandItems().iterator().next().getComponents();
-        ItemStack stack = player.getHandItems().iterator().next();
-        BundleContentsComponent bundleContentsComponent = stack.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, new BundleContentsComponent(new ArrayList<>()));
-        assert bundleContentsComponent != null;
-        Inventory chiselInv = InventoryUtil.createInventory(bundleContentsComponent);
-        return new ChiselScreenHandler(syncId, inv, chiselInv, bundleContentsComponent);
+        NbtCompound nbt = player.getHandItems().iterator().next().getOrCreateNbt();
+        Inventory chiselInv = InventoryUtil.createInventory(nbt);
+        return new ChiselScreenHandler(syncId, inv, chiselInv, nbt);
         //return new ChiselDescription(syncId, inv, ScreenHandlerContext.create(player.world, player.getBlockPos()));
     }
 
@@ -101,60 +98,40 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
         }
     }
 
-    class TimeSinceUse {
-        public PlayerEntity player;
-        public Long time;
-
-        TimeSinceUse(PlayerEntity player, Long time) {
-            this.player = player;
-            this.time = time;
-        }
-    }
-
-    // this is cursed, blame mojang for removing nbt from items lol
-    public static ArrayList<TimeSinceUse> timeSinceUses = new ArrayList<>();
-
     @Override
     public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        ItemStack inHand = miner.getHandItems().iterator().next();
+        NbtCompound nbtCompound = inHand.getOrCreateNbt();
+
         if (!world.isClient)
         {
-            // blame mojang nbt
-            boolean found = false;
-            for (TimeSinceUse u : timeSinceUses) {
-                if (u.player.equals(miner)) {
-                    found = true;
-                    if (world.getTime() - u.time < 5) {
-                        return false;
-                    }
-                    u.time = world.getTime();
-                }
+            if (!nbtCompound.contains("Items")) {
+                return false;
             }
-            if (!found) {
-                timeSinceUses.add(new TimeSinceUse(miner, world.getTime()));
-            }
-            //
-
-            ItemStack inHand = miner.getHandItems().iterator().next();
-
-            BundleContentsComponent bcc = inHand.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, new BundleContentsComponent(new ArrayList<>(0)));
-
-            ItemStack itemStack;
-            if (!bcc.isEmpty()) {
-                itemStack = bcc.get(0);
-            }
-            else {
-                List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem());
-                if(!items.isEmpty())
-                {
-                    Identifier block = Registries.ITEM.getId(items.get(world.random.nextInt(items.size())));
-                    world.setBlockState(pos, Registries.BLOCK.get(block).getDefaultState());
-                    chiselSound(world, pos);
-                }
+            if (world.getTime() - nbtCompound.getLong("time") < 5)
+            {
                 return false;
             }
 
+            NbtList nbtList = nbtCompound.getList("Items", 10);
+
+            NbtCompound nbtCompound2 = nbtList.getCompound(0);
+            ItemStack itemStack = ItemStack.fromNbt(nbtCompound2);
+
             Identifier blockId = Registries.BLOCK.getId(state.getBlock());
             Identifier inInventory = Registries.ITEM.getId(itemStack.getItem());
+
+            if (inInventory == Registries.ITEM.getId(Items.AIR))
+            {
+                List<Item> items = ChiselGroupLookup.getBlocksInGroup(state.getBlock().asItem());
+                if(!items.isEmpty())
+                {
+                    inInventory = Registries.ITEM.getId(items.get(world.random.nextInt(items.size())));
+                    world.setBlockState(pos, Registries.BLOCK.get(inInventory).getDefaultState());
+                    nbtCompound.putLong("time",world.getTime());
+                    chiselSound(world, pos);
+                }
+            }
 
             String[] compare = new String[2];
 
@@ -171,6 +148,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
             if(compare[0].contains(compare[1]) || compare[1].contains(compare[0]))
             {
                 world.setBlockState(pos, Registries.BLOCK.get(inInventory).getDefaultState());
+                nbtCompound.putLong("time",world.getTime());
                 chiselSound(world, pos);
             }
         }
@@ -178,7 +156,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     }
 
     @Override
-    public float getMiningSpeed(ItemStack stack, BlockState state) {
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
         Item item = state.getBlock().asItem();
         if (!(item instanceof BlockItem)) {
             Chisel.LOGGER.info("How is " + item.getName().getString() +" not a blockItem?");

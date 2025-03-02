@@ -27,7 +27,7 @@
       "com.matthewperiut.chisel.fabric.ChiselClient"
     ],
     "emi": [
-      "com.matthewperiut.chisel.ChiselEMI"
+      "com.matthewperiut.chisel.fabric.ChiselEMI"
     ],
     "rei_client": [
       "com.matthewperiut.chisel.ChiselREI"
@@ -42,7 +42,7 @@
     "fabricloader": ">=0.14.19",
     "architectury": "*",
     "fabric": "*",
-    "minecraft": [ "1.20.5", "1.20.6" ],
+    "minecraft": ["1.20.3", "1.20.4"],
     "java": "*",
     "cryonicconfig": "*"
   }

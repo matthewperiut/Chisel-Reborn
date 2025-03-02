@@ -5,24 +5,20 @@ import com.matthewperiut.chisel.inventory.ChiselInventory;
 import com.matthewperiut.chisel.inventory.InventoryUtil;
 import com.matthewperiut.chisel.item.ChiselItem;
 import com.periut.cryonicconfig.CryonicConfig;
-import net.minecraft.component.ComponentChanges;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class ChiselScreenHandler extends ScreenHandler {
     boolean compactTexture;
     private final ChiselInventory inventory;
-    private final BundleContentsComponent componentInventory;
     LocalTime currentTime = LocalTime.now();
 
     public ChiselScreenHandler(int syncId, PlayerInventory playerInventory) {
@@ -30,15 +26,14 @@ public class ChiselScreenHandler extends ScreenHandler {
     }
 
     public ChiselScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
-        this(syncId, playerInventory, inventory, new BundleContentsComponent(new ArrayList<>()));
+        this(syncId, playerInventory, inventory, new NbtCompound());
     }
 
-    public ChiselScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, BundleContentsComponent component) {
+    public ChiselScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, NbtCompound compound) {
         super(Chisel.CHISEL_SCREEN_HANDLER.get(), syncId);
         compactTexture = CryonicConfig.getConfig("chisel").getBoolean("compact_chisel_gui", false);
         checkSize(inventory, 61);
         this.inventory = (ChiselInventory) inventory;
-        componentInventory = component;
 
         if (compactTexture) {
             // input slot
@@ -136,37 +131,19 @@ public class ChiselScreenHandler extends ScreenHandler {
         ItemStack hand = player.getHandItems().iterator().next();
         if (!hand.isOf(Chisel.chiselSupplier.get()))
         {
-            ItemStack chiselStack = ItemStack.EMPTY;
-            int chiselSlot = -1;
-
-            // Find the chisel in inventory
+            ItemStack itemStack = ItemStack.EMPTY;
+            // Prevents duplication
             for (int i = 0; i < player.getInventory().size(); i++)
             {
                 if(player.getInventory().getStack(i).isOf(Chisel.chiselSupplier.get()))
                 {
-                    chiselStack = player.getInventory().getStack(i);
-                    chiselSlot = i;
-                    break; // Stop at the first chisel found
+                    itemStack = player.getInventory().getStack(i);
+                    player.getInventory().removeStack(i);
                 }
             }
-
-            // Only modify inventory if we found a chisel
-            if (chiselSlot != -1 && !chiselStack.isEmpty()) {
-                player.getInventory().removeStack(chiselSlot);
-                player.getInventory().setStack(0, chiselStack);
-            }
+            player.getInventory().setStack(0, itemStack);
         }
-
-        if (inventory.isEmpty()) {
-            BundleContentsComponent c = InventoryUtil.createBundleComponent(inventory);
-            var changes = ComponentChanges.builder().remove(DataComponentTypes.BUNDLE_CONTENTS).build();
-            hand.applyChanges(changes);
-        } else {
-            BundleContentsComponent c = InventoryUtil.createBundleComponent(inventory);
-            var changes = ComponentChanges.builder().remove(DataComponentTypes.BUNDLE_CONTENTS).add(DataComponentTypes.BUNDLE_CONTENTS, c).build();
-            hand.applyChanges(changes);
-        }
-
+        hand.getOrCreateNbt().copyFrom(InventoryUtil.createCompound(inventory));
     }
 
     @Override

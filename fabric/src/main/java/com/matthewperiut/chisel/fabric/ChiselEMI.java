@@ -1,5 +1,6 @@
-package com.matthewperiut.chisel;
+package com.matthewperiut.chisel.fabric;
 
+import com.matthewperiut.chisel.Chisel;
 import com.matthewperiut.chisel.block.ChiselGroupLookup;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;

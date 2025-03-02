@@ -39,12 +39,14 @@ subprojects {
         {
             modCompileOnly "dev.emi:emi-xplat-intermediary:${project.emi_version}:api"
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
-        } else {
+        } else if (project.name == "fabric" || project.name == "neoforge") {
             modCompileOnly "dev.emi:emi-${project.name}:${project.emi_version}:api"
+            modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-${project.name}:${project.rei_version}"
+        } else {
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-${project.name}:${project.rei_version}"
         }
 
-        modImplementation "com.periut.cryonicconfig:cryonicconfig-${project.name}:1.0.0+mc1.21.4"
+        modImplementation "com.periut.cryonicconfig:cryonicconfig-${project.name}:1.0.0+mc${project.minecraft_version}"
     }
 }
 
@@ -81,7 +83,7 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
-        options.release = 21
+        options.release = 17
     }
 
     java {
