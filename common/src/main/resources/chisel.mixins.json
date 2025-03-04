@@ -4,14 +4,14 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "package": "com.matthewperiut.chisel.mixins",
+  "package": "com.periut.chisel.mixins",
   "mixinPriority": 1100,
   "mixins": [
-    "HandledScreenAccessor",
     "SlotMixin"
   ],
   "required": true,
   "client": [
+    "HandledScreenAccessor",
     "HandledScreenMixin"
   ]
 }

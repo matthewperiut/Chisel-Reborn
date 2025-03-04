@@ -1,7 +1,7 @@
 package com.slaincow.chisel.neoforge;
 
-import com.matthewperiut.chisel.Chisel;
-import com.matthewperiut.chisel.gui.ChiselScreen;
+import com.periut.chisel.Chisel;
+import com.periut.chisel.gui.ChiselScreen;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
@@ -16,7 +16,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
-import static com.matthewperiut.chisel.Chisel.CHISEL_SCREEN_HANDLER;
+import static com.periut.chisel.Chisel.CHISEL_SCREEN_HANDLER;
 
 @Mod(Chisel.MOD_ID)
 public class ChiselNeoforge
