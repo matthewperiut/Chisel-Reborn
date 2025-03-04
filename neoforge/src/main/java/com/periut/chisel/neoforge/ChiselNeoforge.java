@@ -1,4 +1,4 @@
-package com.slaincow.chisel.neoforge;
+package com.periut.chisel.neoforge;
 
 import com.periut.chisel.Chisel;
 import com.periut.chisel.gui.ChiselScreen;
