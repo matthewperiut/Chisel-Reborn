@@ -21,16 +21,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.matthewperiut.chisel.fabric.ChiselFabric"
+      "com.periut.chisel.fabric.ChiselFabric"
     ],
     "client": [
-      "com.matthewperiut.chisel.fabric.ChiselClient"
+      "com.periut.chisel.fabric.ChiselClient"
     ],
     "emi": [
-      "com.matthewperiut.chisel.ChiselEMI"
+      "com.periut.chisel.ChiselEMI"
     ],
     "rei_client": [
-      "com.matthewperiut.chisel.ChiselREI"
+      "com.periut.chisel.ChiselREI"
     ]
   },
   "mixins": [
