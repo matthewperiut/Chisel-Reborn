@@ -23,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 
 public class Chisel {
+    private static final String WHY = "githubactionsmoment";
     public static final String MOD_ID = "chisel";
     public static final Logger LOGGER = LogManager.getFormatterLogger("Chisel");
 
