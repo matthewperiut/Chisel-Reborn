@@ -139,25 +139,20 @@ public class ChiselScreenHandler extends ScreenHandler {
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
         ItemStack hand = player.getHandItems().iterator().next();
-        if (!hand.isOf(Chisel.chiselSupplier.get()))
-        {
-            ItemStack chiselStack = ItemStack.EMPTY;
-            int chiselSlot = -1;
 
-            // Find the chisel in inventory
-            for (int i = 0; i < player.getInventory().size(); i++)
-            {
-                if(player.getInventory().getStack(i).isOf(Chisel.chiselSupplier.get()))
-                {
-                    chiselStack = player.getInventory().getStack(i);
-                    chiselSlot = i;
-                    break; // Stop at the first chisel found
-                }
-            }
+        // Sanitize inventory before any modifications
+        sanitizeInventory(player.getInventory());
 
-            // Only modify inventory if we found a chisel
-            if (chiselSlot != -1 && !chiselStack.isEmpty() && chiselStack.getCount() > 0) {
-                player.getInventory().removeStack(chiselSlot);
+        if (!hand.isOf(Chisel.chiselSupplier.get())) {
+            ItemStack chiselStack = findChiselInInventory(player);
+
+            // Only modify inventory if we found a valid chisel stack
+            if (chiselStack != null && !chiselStack.isEmpty() && chiselStack.getCount() > 0) {
+                // Ensure we're not creating an invalid stack
+                chiselStack = chiselStack.copyWithCount(Math.max(1, Math.min(chiselStack.getCount(), chiselStack.getMaxCount())));
+
+                // Remove from original slot and set to first slot
+                player.getInventory().removeStack(player.getInventory().getSlotWithStack(chiselStack));
                 player.getInventory().setStack(0, chiselStack);
             }
         }
@@ -171,7 +166,35 @@ public class ChiselScreenHandler extends ScreenHandler {
             var changes = ComponentChanges.builder().remove(DataComponentTypes.BUNDLE_CONTENTS).add(DataComponentTypes.BUNDLE_CONTENTS, c).build();
             hand.applyChanges(changes);
         }
+    }
 
+    // Helper method to find a chisel in the player's inventory
+    private ItemStack findChiselInInventory(PlayerEntity player) {
+        for (int i = 0; i < player.getInventory().size(); i++) {
+            ItemStack stack = player.getInventory().getStack(i);
+            if (stack.isOf(Chisel.chiselSupplier.get()) && stack.getCount() > 0) {
+                return stack;
+            }
+        }
+        return null;
+    }
+
+    // Sanitization method for inventory
+    private void sanitizeInventory(PlayerInventory inventory) {
+        for (int i = 0; i < inventory.size(); i++) {
+            ItemStack stack = inventory.getStack(i);
+
+            // Sanitize stack
+            if (stack == null || stack.isEmpty() || stack.getCount() <= 0) {
+                inventory.setStack(i, ItemStack.EMPTY);
+            } else {
+                // Ensure count is within valid range
+                int sanitizedCount = Math.max(1, Math.min(stack.getCount(), stack.getMaxCount()));
+                if (sanitizedCount != stack.getCount()) {
+                    inventory.setStack(i, stack.copyWithCount(sanitizedCount));
+                }
+            }
+        }
     }
 
     @Override
