@@ -136,17 +136,20 @@ public class ChiselScreenHandler extends ScreenHandler {
         ItemStack hand = player.getHandItems().iterator().next();
         if (!hand.isOf(Chisel.chiselSupplier.get()))
         {
-            ItemStack itemStack = ItemStack.EMPTY;
-            // Prevents duplication
+            ItemStack chiselStack = ItemStack.EMPTY;
+            int chiselSlot = -1;
+
+            // Find the chisel in inventory
             for (int i = 0; i < player.getInventory().size(); i++)
             {
                 if(player.getInventory().getStack(i).isOf(Chisel.chiselSupplier.get()))
                 {
-                    itemStack = player.getInventory().getStack(i);
-                    player.getInventory().removeStack(i);
+                    chiselStack = player.getInventory().getStack(i);
+                    chiselSlot = i;
+                    break; // Stop at the first chisel found
                 }
             }
-            player.getInventory().setStack(0, itemStack);
+            player.getInventory().setStack(0, chiselStack);
         }
         hand.getOrCreateNbt().copyFrom(InventoryUtil.createCompound(inventory));
     }
