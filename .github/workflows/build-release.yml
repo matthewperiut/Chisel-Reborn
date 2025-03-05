@@ -64,34 +64,6 @@ jobs:
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
 
-      - name: Upload neoforge artifacts
-        uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          modrinth-id: 4KWv7wbN
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          modrinth-featured: true
-
-          curseforge-id: 551763
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-          name: '[${{ steps.versions.outputs.minecraft-version }}] NeoForge ${{ steps.versions.outputs.mod-version }}'
-          version: 'neoforge-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
-
-          files: |
-            neoforge/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
-
-          version-type: release
-
-          loaders: neoforge
-
-          dependencies: |
-            architectury-api(required)
-            cryonicconfig(required)
-
-          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
-
       - name: Upload forge artifacts
         uses: Kir-Antipov/mc-publish@v3.3
         with:
