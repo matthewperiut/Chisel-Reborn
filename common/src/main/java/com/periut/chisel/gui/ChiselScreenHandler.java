@@ -156,7 +156,7 @@ public class ChiselScreenHandler extends ScreenHandler {
             }
 
             // Only modify inventory if we found a chisel
-            if (chiselSlot != -1 && !chiselStack.isEmpty()) {
+            if (chiselSlot != -1 && !chiselStack.isEmpty() && chiselStack.getCount() > 0) {
                 player.getInventory().removeStack(chiselSlot);
                 player.getInventory().setStack(0, chiselStack);
             }
