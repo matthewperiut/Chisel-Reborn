@@ -61,7 +61,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
+        renderBackground(context);
         super.render(context, mouseX, mouseY, delta);
         drawMouseoverTooltip(context, mouseX, mouseY);
     }
@@ -80,7 +80,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
       context.drawText(this.textRenderer, this.title, this.titleX, this.titleY, 4210752, false);
     }
 
-    protected void drawSlot(DrawContext context, Slot slot) {
+    public void customDrawSlot(DrawContext context, Slot slot) {
         int i = slot.x;
         int j = slot.y;
         ItemStack itemStack = slot.getStack();
@@ -124,7 +124,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         if (itemStack.isEmpty() && slot.isEnabled()) {
             Pair<Identifier, Identifier> pair = slot.getBackgroundSprite();
             if (pair != null) {
-                Sprite sprite = (Sprite)this.client.getSpriteAtlas((Identifier)pair.getFirst()).apply((Identifier)pair.getSecond());
+                Sprite sprite = this.client.getSpriteAtlas(pair.getFirst()).apply(pair.getSecond());
                 context.drawSprite(i, j, 0, 16, 16, sprite);
                 bl2 = true;
             }
@@ -139,39 +139,24 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
             // Handle big slots differently
             if (isBigSlot && !itemStack.isEmpty()) {
-                // Save state for big item rendering
                 context.getMatrices().push();
 
-                // Center at slot position
                 float centerX = i + 8;
                 float centerY = j + 8;
 
-                // Move to center, scale up, then move back
                 context.getMatrices().translate(centerX, centerY, 0);
-                context.getMatrices().scale(2.0f, 2.0f, 1.0f);  // 2x size
+                context.getMatrices().scale(2.0f, 2.0f, 1.0f);
                 context.getMatrices().translate(-8, -8, 0);
 
-                // Draw the item at 2x size
-                if (slot.disablesDynamicDisplay()) {
-                    context.drawItemWithoutEntity(itemStack, 0, 0, k);
-                } else {
-                    context.drawItem(itemStack, 0, 0, k);
-                }
+                context.drawItem(itemStack, 0, 0, k);
 
-                // Only draw overlay if needed (using your original condition)
                 if (slot.id < 1 || slot.id > 61) {
                     context.drawItemInSlot(this.textRenderer, itemStack, 0, 0, string);
                 }
 
-                // Restore state
                 context.getMatrices().pop();
             } else {
-                // Normal item rendering (unchanged)
-                if (slot.disablesDynamicDisplay()) {
-                    context.drawItemWithoutEntity(itemStack, i, j, k);
-                } else {
-                    context.drawItem(itemStack, i, j, k);
-                }
+                context.drawItem(itemStack, i, j, k);
 
                 if (slot.id < 1 || slot.id > 60) {
                     context.drawItemInSlot(this.textRenderer, itemStack, i, j, string);
@@ -181,4 +166,5 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
         context.getMatrices().pop();
     }
+
 }
