@@ -8,6 +8,10 @@ on:
     types:
       - published
 
+concurrency:
+  group: gradle-build
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,13 +24,22 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Remove Gradle cache locks
+        run: rm -f ~/.gradle/caches/*/*.lock
+
+      - name: Disable Gradle Daemon
+        run: echo "org.gradle.daemon=false" >> gradle.properties
+
+      - name: Clear Gradle Cache
+        run: rm -rf ~/.gradle/caches
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           cache-read-only: false
 
       - name: Run build with Gradle Wrapper
-        run: ./gradlew build -Dbuild.release=true
+        run: ./gradlew build -Dbuild.release=true --no-parallel --no-daemon
 
       - name: Extract versions from tag name
         id: versions
@@ -62,7 +75,7 @@ jobs:
             architectury-api(required)
             cryonicconfig(required)
 
-          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
+          version-resolver: latest
 
       - name: Upload neoforge artifacts
         uses: Kir-Antipov/mc-publish@v3.3
@@ -90,7 +103,7 @@ jobs:
             architectury-api(required)
             cryonicconfig(required)
 
-          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
+          version-resolver: latest
 
       - name: Upload forge artifacts
         uses: Kir-Antipov/mc-publish@v3.3
@@ -118,4 +131,4 @@ jobs:
             architectury-api(required)
             cryonicconfig(required)
 
-          version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
+          version-resolver: latest
