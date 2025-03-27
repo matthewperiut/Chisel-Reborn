@@ -4,6 +4,7 @@ import com.periut.chisel.Chisel;
 import com.periut.chisel.block.ChiselGroupLookup;
 import com.periut.chisel.gui.ChiselScreenHandler;
 import com.periut.chisel.inventory.InventoryUtil;
+import dev.architectury.event.events.common.TickEvent;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
@@ -68,7 +69,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player)
     {
         //ComponentMap nbt = player.getHandItems().iterator().next().getComponents();
-        ItemStack stack = player.getHandItems().iterator().next();
+        ItemStack stack = player.getStackInHand(Hand.MAIN_HAND);
         BundleContentsComponent bundleContentsComponent = stack.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, new BundleContentsComponent(new ArrayList<>()));
         assert bundleContentsComponent != null;
         Inventory chiselInv = InventoryUtil.createInventory(bundleContentsComponent);
@@ -110,9 +111,11 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
     public static ArrayList<TimeSinceUse> timeSinceUses = new ArrayList<>();
 
     @Override
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+    public boolean canMine(ItemStack stack, BlockState state, World world, BlockPos pos, LivingEntity miner) {
         if (!world.isClient)
         {
+            if (!(miner instanceof PlayerEntity))
+                return false;
             // blame mojang nbt
             boolean found = false;
             for (TimeSinceUse u : timeSinceUses) {
@@ -125,11 +128,11 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
                 }
             }
             if (!found) {
-                timeSinceUses.add(new TimeSinceUse(miner, world.getTime()));
+                timeSinceUses.add(new TimeSinceUse((PlayerEntity) miner, world.getTime()));
             }
             //
 
-            ItemStack inHand = miner.getHandItems().iterator().next();
+            ItemStack inHand = miner.getStackInHand(Hand.MAIN_HAND);
 
             BundleContentsComponent bcc = inHand.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, new BundleContentsComponent(new ArrayList<>(0)));
 

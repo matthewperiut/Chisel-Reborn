@@ -13,6 +13,7 @@ import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.DisplaySerializer;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
@@ -20,10 +21,12 @@ import net.minecraft.client.resource.language.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 public class ChiselREI implements REIClientPlugin {
     @Override
@@ -69,6 +72,16 @@ public class ChiselREI implements REIClientPlugin {
         @Override
         public CategoryIdentifier<?> getCategoryIdentifier() {
             return CategoryIdentifier.of(Chisel.MOD_ID, "chisel_recipes_category");
+        }
+
+        @Override
+        public Optional<Identifier> getDisplayLocation() {
+            return Optional.empty();
+        }
+
+        @Override
+        public @Nullable DisplaySerializer<? extends Display> getSerializer() {
+            return null;
         }
     }
 

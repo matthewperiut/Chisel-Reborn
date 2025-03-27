@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
+import net.minecraft.util.Hand;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -138,7 +139,7 @@ public class ChiselScreenHandler extends ScreenHandler {
     @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
-        ItemStack hand = player.getHandItems().iterator().next();
+        ItemStack hand = player.getStackInHand(Hand.MAIN_HAND);
 
         // Sanitize inventory before any modifications
         sanitizeInventory(player.getInventory());
