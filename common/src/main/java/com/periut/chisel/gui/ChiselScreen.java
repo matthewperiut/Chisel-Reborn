@@ -3,7 +3,9 @@ package com.periut.chisel.gui;
 import com.periut.chisel.Chisel;
 import com.periut.chisel.mixins.HandledScreenAccessor;
 import com.periut.cryonicconfig.CryonicConfig;
+import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.ingame.FurnaceScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerInventory;
@@ -40,15 +42,14 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
     }
 
 
-
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         if (compactTexture) {
-            context.drawTexture(RenderLayer::getGuiTextured, OLD_TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, OLD_TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
         } else {
-            context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
         }
     }
 
@@ -111,13 +112,10 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
             }
         }
 
-        context.getMatrices().push();
-        context.getMatrices().translate(0.0F, 0.0F, 100.0F);
-
         if (itemStack.isEmpty() && slot.isEnabled()) {
             Identifier identifier = slot.getBackgroundSprite();
             if (identifier != null) {
-                context.drawGuiTexture(RenderLayer::getGuiTextured, identifier, i, j, 16, 16);
+                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, i, j, 16, 16);
                 bl2 = true;
             }
         }
@@ -150,8 +148,8 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
                     context.drawItem(itemStack, 0, 0, k);
                 }
 
-                // Only draw overlay if needed (using your original condition)
-                if (slot.id < 1 || slot.id > 61) {
+                // Hide stack overlay for slots 1-60 (only draw for slots outside this range)
+                if (slot.id < 1 || slot.id > 60) {
                     // Adjust stack overlay position for larger items
                     context.drawStackOverlay(this.textRenderer, itemStack, 0, 0, string);
                 }
@@ -166,12 +164,11 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
                     context.drawItem(itemStack, i, j, k);
                 }
 
+                // Hide stack overlay for slots 1-60 (only draw for slots outside this range)
                 if (slot.id < 1 || slot.id > 60) {
                     context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
                 }
             }
         }
-
-        context.getMatrices().pop();
     }
 }
