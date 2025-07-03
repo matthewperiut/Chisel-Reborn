@@ -198,16 +198,108 @@ public class ChiselScreenHandler extends ScreenHandler {
         }
     }
 
+    
     @Override
     public void onSlotClick(int i, int j, SlotActionType actionType, PlayerEntity playerEntity) {
         if (i >= 0 && i < this.slots.size()) {
             Slot slot = this.slots.get(i);
+
             if (slot.getStack().getItem() instanceof ChiselItem) {
                 return;
             }
+            
+            ItemStack outputStack = slot.getStack();
+            ItemStack inputStack = this.slots.get(0).getStack();
+            ItemStack cursorStack = playerEntity.currentScreenHandler.getCursorStack();
+
+            if (actionType == SlotActionType.PICKUP && j == 1 && i > 0 && i < inventory.size()) {
+
+                if (!outputStack.isEmpty() && this.slots.get(0).hasStack() && inputStack.getCount() > 1) {
+                    int half = inputStack.getCount() / 2;
+
+                    if (!cursorStack.isEmpty()) {
+                        if (!cursorStack.isOf(outputStack.getItem()) || cursorStack.getCount() >= cursorStack.getMaxCount()) {
+                            return;
+                        }
+                        if (cursorStack.getCount() + half > cursorStack.getMaxCount()) {
+                            inputStack.decrement(cursorStack.getMaxCount() - cursorStack.getCount());
+                            cursorStack.increment(cursorStack.getMaxCount() - cursorStack.getCount());
+                        }else{
+                            inputStack.decrement(half);
+                            cursorStack.increment(half);
+                        }
+
+                    } else {
+                        ItemStack newCursorStack = outputStack.copy();
+                        newCursorStack.setCount(half);
+                        inputStack.decrement(half);
+                        playerEntity.currentScreenHandler.setCursorStack(newCursorStack);
+                    }
+
+                    this.markSlotsAndPlaySound(slot, playerEntity);
+                    return;
+                }
+            }
+            
+            if (actionType == SlotActionType.PICKUP 
+                && i > 0 
+                && i < inventory.size() 
+                && this.slots.get(0).getStack().getCount() == 1
+                && !cursorStack.isEmpty()
+                && cursorStack.getCount() < cursorStack.getMaxCount()
+                && cursorStack.isOf(outputStack.getItem())
+                ) {
+
+                this.slots.get(0).setStack(ItemStack.EMPTY);
+                cursorStack.increment(1);
+
+                this.markSlotsAndPlaySound(slot, playerEntity);
+                return;
+            }
+ 
+            if (actionType == SlotActionType.PICKUP 
+                && j == 0 
+                && i > 0 
+                && i < inventory.size()
+                && !cursorStack.isEmpty()
+                && cursorStack.getCount() < cursorStack.getMaxCount()
+                && cursorStack.isOf(outputStack.getItem())
+                ) {
+                    
+                if ( cursorStack.getCount() + inputStack.getCount() > cursorStack.getMaxCount()){
+                    inputStack.decrement(cursorStack.getMaxCount() - cursorStack.getCount());
+                    cursorStack.increment(cursorStack.getMaxCount() - cursorStack.getCount());
+                }else{
+                    cursorStack.increment(inputStack.getCount());
+                    this.slots.get(0).setStack(ItemStack.EMPTY);
+                }
+                
+                this.markSlotsAndPlaySound(slot, playerEntity);
+                return;
+            }
         }
+
+
+
+        ItemStack before = this.slots.get(0).getStack().copy();
         super.onSlotClick(i, j, actionType, playerEntity);
+
+        ItemStack after = this.slots.get(0).getStack();
+
+        if (i > 0 && i < inventory.size() && (
+            !ItemStack.areItemsEqual(before, after) || before.getCount() != after.getCount()
+        )) {
+            ChiselItem.chiselSound(playerEntity.getWorld(), playerEntity.getBlockPos());
+        }
+
     }
+
+    private void markSlotsAndPlaySound (Slot slot, PlayerEntity playerEntity) {
+        this.slots.get(0).markDirty();
+        slot.markDirty();
+        ChiselItem.chiselSound(playerEntity.getWorld(), playerEntity.getBlockPos());
+    }
+
 
     private static class SlotChiselOutput extends Slot {
         public SlotChiselOutput(Inventory inventory, int index, int x, int y) {
