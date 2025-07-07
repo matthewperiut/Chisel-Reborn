@@ -63,11 +63,11 @@ subprojects {
         }
 
         if (project.name == "neoforge") {
-            modImplementation("maven.modrinth:cryonicconfig:neoforge-1.21.6-1.0.0")
+            modImplementation("maven.modrinth:cryonicconfig:neoforge-${project.minecraft_version}-1.0.0")
         } else if (project.name == "fabric") {
-            modImplementation("maven.modrinth:cryonicconfig:fabric-1.21.6-1.0.0")
+            modImplementation("maven.modrinth:cryonicconfig:fabric-${project.minecraft_version}-1.0.0")
         } else {
-            modImplementation("maven.modrinth:cryonicconfig:fabric-1.21.6-1.0.0")
+            modImplementation("maven.modrinth:cryonicconfig:fabric-${project.minecraft_version}-1.0.0")
         }
     }
 
