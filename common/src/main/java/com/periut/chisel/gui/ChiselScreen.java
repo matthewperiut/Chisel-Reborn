@@ -82,10 +82,10 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         boolean bl2 = slot == ((HandledScreenAccessor)this).getTouchDragSlotStart() && !((HandledScreenAccessor)this).getTouchDragStack().isEmpty() && !((HandledScreenAccessor)this).getTouchIsRightClickDrag();
         ItemStack itemStack2 = this.handler.getCursorStack();
         String string = null;
-        int k;
 
         // Check if this is a big slot
         boolean isBigSlot = slot instanceof BigSlot && ((BigSlot)slot).isBigSlot();
+        int slotSize = isBigSlot ? 32 : 16; // 2x size for big slots
 
         if (slot == ((HandledScreenAccessor)this).getTouchDragSlotStart() && !((HandledScreenAccessor)this).getTouchDragStack().isEmpty() && ((HandledScreenAccessor)this).getTouchIsRightClickDrag() && !itemStack.isEmpty()) {
             itemStack = itemStack.copyWithCount(itemStack.getCount() / 2);
@@ -96,7 +96,7 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
             if (ScreenHandler.canInsertItemIntoSlot(slot, itemStack2, true) && this.handler.canInsertIntoSlot(slot)) {
                 bl = true;
-                k = Math.min(itemStack2.getMaxCount(), slot.getMaxItemCount(itemStack2));
+                int k = Math.min(itemStack2.getMaxCount(), slot.getMaxItemCount(itemStack2));
                 int l = slot.getStack().isEmpty() ? 0 : slot.getStack().getCount();
                 int m = ScreenHandler.calculateStackSize(this.cursorDragSlots, ((HandledScreenAccessor)this).getHeldButtonType(), itemStack2) + l;
                 if (m > k) {
@@ -115,40 +115,53 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
         if (itemStack.isEmpty() && slot.isEnabled()) {
             Identifier identifier = slot.getBackgroundSprite();
             if (identifier != null) {
-                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, i, j, 16, 16);
+                if (isBigSlot) {
+                    // Scale the background texture for big slots
+                    context.getMatrices().pushMatrix();
+                    context.getMatrices().translate(i, j);
+                    context.getMatrices().scale(2.0f, 2.0f);
+                    context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, 0, 0, 16, 16);
+                    context.getMatrices().popMatrix();
+                } else {
+                    context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, i, j, 16, 16);
+                }
                 bl2 = true;
             }
         }
 
         if (!bl2) {
             if (bl) {
-                context.fill(i, j, i + 16, j + 16, -2130706433);
+                context.fill(i, j, i + slotSize, j + slotSize, -2130706433);
             }
 
-            k = slot.x + slot.y * this.backgroundWidth;
+            int k = slot.x + slot.y * this.backgroundWidth;
 
-            // Handle big slots differently
-            if (isBigSlot && !itemStack.isEmpty()) {
-                // Draw the item at 2x size (without matrix transformations)
+            if (isBigSlot) {
+                // Render big slot item with 2x scale
+                context.getMatrices().pushMatrix();
+                context.getMatrices().translate(i-8, j-8);
+                context.getMatrices().scale(2.0f, 2.0f);
+
                 if (slot.disablesDynamicDisplay()) {
-                    context.drawItemWithoutEntity(itemStack, i, j, k);
+                    context.drawItemWithoutEntity(itemStack, 0, 0, k);
                 } else {
-                    context.drawItem(itemStack, i, j, k);
+                    context.drawItem(itemStack, 0, 0, k);
                 }
 
-                // Hide stack overlay for slots 1-60 (only draw for slots outside this range)
+                // Draw overlay at scaled size
                 if (slot.id < 1 || slot.id > 60) {
-                    context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
+                    context.drawStackOverlay(this.textRenderer, itemStack, 0, 0, string);
                 }
+
+                context.getMatrices().popMatrix();
             } else {
-                // Normal item rendering (unchanged)
+                // Normal rendering for regular slots
                 if (slot.disablesDynamicDisplay()) {
                     context.drawItemWithoutEntity(itemStack, i, j, k);
                 } else {
                     context.drawItem(itemStack, i, j, k);
                 }
 
-                // Hide stack overlay for slots 1-60 (only draw for slots outside this range)
                 if (slot.id < 1 || slot.id > 60) {
                     context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
                 }

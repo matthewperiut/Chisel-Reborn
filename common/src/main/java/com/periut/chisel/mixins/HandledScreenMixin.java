@@ -39,7 +39,7 @@ public abstract class HandledScreenMixin extends Screen {
     @Unique
     public final void drawSlotHighlightBackBig(DrawContext context) {
         if (this.focusedSlot != null && ((BigSlot)this.focusedSlot).isBigSlot()) {
-            context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_BACK_TEXTURE, this.focusedSlot.x-20, this.focusedSlot.y-20, 56, 56);
+            context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_BACK_TEXTURE, this.focusedSlot.x - 20, this.focusedSlot.y - 20, 56, 56);
         }
 
     }
@@ -47,7 +47,7 @@ public abstract class HandledScreenMixin extends Screen {
     @Unique
     public final void drawSlotHighlightFrontBig(DrawContext context) {
         if (this.focusedSlot != null && ((BigSlot)this.focusedSlot).isBigSlot()) {
-            context.drawGuiTexture(RenderPipelines.GUI_NAUSEA_OVERLAY, SLOT_HIGHLIGHT_FRONT_TEXTURE, this.focusedSlot.x - 20, this.focusedSlot.y - 20, 56, 56);
+            context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_FRONT_TEXTURE, this.focusedSlot.x - 20, this.focusedSlot.y - 20, 56, 56);
         }
     }
 
