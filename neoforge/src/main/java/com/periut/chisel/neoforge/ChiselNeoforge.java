@@ -3,6 +3,7 @@ package com.periut.chisel.neoforge;
 import com.periut.chisel.Chisel;
 import com.periut.chisel.gui.ChiselScreen;
 import net.minecraft.block.Block;
+import net.minecraft.client.render.BlockRenderLayer;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
 import net.minecraft.registry.Registries;
@@ -37,22 +38,5 @@ public class ChiselNeoforge
 
     private void registerScreens(RegisterMenuScreensEvent event) {
         event.register(CHISEL_SCREEN_HANDLER.get(), ChiselScreen::new);
-    }
-
-    @EventBusSubscriber(modid = Chisel.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            for (String name : Chisel.translucentBlocks) {
-                Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
-                RenderLayers.setRenderLayer(block, RenderLayer.getTranslucent());
-            }
-            for (String name : Chisel.transparentBlocks) {
-                Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
-                RenderLayers.setRenderLayer(block, RenderLayer.getCutout());
-            }
-        }
     }
 }

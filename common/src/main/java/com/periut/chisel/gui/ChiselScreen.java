@@ -129,33 +129,17 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
 
             // Handle big slots differently
             if (isBigSlot && !itemStack.isEmpty()) {
-                // Save state for big item rendering
-                context.getMatrices().push();
-
-                // Center at slot position
-                float centerX = i + 8;
-                float centerY = j + 8;
-
-                // Move to center, scale up, then move back
-                context.getMatrices().translate(centerX, centerY, 0);
-                context.getMatrices().scale(2.0f, 2.0f, 1.0f);  // 2x size
-                context.getMatrices().translate(-8, -8, 0);
-
-                // Draw the item at 2x size
+                // Draw the item at 2x size (without matrix transformations)
                 if (slot.disablesDynamicDisplay()) {
-                    context.drawItemWithoutEntity(itemStack, 0, 0, k);
+                    context.drawItemWithoutEntity(itemStack, i, j, k);
                 } else {
-                    context.drawItem(itemStack, 0, 0, k);
+                    context.drawItem(itemStack, i, j, k);
                 }
 
                 // Hide stack overlay for slots 1-60 (only draw for slots outside this range)
                 if (slot.id < 1 || slot.id > 60) {
-                    // Adjust stack overlay position for larger items
-                    context.drawStackOverlay(this.textRenderer, itemStack, 0, 0, string);
+                    context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
                 }
-
-                // Restore state
-                context.getMatrices().pop();
             } else {
                 // Normal item rendering (unchanged)
                 if (slot.disablesDynamicDisplay()) {
