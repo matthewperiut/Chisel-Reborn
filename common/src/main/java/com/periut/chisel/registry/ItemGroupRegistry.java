@@ -1,23 +1,19 @@
 package com.periut.chisel.registry;
 
 import com.periut.chisel.Chisel;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.item.ItemGroup;
+import com.periut.chisel.platform.RegistryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.util.Objects;
-
-import static net.minecraft.registry.RegistryKeys.ITEM_GROUP;
-
 public class ItemGroupRegistry {
-    public static final DeferredRegister<ItemGroup> ITEM_GROUPS = DeferredRegister.create(Chisel.MOD_ID, ITEM_GROUP);
-    public static final RegistrySupplier<ItemGroup> CLAY_GROUP = ITEM_GROUPS.register("chisel", () -> CreativeTabRegistry.create(Text.translatable("itemGroup." + Chisel.MOD_ID + ".chisel"), () -> new ItemStack(Objects.requireNonNull(Chisel.ITEMS.get(Identifier.of(Chisel.MOD_ID, "chisel"))))));
+    public static RegistryHelper.ItemGroupRegistration CLAY_GROUP;
 
     public static void Register() {
-        ITEM_GROUPS.register();
+        CLAY_GROUP = RegistryHelper.registerItemGroup(
+                Identifier.of(Chisel.MOD_ID, "chisel"),
+                () -> Text.translatable("itemGroup." + Chisel.MOD_ID + ".chisel"),
+                () -> new ItemStack(Chisel.chiselSupplier.get())
+        );
     }
 }

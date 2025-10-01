@@ -39,9 +39,8 @@
   
   "depends": {
     "fabricloader": ">=0.14.19",
-    "architectury": "*",
     "fabric": "*",
-    "minecraft": [ "1.21.8" ],
+    "minecraft": [ "1.21.9" ],
     "java": ">=21",
     "cryonicconfig": "*"
   }

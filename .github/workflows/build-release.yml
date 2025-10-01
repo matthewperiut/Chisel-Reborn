@@ -59,7 +59,6 @@ jobs:
 
           dependencies: |
             fabric-api(required)
-            architectury-api(required)
             cryonicconfig(required)
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
@@ -87,7 +86,6 @@ jobs:
           loaders: neoforge
 
           dependencies: |
-            architectury-api(required)
             cryonicconfig(required)
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json

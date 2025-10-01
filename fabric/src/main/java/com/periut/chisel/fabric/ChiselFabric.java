@@ -9,5 +9,6 @@ public class ChiselFabric implements ModInitializer
     @Override
     public void onInitialize() {
         init();
+        // Items are now added to the creative tab in registration order via the ItemGroup.entries() builder
     }
 }

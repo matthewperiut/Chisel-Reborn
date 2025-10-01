@@ -4,7 +4,6 @@ import com.periut.chisel.Chisel;
 import com.periut.chisel.block.ChiselGroupLookup;
 import com.periut.chisel.gui.ChiselScreenHandler;
 import com.periut.chisel.inventory.InventoryUtil;
-import dev.architectury.event.events.common.TickEvent;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
@@ -20,7 +19,10 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ClickType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -54,7 +56,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
     @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
-        if (!world.isClient)
+        if (!world.isClient())
             if (user.getMainHandStack().isOf(chiselSupplier.get()))
                 user.openHandledScreen(this);
         return super.use(world, user, hand);
@@ -84,7 +86,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
     public static void chiselSound(World world, BlockPos pos)
     {
-        if (!world.isClient)
+        if (!world.isClient())
         {
             world.playSound(
                     null, // Player - if non-null, will play sound for every nearby player *except* the specified player
@@ -112,7 +114,7 @@ public class ChiselItem extends BundleItem implements NamedScreenHandlerFactory
 
     @Override
     public boolean canMine(ItemStack stack, BlockState state, World world, BlockPos pos, LivingEntity miner) {
-        if (!world.isClient)
+        if (!world.isClient())
         {
             if (!(miner instanceof PlayerEntity))
                 return false;

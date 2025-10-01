@@ -19,15 +19,10 @@ config = "chisel.mixins.json"
 [[dependencies.chisel]]
 modId="minecraft"
 type="required"
-versionRange="[1.21.8]"
+versionRange="[1.21.9]"
 
 [[dependencies.chisel]]
 modId="neoforge"
-type="required"
-versionRange="[0,)"
-
-[[dependencies.chisel]]
-modId="architectury"
 type="required"
 versionRange="[0,)"
 

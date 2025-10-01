@@ -113,7 +113,7 @@ public class ChiselScreenHandler extends ScreenHandler {
                             originalStack.setCount(count);
                         }
                     }
-                    ChiselItem.chiselSound(player.getWorld(), player.getBlockPos());
+                    ChiselItem.chiselSound(player.getEntityWorld(), player.getBlockPos());
                 }
                 if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
                     this.inventory.refresh(this.slots.get(0).getStack().getItem());
@@ -289,7 +289,7 @@ public class ChiselScreenHandler extends ScreenHandler {
         if (i > 0 && i < inventory.size() && (
             !ItemStack.areItemsEqual(before, after) || before.getCount() != after.getCount()
         )) {
-            ChiselItem.chiselSound(playerEntity.getWorld(), playerEntity.getBlockPos());
+            ChiselItem.chiselSound(playerEntity.getEntityWorld(), playerEntity.getBlockPos());
         }
 
     }
@@ -297,7 +297,7 @@ public class ChiselScreenHandler extends ScreenHandler {
     private void markSlotsAndPlaySound (Slot slot, PlayerEntity playerEntity) {
         this.slots.get(0).markDirty();
         slot.markDirty();
-        ChiselItem.chiselSound(playerEntity.getWorld(), playerEntity.getBlockPos());
+        ChiselItem.chiselSound(playerEntity.getEntityWorld(), playerEntity.getBlockPos());
     }
 
 
