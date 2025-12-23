@@ -40,13 +40,6 @@ public class EzReg
         if (name.toLowerCase().contains("quartz"))
             quartz = true;
 
-        if (group.equals("glass")) {
-            Chisel.transparentBlocks.add(name);
-        }
-        if (group.equals("ice")) {
-            Chisel.translucentBlocks.add(name);
-        }
-
         String[] individual = name.split("/", 2);
         Identifier baseBlockIdentifier = Identifier.of("minecraft",individual[1]);
         ChiselGroupLookup.addItemToGroup(individual[1], baseBlockIdentifier);

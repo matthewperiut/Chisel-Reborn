@@ -72,7 +72,8 @@ public class ChiselScreen extends HandledScreen<ScreenHandler> {
       context.drawText(this.textRenderer, this.title, this.titleX, this.titleY, 4210752, false);
     }
 
-    protected void drawSlot(DrawContext context, Slot slot) {
+    @Override
+    protected void drawSlot(DrawContext context, Slot slot, int mouseX, int mouseY) {
         int i = slot.x;
         int j = slot.y;
         ItemStack itemStack = slot.getStack();

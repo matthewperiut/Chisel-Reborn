@@ -1,5 +1,6 @@
 {
     "parent": "block/cube_all",
+    "render_type": "minecraft:translucent",
     "textures": {
         "all": "chisel:block/ctm/chaotic_bricks/ice/1",
         "particle": "chisel:block/chaotic_bricks/ice"

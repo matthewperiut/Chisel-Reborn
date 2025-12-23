@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/cube_column",
+  "render_type": "minecraft:translucent",
   "textures": {
     "end": "chisel:block/pillar/ice_top",
     "side": "chisel:block/pillar/ice"

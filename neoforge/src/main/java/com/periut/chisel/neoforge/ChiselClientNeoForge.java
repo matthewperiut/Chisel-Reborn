@@ -30,14 +30,6 @@ public class ChiselClientNeoForge {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        for (String name : Chisel.translucentBlocks) {
-            Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
-            RenderLayers.setRenderLayer(block, BlockRenderLayer.TRANSLUCENT);
-        }
-        for (String name : Chisel.transparentBlocks) {
-            Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
-            RenderLayers.setRenderLayer(block, BlockRenderLayer.CUTOUT);
-        }
     }
 
     private void onRegisterScreens(RegisterMenuScreensEvent event) {

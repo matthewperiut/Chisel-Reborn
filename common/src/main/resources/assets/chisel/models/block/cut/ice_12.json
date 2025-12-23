@@ -1,5 +1,6 @@
 {
     "parent": "block/cube_all",
+    "render_type": "minecraft:translucent",
     "textures": {
         "all": "chisel:block/ctm/cut/ice/12",
         "particle": "chisel:block/cut/ice"
