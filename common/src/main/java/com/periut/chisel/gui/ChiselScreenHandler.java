@@ -5,39 +5,43 @@ import com.periut.chisel.inventory.ChiselInventory;
 import com.periut.chisel.inventory.InventoryUtil;
 import com.periut.chisel.item.ChiselItem;
 import com.periut.cryonicconfig.CryonicConfig;
-import net.minecraft.component.ComponentChanges;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.BundleContentsComponent;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.screen.slot.SlotActionType;
-import net.minecraft.util.Hand;
-
 import java.time.LocalTime;
 import java.util.ArrayList;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.Container;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerInput;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.BundleContents;
 
-public class ChiselScreenHandler extends ScreenHandler {
+public class ChiselScreenHandler extends AbstractContainerMenu {
     boolean compactTexture;
     private final ChiselInventory inventory;
-    private final BundleContentsComponent componentInventory;
+    private final BundleContents componentInventory;
     LocalTime currentTime = LocalTime.now();
 
-    public ChiselScreenHandler(int syncId, PlayerInventory playerInventory) {
+    // MC 26.1: ItemStack.getMaxStackSize() was removed; the value lives in the MAX_STACK_SIZE component.
+    private static int maxStack(ItemStack s) {
+        return s.getOrDefault(DataComponents.MAX_STACK_SIZE, 64);
+    }
+
+    public ChiselScreenHandler(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new ChiselInventory());
     }
 
-    public ChiselScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
-        this(syncId, playerInventory, inventory, new BundleContentsComponent(new ArrayList<>()));
+    public ChiselScreenHandler(int syncId, Inventory playerInventory, Container inventory) {
+        this(syncId, playerInventory, inventory, new BundleContents(new ArrayList<>()));
     }
 
-    public ChiselScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, BundleContentsComponent component) {
+    public ChiselScreenHandler(int syncId, Inventory playerInventory, Container inventory, BundleContents component) {
         super(Chisel.CHISEL_SCREEN_HANDLER.get(), syncId);
         compactTexture = CryonicConfig.getConfig("chisel").getBoolean("compact_chisel_gui", false);
-        checkSize(inventory, 61);
+        checkContainerSize(inventory, 61);
         this.inventory = (ChiselInventory) inventory;
         componentInventory = component;
 
@@ -89,91 +93,91 @@ public class ChiselScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public boolean canUse(PlayerEntity player) {
+    public boolean stillValid(Player player) {
         return true;
     }
 
     // Shift + Player Inv Slot
     @Override
-    public ItemStack quickMove(PlayerEntity player, int invSlot) {
+    public ItemStack quickMoveStack(Player player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
-        if (slot != null && slot.hasStack()) {
-            ItemStack originalStack = slot.getStack(); // stack in slot clicked
+        if (slot != null && slot.hasItem()) {
+            ItemStack originalStack = slot.getItem(); // stack in slot clicked
             newStack = originalStack.copy();
             if (originalStack.getItem().equals(Chisel.chiselSupplier.get())) {
                 return ItemStack.EMPTY;
             }
-            if (invSlot < this.inventory.size()) {
+            if (invSlot < this.inventory.getContainerSize()) {
                 // slot clicked was in chisel inv
                 if (invSlot != 0) {
-                    if (this.slots.get(0).hasStack()) {
-                        int count = this.slots.get(0).getStack().getCount();
+                    if (this.slots.get(0).hasItem()) {
+                        int count = this.slots.get(0).getItem().getCount();
                         if (count > 0 && count <= 99) {
                             originalStack.setCount(count);
                         }
                     }
-                    ChiselItem.chiselSound(player.getEntityWorld(), player.getBlockPos());
+                    ChiselItem.chiselSound(player.level(), player.blockPosition());
                 }
-                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
-                    this.inventory.refresh(this.slots.get(0).getStack().getItem());
+                if (!this.moveItemStackTo(originalStack, this.inventory.getContainerSize(), this.slots.size(), true)) {
+                    this.inventory.refresh(this.slots.get(0).getItem().getItem());
                     return ItemStack.EMPTY;
                 } else {
-                    this.inventory.clear();
+                    this.inventory.clearContent();
                 }
 
-            } else if (!this.insertItem(originalStack, 0, 1, false)) {
+            } else if (!this.moveItemStackTo(originalStack, 0, 1, false)) {
                 // slot clicked was not in chisel inv
                 return ItemStack.EMPTY;
             }
 
             if (originalStack.isEmpty()) {
-                slot.setStack(ItemStack.EMPTY);
+                slot.setByPlayer(ItemStack.EMPTY);
             } else {
-                slot.markDirty();
+                slot.setChanged();
             }
         }
         return newStack;
     }
 
     @Override
-    public void onClosed(PlayerEntity player) {
-        super.onClosed(player);
-        ItemStack hand = player.getStackInHand(Hand.MAIN_HAND);
+    public void removed(Player player) {
+        super.removed(player);
+        ItemStack hand = player.getItemInHand(InteractionHand.MAIN_HAND);
 
         // Sanitize inventory before any modifications
         sanitizeInventory(player.getInventory());
 
-        if (!hand.isOf(Chisel.chiselSupplier.get())) {
+        if (!hand.is(Chisel.chiselSupplier.get())) {
             ItemStack chiselStack = findChiselInInventory(player);
 
             // Only modify inventory if we found a valid chisel stack
             if (chiselStack != null && !chiselStack.isEmpty() && chiselStack.getCount() > 0) {
                 // Ensure we're not creating an invalid stack
-                chiselStack = chiselStack.copyWithCount(Math.max(1, Math.min(chiselStack.getCount(), chiselStack.getMaxCount())));
+                chiselStack = chiselStack.copyWithCount(Math.max(1, Math.min(chiselStack.getCount(), maxStack(chiselStack))));
 
                 // Remove from original slot and set to first slot
-                player.getInventory().removeStack(player.getInventory().getSlotWithStack(chiselStack));
-                player.getInventory().setStack(0, chiselStack);
+                player.getInventory().removeItemNoUpdate(player.getInventory().findSlotMatchingItem(chiselStack));
+                player.getInventory().setItem(0, chiselStack);
             }
         }
 
         if (inventory.isEmpty()) {
-            BundleContentsComponent c = InventoryUtil.createBundleComponent(inventory);
-            var changes = ComponentChanges.builder().remove(DataComponentTypes.BUNDLE_CONTENTS).build();
-            hand.applyChanges(changes);
+            BundleContents c = InventoryUtil.createBundleComponent(inventory);
+            var changes = DataComponentPatch.builder().remove(DataComponents.BUNDLE_CONTENTS).build();
+            hand.applyComponentsAndValidate(changes);
         } else {
-            BundleContentsComponent c = InventoryUtil.createBundleComponent(inventory);
-            var changes = ComponentChanges.builder().remove(DataComponentTypes.BUNDLE_CONTENTS).add(DataComponentTypes.BUNDLE_CONTENTS, c).build();
-            hand.applyChanges(changes);
+            BundleContents c = InventoryUtil.createBundleComponent(inventory);
+            var changes = DataComponentPatch.builder().remove(DataComponents.BUNDLE_CONTENTS).set(DataComponents.BUNDLE_CONTENTS, c).build();
+            hand.applyComponentsAndValidate(changes);
         }
     }
 
     // Helper method to find a chisel in the player's inventory
-    private ItemStack findChiselInInventory(PlayerEntity player) {
-        for (int i = 0; i < player.getInventory().size(); i++) {
-            ItemStack stack = player.getInventory().getStack(i);
-            if (stack.isOf(Chisel.chiselSupplier.get()) && stack.getCount() > 0) {
+    private ItemStack findChiselInInventory(Player player) {
+        for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+            ItemStack stack = player.getInventory().getItem(i);
+            if (stack.is(Chisel.chiselSupplier.get()) && stack.getCount() > 0) {
                 return stack;
             }
         }
@@ -181,99 +185,99 @@ public class ChiselScreenHandler extends ScreenHandler {
     }
 
     // Sanitization method for inventory
-    private void sanitizeInventory(PlayerInventory inventory) {
-        for (int i = 0; i < inventory.size(); i++) {
-            ItemStack stack = inventory.getStack(i);
+    private void sanitizeInventory(Inventory inventory) {
+        for (int i = 0; i < inventory.getContainerSize(); i++) {
+            ItemStack stack = inventory.getItem(i);
 
             // Sanitize stack
             if (stack == null || stack.isEmpty() || stack.getCount() <= 0) {
-                inventory.setStack(i, ItemStack.EMPTY);
+                inventory.setItem(i, ItemStack.EMPTY);
             } else {
                 // Ensure count is within valid range
-                int sanitizedCount = Math.max(1, Math.min(stack.getCount(), stack.getMaxCount()));
+                int sanitizedCount = Math.max(1, Math.min(stack.getCount(), maxStack(stack)));
                 if (sanitizedCount != stack.getCount()) {
-                    inventory.setStack(i, stack.copyWithCount(sanitizedCount));
+                    inventory.setItem(i, stack.copyWithCount(sanitizedCount));
                 }
             }
         }
     }
 
-    
+
     @Override
-    public void onSlotClick(int i, int j, SlotActionType actionType, PlayerEntity playerEntity) {
+    public void clicked(int i, int j, ContainerInput actionType, Player playerEntity) {
         if (i >= 0 && i < this.slots.size()) {
             Slot slot = this.slots.get(i);
 
-            if (slot.getStack().getItem() instanceof ChiselItem) {
+            if (slot.getItem().getItem() instanceof ChiselItem) {
                 return;
             }
-            
-            ItemStack outputStack = slot.getStack();
-            ItemStack inputStack = this.slots.get(0).getStack();
-            ItemStack cursorStack = playerEntity.currentScreenHandler.getCursorStack();
 
-            if (actionType == SlotActionType.PICKUP && j == 1 && i > 0 && i < inventory.size()) {
+            ItemStack outputStack = slot.getItem();
+            ItemStack inputStack = this.slots.get(0).getItem();
+            ItemStack cursorStack = playerEntity.containerMenu.getCarried();
 
-                if (!outputStack.isEmpty() && this.slots.get(0).hasStack() && inputStack.getCount() > 1) {
+            if (actionType == ContainerInput.PICKUP && j == 1 && i > 0 && i < inventory.getContainerSize()) {
+
+                if (!outputStack.isEmpty() && this.slots.get(0).hasItem() && inputStack.getCount() > 1) {
                     int half = inputStack.getCount() / 2;
 
                     if (!cursorStack.isEmpty()) {
-                        if (!cursorStack.isOf(outputStack.getItem()) || cursorStack.getCount() >= cursorStack.getMaxCount()) {
+                        if (!cursorStack.is(outputStack.getItem()) || cursorStack.getCount() >= maxStack(cursorStack)) {
                             return;
                         }
-                        if (cursorStack.getCount() + half > cursorStack.getMaxCount()) {
-                            inputStack.decrement(cursorStack.getMaxCount() - cursorStack.getCount());
-                            cursorStack.increment(cursorStack.getMaxCount() - cursorStack.getCount());
+                        if (cursorStack.getCount() + half > maxStack(cursorStack)) {
+                            inputStack.shrink(maxStack(cursorStack) - cursorStack.getCount());
+                            cursorStack.grow(maxStack(cursorStack) - cursorStack.getCount());
                         }else{
-                            inputStack.decrement(half);
-                            cursorStack.increment(half);
+                            inputStack.shrink(half);
+                            cursorStack.grow(half);
                         }
 
                     } else {
                         ItemStack newCursorStack = outputStack.copy();
                         newCursorStack.setCount(half);
-                        inputStack.decrement(half);
-                        playerEntity.currentScreenHandler.setCursorStack(newCursorStack);
+                        inputStack.shrink(half);
+                        playerEntity.containerMenu.setCarried(newCursorStack);
                     }
 
                     this.markSlotsAndPlaySound(slot, playerEntity);
                     return;
                 }
             }
-            
-            if (actionType == SlotActionType.PICKUP 
-                && i > 0 
-                && i < inventory.size() 
-                && this.slots.get(0).getStack().getCount() == 1
+
+            if (actionType == ContainerInput.PICKUP
+                && i > 0
+                && i < inventory.getContainerSize()
+                && this.slots.get(0).getItem().getCount() == 1
                 && !cursorStack.isEmpty()
-                && cursorStack.getCount() < cursorStack.getMaxCount()
-                && cursorStack.isOf(outputStack.getItem())
+                && cursorStack.getCount() < maxStack(cursorStack)
+                && cursorStack.is(outputStack.getItem())
                 ) {
 
-                this.slots.get(0).setStack(ItemStack.EMPTY);
-                cursorStack.increment(1);
+                this.slots.get(0).setByPlayer(ItemStack.EMPTY);
+                cursorStack.grow(1);
 
                 this.markSlotsAndPlaySound(slot, playerEntity);
                 return;
             }
- 
-            if (actionType == SlotActionType.PICKUP 
-                && j == 0 
-                && i > 0 
-                && i < inventory.size()
+
+            if (actionType == ContainerInput.PICKUP
+                && j == 0
+                && i > 0
+                && i < inventory.getContainerSize()
                 && !cursorStack.isEmpty()
-                && cursorStack.getCount() < cursorStack.getMaxCount()
-                && cursorStack.isOf(outputStack.getItem())
+                && cursorStack.getCount() < maxStack(cursorStack)
+                && cursorStack.is(outputStack.getItem())
                 ) {
-                    
-                if ( cursorStack.getCount() + inputStack.getCount() > cursorStack.getMaxCount()){
-                    inputStack.decrement(cursorStack.getMaxCount() - cursorStack.getCount());
-                    cursorStack.increment(cursorStack.getMaxCount() - cursorStack.getCount());
+
+                if ( cursorStack.getCount() + inputStack.getCount() > maxStack(cursorStack)){
+                    inputStack.shrink(maxStack(cursorStack) - cursorStack.getCount());
+                    cursorStack.grow(maxStack(cursorStack) - cursorStack.getCount());
                 }else{
-                    cursorStack.increment(inputStack.getCount());
-                    this.slots.get(0).setStack(ItemStack.EMPTY);
+                    cursorStack.grow(inputStack.getCount());
+                    this.slots.get(0).setByPlayer(ItemStack.EMPTY);
                 }
-                
+
                 this.markSlotsAndPlaySound(slot, playerEntity);
                 return;
             }
@@ -281,44 +285,44 @@ public class ChiselScreenHandler extends ScreenHandler {
 
 
 
-        ItemStack before = this.slots.get(0).getStack().copy();
-        super.onSlotClick(i, j, actionType, playerEntity);
+        ItemStack before = this.slots.get(0).getItem().copy();
+        super.clicked(i, j, actionType, playerEntity);
 
-        ItemStack after = this.slots.get(0).getStack();
+        ItemStack after = this.slots.get(0).getItem();
 
-        if (i > 0 && i < inventory.size() && (
-            !ItemStack.areItemsEqual(before, after) || before.getCount() != after.getCount()
+        if (i > 0 && i < inventory.getContainerSize() && (
+            !ItemStack.isSameItem(before, after) || before.getCount() != after.getCount()
         )) {
-            ChiselItem.chiselSound(playerEntity.getEntityWorld(), playerEntity.getBlockPos());
+            ChiselItem.chiselSound(playerEntity.level(), playerEntity.blockPosition());
         }
 
     }
 
-    private void markSlotsAndPlaySound (Slot slot, PlayerEntity playerEntity) {
-        this.slots.get(0).markDirty();
-        slot.markDirty();
-        ChiselItem.chiselSound(playerEntity.getEntityWorld(), playerEntity.getBlockPos());
+    private void markSlotsAndPlaySound (Slot slot, Player playerEntity) {
+        this.slots.get(0).setChanged();
+        slot.setChanged();
+        ChiselItem.chiselSound(playerEntity.level(), playerEntity.blockPosition());
     }
 
 
     private static class SlotChiselOutput extends Slot {
-        public SlotChiselOutput(Inventory inventory, int index, int x, int y) {
+        public SlotChiselOutput(Container inventory, int index, int x, int y) {
             super(inventory, index, x, y);
         }
 
         @Override
-        public void onTakeItem(PlayerEntity player, ItemStack stack) {
-            this.inventory.clear();
-            super.onTakeItem(player, stack);
+        public void onTake(Player player, ItemStack stack) {
+            this.container.clearContent();
+            super.onTake(player, stack);
         }
 
         @Override
-        public boolean canInsert(ItemStack stack) {
+        public boolean mayPlace(ItemStack stack) {
             return false;
         }
 
         @Override
-        public int getMaxItemCount() {
+        public int getMaxStackSize() {
             return 64;
         }
 

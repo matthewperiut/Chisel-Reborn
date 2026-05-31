@@ -1,170 +1,100 @@
 package com.periut.chisel.gui;
 
 import com.periut.chisel.Chisel;
-import com.periut.chisel.mixins.HandledScreenAccessor;
 import com.periut.cryonicconfig.CryonicConfig;
-import net.minecraft.client.gl.RenderPipelines;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
-public class ChiselScreen extends HandledScreen<ScreenHandler> {
-    boolean compactTexture;
-    public static final Identifier OLD_TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/chiselfabricgui.png");
-    public static final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/chisel2gui.png");
+public class ChiselScreen extends AbstractContainerScreen<AbstractContainerMenu> {
+    private final boolean compactTexture;
+    public static final Identifier OLD_TEXTURE = Identifier.fromNamespaceAndPath(Chisel.MOD_ID, "textures/chiselfabricgui.png");
+    public static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Chisel.MOD_ID, "textures/chisel2gui.png");
     public static final int OLD_TEXTURE_WIDTH = 194;
     public static final int OLD_TEXTURE_HEIGHT = 209;
     public static final int TEXTURE_WIDTH = 248;
     public static final int TEXTURE_HEIGHT = 202;
 
-    public ChiselScreen(ScreenHandler handler, PlayerInventory inventory, Text title)
-    {
-        super(handler, inventory, title);
-        compactTexture = CryonicConfig.getConfig("chisel").getBoolean("compact_chisel_gui", false);
+    public ChiselScreen(AbstractContainerMenu handler, Inventory inventory, Component title) {
+        // MC 26.1: imageWidth/imageHeight are final and must be passed to the super constructor.
+        super(handler, inventory, title,
+                isCompact() ? OLD_TEXTURE_WIDTH : TEXTURE_WIDTH,
+                isCompact() ? OLD_TEXTURE_HEIGHT : TEXTURE_HEIGHT);
+        this.compactTexture = isCompact();
         if (compactTexture) {
-            this.titleY = 5;
-            this.backgroundWidth = OLD_TEXTURE_WIDTH;
-            this.backgroundHeight = OLD_TEXTURE_HEIGHT;
+            this.titleLabelY = 5;
         } else {
-            this.titleX = 18;
-            this.titleY = 62;
-            this.backgroundWidth = TEXTURE_WIDTH;
-            this.backgroundHeight = TEXTURE_HEIGHT;
+            this.titleLabelX = 18;
+            this.titleLabelY = 62;
         }
     }
 
-
-    @Override
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
-        if (compactTexture) {
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, OLD_TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
-        } else {
-            context.drawTexture(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
-        }
+    private static boolean isCompact() {
+        return CryonicConfig.getConfig("chisel").getBoolean("compact_chisel_gui", false);
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
-        super.render(context, mouseX, mouseY, delta);
-        drawMouseoverTooltip(context, mouseX, mouseY);
+    public void extractRenderState(GuiGraphicsExtractor extractor, int mouseX, int mouseY, float partialTick) {
+        // MC 26.1 uses a retained-mode "extract" rendering pipeline (GuiGraphicsExtractor) instead of
+        // the old GuiGraphics renderBg/render. Draw the chisel background, then let vanilla extract the
+        // slots/items/labels/tooltips (item/slot strata render above this background).
+        Identifier tex = compactTexture ? OLD_TEXTURE : TEXTURE;
+        extractor.blit(RenderPipelines.GUI_TEXTURED, tex, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        super.extractRenderState(extractor, mouseX, mouseY, partialTick);
     }
 
     @Override
     protected void init() {
         super.init();
         if (compactTexture) {
-            titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
+            titleLabelX = (imageWidth - font.width(title)) / 2;
         }
     }
 
     @Override
-    protected void drawForeground(DrawContext context, int mouseX, int mouseY)
-    {
-      context.drawText(this.textRenderer, this.title, this.titleX, this.titleY, 4210752, false);
+    protected void extractLabels(GuiGraphicsExtractor extractor, int mouseX, int mouseY) {
+        extractor.text(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
     }
 
     @Override
-    protected void drawSlot(DrawContext context, Slot slot, int mouseX, int mouseY) {
-        int i = slot.x;
-        int j = slot.y;
-        ItemStack itemStack = slot.getStack();
-        boolean bl = false;
-        boolean bl2 = slot == ((HandledScreenAccessor)this).getTouchDragSlotStart() && !((HandledScreenAccessor)this).getTouchDragStack().isEmpty() && !((HandledScreenAccessor)this).getTouchIsRightClickDrag();
-        ItemStack itemStack2 = this.handler.getCursorStack();
-        String string = null;
-
-        // Check if this is a big slot
-        boolean isBigSlot = slot instanceof BigSlot && ((BigSlot)slot).isBigSlot();
-        int slotSize = isBigSlot ? 32 : 16; // 2x size for big slots
-
-        if (slot == ((HandledScreenAccessor)this).getTouchDragSlotStart() && !((HandledScreenAccessor)this).getTouchDragStack().isEmpty() && ((HandledScreenAccessor)this).getTouchIsRightClickDrag() && !itemStack.isEmpty()) {
-            itemStack = itemStack.copyWithCount(itemStack.getCount() / 2);
-        } else if (this.cursorDragging && this.cursorDragSlots.contains(slot) && !itemStack2.isEmpty()) {
-            if (this.cursorDragSlots.size() == 1) {
-                return;
-            }
-
-            if (ScreenHandler.canInsertItemIntoSlot(slot, itemStack2, true) && this.handler.canInsertIntoSlot(slot)) {
-                bl = true;
-                int k = Math.min(itemStack2.getMaxCount(), slot.getMaxItemCount(itemStack2));
-                int l = slot.getStack().isEmpty() ? 0 : slot.getStack().getCount();
-                int m = ScreenHandler.calculateStackSize(this.cursorDragSlots, ((HandledScreenAccessor)this).getHeldButtonType(), itemStack2) + l;
-                if (m > k) {
-                    m = k;
-                    String var10000 = Formatting.YELLOW.toString();
-                    string = var10000 + k;
-                }
-
-                itemStack = itemStack2.copyWithCount(m);
-            } else {
-                this.cursorDragSlots.remove(slot);
-                ((HandledScreenAccessor) this).invokeCalculateOffset();
-            }
+    protected void extractSlot(GuiGraphicsExtractor extractor, Slot slot, int mouseX, int mouseY) {
+        boolean isBigSlot = slot instanceof BigSlot && ((BigSlot) slot).isBigSlot();
+        if (!isBigSlot) {
+            super.extractSlot(extractor, slot, mouseX, mouseY);
+            return;
         }
-
-        if (itemStack.isEmpty() && slot.isEnabled()) {
-            Identifier identifier = slot.getBackgroundSprite();
-            if (identifier != null) {
-                if (isBigSlot) {
-                    // Scale the background texture for big slots
-                    context.getMatrices().pushMatrix();
-                    context.getMatrices().translate(i, j);
-                    context.getMatrices().scale(2.0f, 2.0f);
-                    context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, 0, 0, 16, 16);
-                    context.getMatrices().popMatrix();
-                } else {
-                    context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, i, j, 16, 16);
+        // Custom: render the big (input) slot's contents at 2x scale.
+        ItemStack itemStack = slot.getItem();
+        if (itemStack.isEmpty()) {
+            if (slot.isActive()) {
+                Identifier icon = slot.getNoItemIcon();
+                if (icon != null) {
+                    extractor.pose().pushMatrix();
+                    extractor.pose().translate(slot.x, slot.y);
+                    extractor.pose().scale(2.0f, 2.0f);
+                    extractor.blitSprite(RenderPipelines.GUI_TEXTURED, icon, 0, 0, 16, 16);
+                    extractor.pose().popMatrix();
                 }
-                bl2 = true;
             }
+            return;
         }
-
-        if (!bl2) {
-            if (bl) {
-                context.fill(i, j, i + slotSize, j + slotSize, -2130706433);
-            }
-
-            int k = slot.x + slot.y * this.backgroundWidth;
-
-            if (isBigSlot) {
-                // Render big slot item with 2x scale
-                context.getMatrices().pushMatrix();
-                context.getMatrices().translate(i-8, j-8);
-                context.getMatrices().scale(2.0f, 2.0f);
-
-                if (slot.disablesDynamicDisplay()) {
-                    context.drawItemWithoutEntity(itemStack, 0, 0, k);
-                } else {
-                    context.drawItem(itemStack, 0, 0, k);
-                }
-
-                // Draw overlay at scaled size
-                if (slot.id < 1 || slot.id > 60) {
-                    context.drawStackOverlay(this.textRenderer, itemStack, 0, 0, string);
-                }
-
-                context.getMatrices().popMatrix();
-            } else {
-                // Normal rendering for regular slots
-                if (slot.disablesDynamicDisplay()) {
-                    context.drawItemWithoutEntity(itemStack, i, j, k);
-                } else {
-                    context.drawItem(itemStack, i, j, k);
-                }
-
-                if (slot.id < 1 || slot.id > 60) {
-                    context.drawStackOverlay(this.textRenderer, itemStack, i, j, string);
-                }
-            }
+        extractor.pose().pushMatrix();
+        extractor.pose().translate(slot.x - 8, slot.y - 8);
+        extractor.pose().scale(2.0f, 2.0f);
+        if (slot.isFake()) {
+            extractor.fakeItem(itemStack, 0, 0);
+        } else {
+            extractor.item(itemStack, 0, 0);
         }
+        if (slot.index < 1 || slot.index > 60) {
+            extractor.itemDecorations(this.font, itemStack, 0, 0);
+        }
+        extractor.pose().popMatrix();
     }
 }

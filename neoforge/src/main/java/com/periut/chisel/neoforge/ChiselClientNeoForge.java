@@ -2,11 +2,6 @@ package com.periut.chisel.neoforge;
 
 import com.periut.chisel.Chisel;
 import com.periut.chisel.gui.ChiselScreen;
-import net.minecraft.block.Block;
-import net.minecraft.client.render.BlockRenderLayer;
-import net.minecraft.client.render.RenderLayers;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;

@@ -1,28 +1,30 @@
 package com.periut.chisel.inventory;
 
-import net.minecraft.component.type.BundleContentsComponent;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-
 import java.util.ArrayList;
 import java.util.List;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.component.BundleContents;
 
 public class InventoryUtil
 {
-    public static BundleContentsComponent createBundleComponent(Inventory inventory)
+    public static BundleContents createBundleComponent(Container inventory)
     {
-        ItemStack stack = inventory.getStack(0);
-        List<ItemStack> itemStackList = new ArrayList<>();
-        itemStackList.add(stack);
-
-        return new BundleContentsComponent(itemStackList);
+        ItemStack stack = inventory.getItem(0);
+        // MC 26.1: BundleContents stores ItemStackTemplate, not ItemStack.
+        List<ItemStackTemplate> items = new ArrayList<>();
+        if (!stack.isEmpty()) {
+            items.add(ItemStackTemplate.fromNonEmptyStack(stack));
+        }
+        return new BundleContents(items);
     }
 
-    public static Inventory createInventory(BundleContentsComponent bcc)
+    public static Container createInventory(BundleContents bcc)
     {
-        Inventory result = new ChiselInventory();
+        Container result = new ChiselInventory();
         if (!bcc.isEmpty()) {
-            result.setStack(0, bcc.get(0));
+            result.setItem(0, bcc.itemCopyStream().findFirst().orElse(ItemStack.EMPTY));
         }
         return result;
     }

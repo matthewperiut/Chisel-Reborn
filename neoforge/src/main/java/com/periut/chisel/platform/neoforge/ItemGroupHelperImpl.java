@@ -1,11 +1,14 @@
 package com.periut.chisel.platform.neoforge;
 
 import com.periut.chisel.platform.RegistryHelper;
-import net.minecraft.item.Item;
+import com.periut.chisel.platform.services.ItemGroupHelperService;
+import net.minecraft.world.item.Item;
 
-public class ItemGroupHelperImpl {
-    public static Item.Settings addToItemGroup(Item.Settings settings, RegistryHelper.ItemGroupRegistration group) {
-        // NeoForge doesn't need special handling - items are added to groups via the ItemGroup builder
+public class ItemGroupHelperImpl implements ItemGroupHelperService {
+    @Override
+    public Item.Properties addToItemGroup(Item.Properties settings, RegistryHelper.ItemGroupRegistration group) {
+        // NeoForge adds items to groups via BuildCreativeModeTabContentsEvent (see ChiselNeoforge),
+        // so nothing extra is needed on the item Properties here.
         return settings;
     }
 }

@@ -1,23 +1,23 @@
 package com.periut.chisel.block.blocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class RedstonePillarBlock extends PillarBlock
+public class RedstonePillarBlock extends RotatedPillarBlock
 {
-    public RedstonePillarBlock(Settings settings)
+    public RedstonePillarBlock(Properties settings)
     {
         super(settings);
     }
-    public boolean emitsRedstonePower(BlockState state)
+    public boolean isSignalSource(BlockState state)
     {
         return true;
     }
 
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction)
+    public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction)
     {
         return 15;
     }

@@ -5,14 +5,17 @@ import com.periut.chisel.block.ChiselGroupLookup;
 import com.periut.chisel.platform.ItemGroupHelper;
 import com.periut.chisel.platform.RegistryHelper;
 import com.periut.chisel.registry.ItemGroupRegistry;
-import net.minecraft.block.*;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PoweredBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Supplier;
 
 public class EzReg
@@ -41,28 +44,28 @@ public class EzReg
             quartz = true;
 
         String[] individual = name.split("/", 2);
-        Identifier baseBlockIdentifier = Identifier.of("minecraft",individual[1]);
+        Identifier baseBlockIdentifier = Identifier.fromNamespaceAndPath("minecraft",individual[1]);
         ChiselGroupLookup.addItemToGroup(individual[1], baseBlockIdentifier);
-        Block baseBlock = nether_brick ? Blocks.NETHER_BRICKS : (purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier)));
+        Block baseBlock = nether_brick ? Blocks.NETHER_BRICKS : (purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : BuiltInRegistries.BLOCK.getValue(baseBlockIdentifier)));
         Supplier<Block> blockSupplier;
 
-        Identifier block_id = Identifier.of("chisel", name);
-        RegistryKey<Block> block_key = RegistryKey.of(RegistryKeys.BLOCK, block_id);
+        Identifier block_id = Identifier.fromNamespaceAndPath("chisel", name);
+        ResourceKey<Block> block_key = ResourceKey.create(Registries.BLOCK, block_id);
         if (redstone && pillar)
-            blockSupplier = RegistryHelper.register(Registries.BLOCK, block_id, () -> new RedstonePillarBlock(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
+            blockSupplier = RegistryHelper.register(BuiltInRegistries.BLOCK, block_id, () -> new RedstonePillarBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).setId(block_key)));
         else if (redstone)
-            blockSupplier = RegistryHelper.register(Registries.BLOCK, block_id, () -> new RedstoneBlock(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
+            blockSupplier = RegistryHelper.register(BuiltInRegistries.BLOCK, block_id, () -> new PoweredBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).setId(block_key)));
         else if (pillar)
-            blockSupplier = RegistryHelper.register(Registries.BLOCK, block_id, () -> new PillarBlock(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
+            blockSupplier = RegistryHelper.register(BuiltInRegistries.BLOCK, block_id, () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).setId(block_key)));
         else
-            blockSupplier = RegistryHelper.register(Registries.BLOCK, block_id, () -> new Block(AbstractBlock.Settings.copy(baseBlock).registryKey(block_key)));
+            blockSupplier = RegistryHelper.register(BuiltInRegistries.BLOCK, block_id, () -> new Block(BlockBehaviour.Properties.ofFullCopy(baseBlock).setId(block_key)));
 
-        RegistryKey<Item> item_key = RegistryKey.of(RegistryKeys.ITEM, block_id);
-        Supplier<Item> itemSupplier = RegistryHelper.register(Registries.ITEM, block_id, () -> new BlockItem(blockSupplier.get(), ItemGroupHelper.addToItemGroup(new Item.Settings().registryKey(item_key), ItemGroupRegistry.CLAY_GROUP)));
+        ResourceKey<Item> item_key = ResourceKey.create(Registries.ITEM, block_id);
+        Supplier<Item> itemSupplier = RegistryHelper.register(BuiltInRegistries.ITEM, block_id, () -> new BlockItem(blockSupplier.get(), ItemGroupHelper.addToItemGroup(new Item.Properties().setId(item_key), ItemGroupRegistry.CLAY_GROUP)));
 
         if (nether_brick)
-            ChiselGroupLookup.addItemToGroup("nether_bricks", Identifier.of("chisel", name));
+            ChiselGroupLookup.addItemToGroup("nether_bricks", Identifier.fromNamespaceAndPath("chisel", name));
         else
-            ChiselGroupLookup.addItemToGroup(group, Identifier.of("chisel", name));
+            ChiselGroupLookup.addItemToGroup(group, Identifier.fromNamespaceAndPath("chisel", name));
     }
 }

@@ -1,38 +1,38 @@
 package com.periut.chisel.block.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IceBlock;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.math.Direction;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.IceBlock;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 
 public class IcePillarBlock extends IceBlock
 {
     public static final EnumProperty<Direction.Axis> AXIS;
 
-    public IcePillarBlock(Settings settings) {
+    public IcePillarBlock(Properties settings) {
         super(settings);
-        this.setDefaultState((BlockState)this.getDefaultState().with(AXIS, Direction.Axis.Y));
+        this.registerDefaultState((BlockState)this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
     }
 
-    public BlockState rotate(BlockState state, BlockRotation rotation) {
+    public BlockState rotate(BlockState state, Rotation rotation) {
         return changeRotation(state, rotation);
     }
 
-    public static BlockState changeRotation(BlockState state, BlockRotation rotation) {
+    public static BlockState changeRotation(BlockState state, Rotation rotation) {
         switch(rotation) {
             case COUNTERCLOCKWISE_90:
             case CLOCKWISE_90:
-                switch((Direction.Axis)state.get(AXIS)) {
+                switch((Direction.Axis)state.getValue(AXIS)) {
                     case X:
-                        return (BlockState)state.with(AXIS, Direction.Axis.Z);
+                        return (BlockState)state.setValue(AXIS, Direction.Axis.Z);
                     case Z:
-                        return (BlockState)state.with(AXIS, Direction.Axis.X);
+                        return (BlockState)state.setValue(AXIS, Direction.Axis.X);
                     default:
                         return state;
                 }
@@ -41,15 +41,15 @@ public class IcePillarBlock extends IceBlock
         }
     }
 
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{AXIS});
     }
 
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return (BlockState)this.getDefaultState().with(AXIS, ctx.getSide().getAxis());
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        return (BlockState)this.defaultBlockState().setValue(AXIS, ctx.getClickedFace().getAxis());
     }
 
     static {
-        AXIS = Properties.AXIS;
+        AXIS = BlockStateProperties.AXIS;
     }
 }

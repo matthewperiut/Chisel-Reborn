@@ -1,52 +1,54 @@
 plugins {
-    id 'com.github.johnrengelman.shadow'
+    id 'net.fabricmc.fabric-loom'
 }
 
-architectury {
-    platformSetupLoomIde()
-    fabric()
-}
-
-configurations {
-    common {
-        canBeResolved = true
-        canBeConsumed = false
+loom {
+    runs {
+        client {
+            client()
+            ideConfigGenerated = true
+        }
+        server {
+            server()
+            ideConfigGenerated = true
+        }
     }
-    compileClasspath.extendsFrom common
-    runtimeClasspath.extendsFrom common
-    developmentFabric.extendsFrom common
+    mods {
+        "chisel" {
+            sourceSet sourceSets.main
+        }
+    }
+}
 
-    // Files in this configuration will be bundled into your mod using the Shadow plugin.
-    // Don't use the `shadow` configuration from the plugin itself as it's meant for excluding files.
-    shadowBundle {
-        canBeResolved = true
-        canBeConsumed = false
+repositories {
+    mavenLocal()
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+        metadataSources { artifact() }
     }
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-
-    // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
-
-    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
-    shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
+    minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+    // 26.1+ is unobfuscated: no 'mappings' line, mods are not remapped, use plain 'implementation'.
+    implementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    implementation "maven.modrinth:cryonicconfig:fabric-${rootProject.minecraft_version}-${rootProject.cryonic_version}"
 }
+
+// Share the loader-agnostic 'common' source. EMI/REI integrations are disabled for now.
+sourceSets.main.java {
+    srcDir('../common/src/main/java')
+    exclude 'com/periut/chisel/ChiselEMI.java'
+    exclude 'com/periut/chisel/ChiselREI.java'
+}
+sourceSets.main.resources.srcDir('../common/src/main/resources')
 
 processResources {
     inputs.property 'version', project.version
-
     filesMatching('fabric.mod.json') {
         expand version: project.version
     }
-}
-
-shadowJar {
-    configurations = [project.configurations.shadowBundle]
-    archiveClassifier = 'dev-shadow'
-}
-
-remapJar {
-    inputFile.set shadowJar.archiveFile
 }

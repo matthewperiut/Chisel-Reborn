@@ -17,10 +17,10 @@ import me.shedaniel.rei.api.common.display.DisplaySerializer;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import net.minecraft.client.resource.language.I18n;
-import net.minecraft.item.Item;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class ChiselREI implements REIClientPlugin {
     }
 
     public static class ChiselCategory implements DisplayCategory<ChiselDisplay> {
-        private final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/rei_recipes.png");
+        private final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Chisel.MOD_ID, "textures/rei_recipes.png");
 
         @Override
         public Renderer getIcon() {
@@ -94,8 +94,8 @@ public class ChiselREI implements REIClientPlugin {
         }
 
         @Override
-        public Text getTitle() {
-            return Text.of(I18n.translate("rei.chisel.category"));
+        public Component getTitle() {
+            return Component.nullToEmpty(I18n.get("rei.chisel.category"));
         }
 
         @Override

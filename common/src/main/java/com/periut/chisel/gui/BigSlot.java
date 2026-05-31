@@ -1,6 +1,6 @@
 package com.periut.chisel.gui;
 
-import net.minecraft.screen.slot.Slot;
+import net.minecraft.world.inventory.Slot;
 
 public interface BigSlot {
     boolean isBigSlot();

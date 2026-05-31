@@ -9,15 +9,15 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.client.resource.language.I18n;
-import net.minecraft.item.Item;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 
 @EmiEntrypoint
 public class ChiselEMI implements EmiPlugin {
@@ -36,24 +36,24 @@ public class ChiselEMI implements EmiPlugin {
 
     public static class ChiselCategory extends EmiRecipeCategory {
         public ChiselCategory() {
-            super(Identifier.of(Chisel.MOD_ID, "chisel_recipes_category"), EmiStack.of(Chisel.chiselSupplier.get()));
+            super(Identifier.fromNamespaceAndPath(Chisel.MOD_ID, "chisel_recipes_category"), EmiStack.of(Chisel.chiselSupplier.get()));
         }
 
         @Override
-        public Text getName() {
-            return Text.of(I18n.translate("rei.chisel.category"));
+        public Component getName() {
+            return Component.nullToEmpty(I18n.get("rei.chisel.category"));
         }
     }
 
     public static class ChiselEmiRecipe implements EmiRecipe {
-        private static final Identifier TEXTURE = Identifier.of(Chisel.MOD_ID, "textures/rei_recipes.png");
+        private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Chisel.MOD_ID, "textures/rei_recipes.png");
 
         private final Identifier id;
         private final List<EmiIngredient> input;
         private final List<EmiStack> output;
 
         public ChiselEmiRecipe(String chiselGroup) {
-            this.id = Identifier.of(Chisel.MOD_ID, chiselGroup);
+            this.id = Identifier.fromNamespaceAndPath(Chisel.MOD_ID, chiselGroup);
             this.input = new ArrayList<>();
             this.output = new ArrayList<>();
             for (Item item : ChiselGroupLookup.getBlocksInGroup(chiselGroup)) {

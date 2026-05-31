@@ -1,7 +1,7 @@
 package com.periut.chisel.mixins;
 
 import com.periut.chisel.gui.BigSlot;
-import net.minecraft.screen.slot.Slot;
+import net.minecraft.world.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,7 +19,7 @@ public class SlotMixin implements BigSlot {
         this.bigSlot = bigSlot;
         return (Slot) (Object) this;
     }
-    @Inject(method = "canBeHighlighted", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "isHighlightable", at = @At("HEAD"), cancellable = true)
     void canBeHighlightedBig(CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(!bigSlot);
     }

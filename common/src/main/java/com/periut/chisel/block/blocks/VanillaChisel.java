@@ -1,7 +1,7 @@
 package com.periut.chisel.block.blocks;
 
 import com.periut.chisel.block.ChiselGroupLookup;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 public class VanillaChisel
 {
@@ -50,7 +50,7 @@ public class VanillaChisel
         {
             for(int j = 0; j < vanilla[i].length; j++)
             {
-                ChiselGroupLookup.addItemToGroup(vanilla[i][0], Identifier.of("minecraft",vanilla[i][j]));
+                ChiselGroupLookup.addItemToGroup(vanilla[i][0], Identifier.fromNamespaceAndPath("minecraft",vanilla[i][j]));
             }
         }
     }

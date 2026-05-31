@@ -32,7 +32,7 @@ public class ChiselNeoforge
         if (event.getTabKey().equals(ItemGroupRegistry.CLAY_GROUP.getKey())) {
             // Add items in registration order
             RegistryHelperImpl.getRegisteredItems().forEach(item -> {
-                event.add(item.getDefaultStack());
+                event.accept(item.getDefaultInstance());
             });
         }
     }

@@ -1,12 +1,14 @@
 package com.periut.chisel.platform.fabric;
 
 import com.periut.chisel.platform.RegistryHelper;
-import net.minecraft.item.Item;
+import com.periut.chisel.platform.services.ItemGroupHelperService;
+import net.minecraft.world.item.Item;
 
-public class ItemGroupHelperImpl {
-    public static Item.Settings addToItemGroup(Item.Settings settings, RegistryHelper.ItemGroupRegistration group) {
-        // Fabric uses ItemGroupEvents to add items to groups
-        // The items will be automatically added based on their registry
+public class ItemGroupHelperImpl implements ItemGroupHelperService {
+    @Override
+    public Item.Properties addToItemGroup(Item.Properties settings, RegistryHelper.ItemGroupRegistration group) {
+        // Fabric uses the FabricItemGroup displayItems builder (see RegistryHelperImpl) to add items
+        // to groups, so nothing extra is needed on the item Properties here.
         return settings;
     }
 }

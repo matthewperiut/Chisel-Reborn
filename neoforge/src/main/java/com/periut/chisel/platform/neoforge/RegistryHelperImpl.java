@@ -2,15 +2,16 @@ package com.periut.chisel.platform.neoforge;
 
 import com.periut.chisel.Chisel;
 import com.periut.chisel.platform.RegistryHelper;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import com.periut.chisel.platform.services.RegistryHelperService;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -21,18 +22,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class RegistryHelperImpl {
+public class RegistryHelperImpl implements RegistryHelperService {
     private static final List<Supplier<Item>> REGISTERED_ITEM_SUPPLIERS = new ArrayList<>();
-    private static final Map<RegistryKey<?>, DeferredRegister<?>> DEFERRED_REGISTERS = new HashMap<>();
+    private static final Map<ResourceKey<?>, DeferredRegister<?>> DEFERRED_REGISTERS = new HashMap<>();
     private static IEventBus eventBus;
 
     @SuppressWarnings("unchecked")
     private static <T> DeferredRegister<T> getOrCreateRegister(Registry<? super T> registry) {
-        RegistryKey<? extends Registry<? super T>> registryKey = registry.getKey();
+        ResourceKey<? extends Registry<? super T>> registryKey = registry.key();
         DeferredRegister<T> deferredRegister = (DeferredRegister<T>) DEFERRED_REGISTERS.get(registryKey);
 
         if (deferredRegister == null) {
-            deferredRegister = DeferredRegister.create((RegistryKey<Registry<T>>) registryKey, Chisel.MOD_ID);
+            deferredRegister = DeferredRegister.create((ResourceKey<Registry<T>>) registryKey, Chisel.MOD_ID);
             DEFERRED_REGISTERS.put(registryKey, deferredRegister);
 
             // Immediately register with event bus if it's been initialized
@@ -50,25 +51,27 @@ public class RegistryHelperImpl {
         DEFERRED_REGISTERS.values().forEach(register -> register.register(modEventBus));
     }
 
-    public static <T> Supplier<T> register(Registry<? super T> registry, Identifier id, Supplier<T> supplier) {
+    @Override
+    public <T> Supplier<T> register(Registry<? super T> registry, Identifier id, Supplier<T> supplier) {
         DeferredRegister<T> deferredRegister = getOrCreateRegister(registry);
         DeferredHolder<T, T> holder = deferredRegister.register(id.getPath(), supplier);
 
         // Track item suppliers in registration order (don't resolve yet!)
-        if (registry == Registries.ITEM) {
+        if (registry == BuiltInRegistries.ITEM) {
             REGISTERED_ITEM_SUPPLIERS.add((Supplier<Item>) holder);
         }
 
         return holder;
     }
 
-    public static RegistryHelper.ItemGroupRegistration registerItemGroup(Identifier id, Supplier<Text> displayName, Supplier<ItemStack> icon) {
-        RegistryKey<ItemGroup> key = RegistryKey.of(RegistryKeys.ITEM_GROUP, id);
-        DeferredRegister<ItemGroup> deferredRegister = getOrCreateRegister(Registries.ITEM_GROUP);
-        DeferredHolder<ItemGroup, ItemGroup> holder = deferredRegister.register(id.getPath(), () -> {
-            return ItemGroup.builder()
+    @Override
+    public RegistryHelper.ItemGroupRegistration registerItemGroup(Identifier id, Supplier<Component> displayName, Supplier<ItemStack> icon) {
+        ResourceKey<CreativeModeTab> key = ResourceKey.create(Registries.CREATIVE_MODE_TAB, id);
+        DeferredRegister<CreativeModeTab> deferredRegister = getOrCreateRegister(BuiltInRegistries.CREATIVE_MODE_TAB);
+        DeferredHolder<CreativeModeTab, CreativeModeTab> holder = deferredRegister.register(id.getPath(), () -> {
+            return CreativeModeTab.builder()
                     .icon(icon)
-                    .displayName(displayName.get())
+                    .title(displayName.get())
                     .build();
         });
         return new RegistryHelper.ItemGroupRegistration(holder, key);

@@ -1,11 +1,10 @@
 package com.periut.chisel.block;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-
 import java.util.*;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public class ChiselGroupLookup {
     private static final Map<String, ChiselGroup> CHISEL_GROUPS = new HashMap<>();
@@ -59,7 +58,7 @@ public class ChiselGroupLookup {
 
     public static ChiselGroup getGroup(Item item) {
         Iterator<ChiselGroup> chiselGroupIterator = CHISEL_GROUPS.values().iterator();
-        Identifier itemId = Registries.ITEM.getId(item);
+        Identifier itemId = BuiltInRegistries.ITEM.getKey(item);
         while (chiselGroupIterator.hasNext()) {
             ChiselGroup group = chiselGroupIterator.next();
             if (group.containsItem(itemId)) {
@@ -130,7 +129,7 @@ public class ChiselGroupLookup {
         public List<Item> getItems() {
             List<Item> itemsInGroup = new ArrayList<>();
             for (int i = 0; i < items.size(); i++) {
-                Item item = Registries.ITEM.get(items.get(i));
+                Item item = BuiltInRegistries.ITEM.getValue(items.get(i));
                 if (item.equals(Items.AIR)) {
                     continue;
                 }

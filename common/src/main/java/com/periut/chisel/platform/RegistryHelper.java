@@ -1,40 +1,39 @@
 package com.periut.chisel.platform;
 
-import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-
+import com.periut.chisel.platform.services.RegistryHelperService;
 import java.util.function.Supplier;
+import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 public class RegistryHelper {
-    @ExpectPlatform
+    private static final RegistryHelperService SERVICE = Services.load(RegistryHelperService.class);
+
     public static <T> Supplier<T> register(Registry<? super T> registry, Identifier id, Supplier<T> supplier) {
-        throw new AssertionError();
+        return SERVICE.register(registry, id, supplier);
     }
 
-    @ExpectPlatform
-    public static ItemGroupRegistration registerItemGroup(Identifier id, Supplier<Text> displayName, Supplier<ItemStack> icon) {
-        throw new AssertionError();
+    public static ItemGroupRegistration registerItemGroup(Identifier id, Supplier<Component> displayName, Supplier<ItemStack> icon) {
+        return SERVICE.registerItemGroup(id, displayName, icon);
     }
 
     public static class ItemGroupRegistration {
-        private final Supplier<ItemGroup> itemGroup;
-        private final RegistryKey<ItemGroup> registryKey;
+        private final Supplier<CreativeModeTab> itemGroup;
+        private final ResourceKey<CreativeModeTab> registryKey;
 
-        public ItemGroupRegistration(Supplier<ItemGroup> itemGroup, RegistryKey<ItemGroup> registryKey) {
+        public ItemGroupRegistration(Supplier<CreativeModeTab> itemGroup, ResourceKey<CreativeModeTab> registryKey) {
             this.itemGroup = itemGroup;
             this.registryKey = registryKey;
         }
 
-        public Supplier<ItemGroup> getSupplier() {
+        public Supplier<CreativeModeTab> getSupplier() {
             return itemGroup;
         }
 
-        public RegistryKey<ItemGroup> getKey() {
+        public ResourceKey<CreativeModeTab> getKey() {
             return registryKey;
         }
     }

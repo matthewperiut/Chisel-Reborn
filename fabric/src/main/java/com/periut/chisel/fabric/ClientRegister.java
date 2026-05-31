@@ -1,23 +1,11 @@
 package com.periut.chisel.fabric;
 
-import com.periut.chisel.Chisel;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-import net.minecraft.block.Block;
-import net.minecraft.client.render.BlockRenderLayer;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-
 public class ClientRegister
 {
     public static void Register()
     {
-        for (String name : Chisel.translucentBlocks) {
-            Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
-            BlockRenderLayerMap.putBlock(block, BlockRenderLayer.TRANSLUCENT);
-        }
-        for (String name : Chisel.transparentBlocks) {
-            Block block = Registries.BLOCK.get(Identifier.of(Chisel.MOD_ID, name));
-            BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT);
-        }
+        // In Minecraft 26.1 a block's render layer is data-driven via the block model's
+        // "render_type" field, and Fabric API's old code-based BlockRenderLayerMap was removed.
+        // (The transparent/translucent block lists were never populated, so this was already a no-op.)
     }
 }

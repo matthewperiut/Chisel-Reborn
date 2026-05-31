@@ -25,12 +25,6 @@
     ],
     "client": [
       "com.periut.chisel.fabric.ChiselClient"
-    ],
-    "emi": [
-      "com.periut.chisel.ChiselEMI"
-    ],
-    "rei_client": [
-      "com.periut.chisel.ChiselREI"
     ]
   },
   "mixins": [
@@ -39,9 +33,9 @@
   
   "depends": {
     "fabricloader": ">=0.14.19",
-    "fabric": "*",
-    "minecraft": "1.21.11",
-    "java": ">=21",
+    "fabric-api": "*",
+    "minecraft": ">=26.1",
+    "java": ">=25",
     "cryonicconfig": "*"
   }
 }

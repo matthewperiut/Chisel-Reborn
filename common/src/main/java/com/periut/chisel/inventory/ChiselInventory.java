@@ -1,28 +1,27 @@
 package com.periut.chisel.inventory;
 
 import com.periut.chisel.block.ChiselGroupLookup;
-import net.minecraft.inventory.Inventories;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.collection.DefaultedList;
-
 import java.util.List;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class ChiselInventory implements IInventory {
-    private final DefaultedList<ItemStack> inventory;
+    private final NonNullList<ItemStack> inventory;
 
     public ChiselInventory() {
-        this.inventory = DefaultedList.ofSize(61, ItemStack.EMPTY);
+        this.inventory = NonNullList.withSize(61, ItemStack.EMPTY);
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return inventory;
     }
 
     @Override
-    public void setStack(int slot, ItemStack stack) {
+    public void setItem(int slot, ItemStack stack) {
         validateAndSetStack(slot, stack);
     }
 
@@ -44,13 +43,13 @@ public class ChiselInventory implements IInventory {
 
         // Refresh if it's the input slot
         if (slot == 0) {
-            refresh(getStack(slot).getItem());
+            refresh(getItem(slot).getItem());
         }
     }
 
     @Override
-    public ItemStack removeStack(int slot, int count) {
-        ItemStack result = Inventories.splitStack(getItems(), slot, count);
+    public ItemStack removeItem(int slot, int count) {
+        ItemStack result = ContainerHelper.removeItem(getItems(), slot, count);
 
         // Ensure the result has a valid count
         if (!result.isEmpty()) {
@@ -65,14 +64,14 @@ public class ChiselInventory implements IInventory {
                 result = ItemStack.EMPTY;
             }
 
-            markDirty();
+            setChanged();
         }
 
         return result;
     }
 
     @Override
-    public ItemStack removeStack(int slot) {
+    public ItemStack removeItemNoUpdate(int slot) {
         ItemStack stack = getItems().get(slot);
 
         // If the stack is empty or invalid, return empty stack
@@ -95,17 +94,17 @@ public class ChiselInventory implements IInventory {
 
     public void populate(List<Item> chiselBlocks) {
         clearInv();
-        int baseCount = getStack(0).getCount();
+        int baseCount = getItem(0).getCount();
         baseCount = Math.max(1, Math.min(baseCount, 99)); // Clamp stack size
 
         for (int i = 0; i < 60 && i < chiselBlocks.size(); i++) {
-            this.setStack(i + 1, new ItemStack(chiselBlocks.get(i), baseCount));
+            this.setItem(i + 1, new ItemStack(chiselBlocks.get(i), baseCount));
         }
     }
 
     public void clearInv() {
         for (int i = 1; i < inventory.size(); i++) {
-            this.setStack(i, ItemStack.EMPTY);
+            this.setItem(i, ItemStack.EMPTY);
         }
     }
 

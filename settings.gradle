@@ -1,14 +1,16 @@
 pluginManagement {
     repositories {
-        maven { url "https://maven.fabricmc.net/" }
-        maven { url "https://maven.architectury.dev/" }
-        maven { url "https://maven.neoforged.net/" }
         gradlePluginPortal()
+        mavenCentral()
+        maven { name = 'Fabric'; url = uri('https://maven.fabricmc.net/') }
+        maven { name = 'NeoForged'; url = uri('https://maven.neoforged.net/releases/') }
+        maven { name = 'Sponge'; url = uri('https://repo.spongepowered.org/repository/maven-public/') }
     }
 }
 
-include("common")
-include("fabric")
-include("neoforge")
-
-rootProject.name = "chisel-reborn"
+rootProject.name = 'chisel-reborn'
+// Architectury (arch-loom) does not support unobfuscated 26.1 yet (architectury-loom#328),
+// so Fabric uses fabric-loom and NeoForge uses ModDevGradle. The shared 'common' source is
+// compiled into each platform via srcDir (official names work identically on both loaders).
+include('fabric')
+include('neoforge')
