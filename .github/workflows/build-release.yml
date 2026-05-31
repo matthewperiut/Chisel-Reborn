@@ -28,12 +28,14 @@ jobs:
       - name: Run build with Gradle Wrapper
         run: ./gradlew build -Dbuild.release=true
 
-      - name: Extract versions from tag name
+      - name: Read versions from gradle.properties
         id: versions
+        # Derive versions from gradle.properties (the source of truth that also drives the jar name and
+        # the maven.modrinth dependency coordinates) so the published version is always
+        # "<loader>-<minecraft_version>-<mod_version>" regardless of the git tag's format.
         run: |
-          readarray -td "-" VERSIONS <<< "${GITHUB_REF#refs/tags/}-"
-          echo "minecraft-version=${VERSIONS[0]}" >> "${GITHUB_OUTPUT}"
-          echo "mod-version=${VERSIONS[1]}" >> "${GITHUB_OUTPUT}"
+          echo "minecraft-version=$(grep -E '^minecraft_version *=' gradle.properties | head -1 | cut -d= -f2 | tr -d ' ')" >> "${GITHUB_OUTPUT}"
+          echo "mod-version=$(grep -E '^mod_version *=' gradle.properties | head -1 | cut -d= -f2 | tr -d ' ')" >> "${GITHUB_OUTPUT}"
 
       - name: Upload fabric artifacts
         uses: Kir-Antipov/mc-publish@v3.3
