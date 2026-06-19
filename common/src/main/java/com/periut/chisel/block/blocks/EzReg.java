@@ -43,6 +43,7 @@ public class EzReg
 
         if (name.toLowerCase().contains("quartz"))
             quartz = true;
+
         if (name.toLowerCase().contains("glass"))
             glass = true;
 
