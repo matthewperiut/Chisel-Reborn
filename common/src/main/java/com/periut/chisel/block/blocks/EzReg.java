@@ -24,6 +24,7 @@ public class EzReg
         boolean purpur = false;
         boolean nether_brick = false;
         boolean quartz = false;
+        boolean glass = false;
 
         if (name.toLowerCase().contains("redstone"))
             redstone = true;
@@ -40,6 +41,9 @@ public class EzReg
         if (name.toLowerCase().contains("quartz"))
             quartz = true;
 
+        if (name.toLowerCase().contains("glass"))
+            glass = true;
+
         if (group.equals("glass")) {
             Chisel.transparentBlocks.add(name);
         }
@@ -50,7 +54,7 @@ public class EzReg
         String[] individual = name.split("/", 2);
         Identifier baseBlockIdentifier = Identifier.of("minecraft",individual[1]);
         ChiselGroupLookup.addItemToGroup(individual[1], baseBlockIdentifier);
-        Block baseBlock = nether_brick ? Blocks.NETHER_BRICKS : (purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier)));
+        Block baseBlock = glass ? Blocks.GLASS : (nether_brick ? Blocks.NETHER_BRICKS : (purpur ? Blocks.PURPUR_BLOCK : (quartz ? Blocks.QUARTZ_BLOCK : Registries.BLOCK.get(baseBlockIdentifier))));
         RegistrySupplier<Block> blockSupplier;
 
         Identifier block_id = Identifier.of("chisel", name);
@@ -61,6 +65,8 @@ public class EzReg
             blockSupplier = BLOCKS.register(block_id, () -> new RedstoneBlock(AbstractBlock.Settings.copy(baseBlock)));
         else if (pillar)
             blockSupplier = BLOCKS.register(block_id, () -> new PillarBlock(AbstractBlock.Settings.copy(baseBlock)));
+        else if (glass)
+            blockSupplier = BLOCKS.register(block_id, () -> new TransparentBlock(AbstractBlock.Settings.copy(baseBlock)));
         else
             blockSupplier = BLOCKS.register(block_id, () -> new Block(AbstractBlock.Settings.copy(baseBlock)));
 
