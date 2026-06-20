@@ -34,7 +34,11 @@ subprojects {
 
     repositories {
         maven { url = "https://maven.terraformersmc.com/" }
-        maven { url "https://maven.periut.com/" }
+        maven {
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+            content { includeGroup "maven.modrinth" }
+        }
     }
 
     dependencies {
@@ -52,7 +56,14 @@ subprojects {
             modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-${project.name}:${project.rei_version}"
         }
 
-        modImplementation "com.periut.cryonicconfig:cryonicconfig-${project.name}:1.0.0+mc1.21.4"
+        // cryonicconfig is published on the Modrinth maven per loader; the common module only
+        // needs the API to compile against (intermediary fabric jar), the platform modules pull
+        // their loader-specific build. The 1.21.4 line supports the full 1.21.x range incl. 1.21.1.
+        if (project.name == "common") {
+            modCompileOnly "maven.modrinth:cryonicconfig:fabric-1.21.4-1.0.0"
+        } else {
+            modImplementation "maven.modrinth:cryonicconfig:${project.name}-1.21.4-1.0.0"
+        }
     }
 
     java {
