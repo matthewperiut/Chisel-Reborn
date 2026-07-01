@@ -149,7 +149,19 @@ public class ChiselScreenHandler extends ScreenHandler {
                     break; // Stop at the first chisel found
                 }
             }
-            player.getInventory().setStack(0, chiselStack);
+            // Return the chisel to the actually-held slot (selectedSlot) instead of
+            // always clobbering hotbar slot 0. Remove it from its old slot first so
+            // the same stack isn't referenced from two slots, and move the item that
+            // is currently held into the chisel's old slot so nothing is destroyed.
+            if (chiselSlot >= 0)
+            {
+                int held = player.getInventory().selectedSlot;
+                ItemStack displaced = player.getInventory().getStack(held);
+                player.getInventory().removeStack(chiselSlot);
+                player.getInventory().setStack(held, chiselStack);
+                player.getInventory().setStack(chiselSlot, displaced);
+                hand = chiselStack;
+            }
         }
         hand.getOrCreateNbt().copyFrom(InventoryUtil.createCompound(inventory));
     }
