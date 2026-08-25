@@ -59,9 +59,12 @@ jobs:
 
           loaders: fabric quilt
 
+          # CTM Reborn provides the connected texture models the blockstates in this mod are written
+          # against. The ids are repository variables so they can be changed without touching this file.
           dependencies: |
             fabric-api(required)
             cryonicconfig(required)
+            ctm-reborn(required){modrinth:${{ vars.CTM_REBORN_MODRINTH_ID }}}{curseforge:${{ vars.CTM_REBORN_CURSEFORGE_ID }}}
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
 
@@ -89,5 +92,6 @@ jobs:
 
           dependencies: |
             cryonicconfig(required)
+            ctm-reborn(required){modrinth:${{ vars.CTM_REBORN_MODRINTH_ID }}}{curseforge:${{ vars.CTM_REBORN_CURSEFORGE_ID }}}
 
           version-resolver: latest # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
